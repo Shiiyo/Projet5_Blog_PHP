@@ -1,6 +1,8 @@
 <?php
-//Gère le formulaire
 
+namespace Controller;
+
+//Gère le formulaire
 class HomepageController
 {
 

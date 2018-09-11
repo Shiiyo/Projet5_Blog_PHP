@@ -1,5 +1,7 @@
 <?php
 
+namespace Entity;
+
 class BlogPost
 {
     private $id,
