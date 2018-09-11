@@ -1,5 +1,7 @@
 <?php
 
+namespace Entity;
+
 class Admin
 {
     private $id,
