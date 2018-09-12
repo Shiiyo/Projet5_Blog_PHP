@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>{% block title %}Camille LEGALLAND{% endblock %}</title>
+        <link rel="stylesheet" href="{{ pathStyleSheet }}">
+        <link rel="icon" type="image/x-icon" href="{{ pathFavicon) }}" />
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                {% block header %}
+                {% endblock %}
+            </div>
+        </header>
+
+        <div class="container body-container">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+
+        <footer>
+            <div class="container">
+                {% block footer %}
+                {% endblock %}
+            </div>
+        </footer>
+
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>
