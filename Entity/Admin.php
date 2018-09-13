@@ -2,7 +2,9 @@
 
 namespace Entity;
 
-class Admin
+use Entity\Interfaces\AdminInterface;
+
+class Admin implements AdminInterface
 {
     private $id,
             $email,

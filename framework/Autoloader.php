@@ -13,6 +13,7 @@ class Autoloader
     //Inclue le fichier correspondant à notre classe
     static function autoload($class)
     {
-        require $class . '.php';
+
+        require str_replace('\\', '/', $class) . '.php';
     }
 }
