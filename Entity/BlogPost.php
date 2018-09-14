@@ -2,15 +2,17 @@
 
 namespace Entity;
 
-class BlogPost
+use Entity\Interfaces as Interfaces;
+
+class BlogPost implements Interfaces\BlogPostInterface
 {
-    private $id,
-            $idAdmin,
-            $title,
-            $resume,
-            $content,
-            $addDate,
-            $updateDate;
+    private $id;
+    private $idAdmin;
+    private $title;
+    private $resume;
+    private $content;
+    private $addDate;
+    private $updateDate;
 
     //GETTERS
     public function getId(): int

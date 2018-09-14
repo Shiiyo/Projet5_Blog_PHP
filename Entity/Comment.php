@@ -2,14 +2,16 @@
 
 namespace Entity;
 
-class Comment
+use Entity\Interfaces as Interfaces;
+
+class Comment implements Interfaces\CommentInterface
 {
-    private $id,
-            $pseudo,
-            $message,
-            $email,
-            $validation,
-            $addDate;
+    private $id;
+    private $pseudo;
+    private $message;
+    private $email;
+    private $validation;
+    private $addDate;
 
     //GETTERS
     public function getId(): int

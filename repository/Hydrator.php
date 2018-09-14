@@ -2,8 +2,6 @@
 
 namespace repository;
 
-
 class Hydrator
 {
-
 }

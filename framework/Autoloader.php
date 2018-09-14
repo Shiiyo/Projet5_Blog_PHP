@@ -5,14 +5,14 @@ namespace framework;
 class Autoloader
 {
     //Enregistre notre autoloader
-    static function register()
+    public static function register()
     {
         spl_autoload_register(array(__CLASS__, 'autoload'));
     }
 
     //Inclue le fichier correspondant à notre classe
-    static function autoload($class)
+    public static function autoload($class)
     {
-        require $class . '.php';
+        require '..\\' . $class . '.php';
     }
 }

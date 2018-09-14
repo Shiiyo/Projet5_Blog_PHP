@@ -4,5 +4,4 @@ namespace framework;
 
 class Router
 {
-
 }
