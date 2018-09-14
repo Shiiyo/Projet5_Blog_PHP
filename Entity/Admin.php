@@ -2,13 +2,13 @@
 
 namespace Entity;
 
-class Admin
+class Admin implements Interfaces\AdminInterface
 {
-    private $id,
-            $email,
-            $password,
-            $name,
-            $firstName;
+    private $id;
+    private $email;
+    private $password;
+    private $name;
+    private $firstName;
 
     //GETTERS
     public function getId(): int
