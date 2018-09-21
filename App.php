@@ -18,5 +18,12 @@ class App
     public function run()
     {
         $this->router->resolve();
+        $controllerName = $this->router->getController();
+        $controller = new $controllerName();
+
+        call_user_func_array([
+            $controller,
+            'index'
+        ], $this->router->getParams());
     }
 }

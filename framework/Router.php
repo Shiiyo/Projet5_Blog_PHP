@@ -5,12 +5,15 @@ namespace framework;
 class Router
 {
     private $routes = [
-        'contact' => 'Controller\BlogController',
-        'home' => [
-            'controller' => 'HomeController',
-        ],
+        '#^contact$#' => 'Controller\BlogController',
+        '#^home$#' => 'Controller\HomeController',
+        '#^blog/([0-9]+)$#' => 'Controller\ShowPostController',
+        '#^blog/([0-9]+)/([a-z]+)$#' => 'Controller\ExamplePostController',
     ];
     private $request_uri;
+
+    private $controller;
+    private $params = [];
 
     public function __construct()
     {
@@ -18,24 +21,37 @@ class Router
     }
 
     /**
-     * Return the controller and its action given the request_uri
+     * Revolves the controller and its action given the request_uri
      */
     public function resolve()
     {
         $controller = null;
         $action = null;
 
-        foreach ($this->routes as $k => $couple) {
+        foreach ($this->routes as $pattern => $couple) {
 
-            if ($this->request_uri == $k) {
-                $controller = $couple['controller'];
-                $action = $couple['action'];
+            if (preg_match($pattern, $this->request_uri, $matches)) {
+
+                $this->controller = $this->routes[$pattern];
+
+                foreach ($matches as $k => $value) {
+
+                    if ($k > 0) {
+
+                        $this->params[] = $value;
+                    }
+                }
             }
         }
+    }
 
-        return [
-            'controller' => $controller,
-            'action' => $action,
-        ];
+    public function getController()
+    {
+        return $this->controller;
+    }
+
+    public function getParams()
+    {
+        return $this->params;
     }
 }
