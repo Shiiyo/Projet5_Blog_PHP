@@ -4,7 +4,9 @@ namespace Controller\Admin;
 
 use Controller\Controller;
 
-class SecurityController
+echo "Admin Controller";
+
+class AdminController
 {
     use Controller;
 }

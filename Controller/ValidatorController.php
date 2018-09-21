@@ -4,4 +4,5 @@ namespace Controller;
 
 class ValidatorController
 {
+    use Controller;
 }

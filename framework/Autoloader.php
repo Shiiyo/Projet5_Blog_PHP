@@ -13,6 +13,10 @@ class Autoloader
     //Inclue le fichier correspondant à notre classe
     public static function autoload($class)
     {
-        require '..\\' . $class . '.php';
+        $path = '..\\' . $class . '.php';
+        if(file_exists($path))
+        {
+            require $path;
+        }
     }
 }
