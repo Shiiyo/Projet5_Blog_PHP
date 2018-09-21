@@ -2,9 +2,9 @@
 
 namespace Controller;
 
-echo "BlogController";
+echo 'Erreur 404';
 
-class BlogController
+class Page404Controller
 {
     use Controller;
 }
