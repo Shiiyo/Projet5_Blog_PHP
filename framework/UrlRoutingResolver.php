@@ -16,35 +16,41 @@ class UrlRoutingResolver implements UrlRoutingResolverInterface
     public function findRoute()
     {
         $csvDoc = fopen("..\\framework\\routing.csv", "r+");
-        if($csvDoc)
-        {
-            $test = 0;
-            while ($line = fgets($csvDoc))
-            {
-                $tab = explode(',',$line);
-                $research = '/Projet5-BlogPHP'.$tab[1];
-                $url = $this->getUrl();
-                $checkParameterInPath = preg_match('#\{[a-zA-Z]+\}#', $research, $parameter);
+        if ($csvDoc) {
+            $found = 0;
+            $url = $this->getUrl();
 
-                if($url == $research)
-                {
-                    $test = 1;
+            while ($line = fgets($csvDoc)) {
+                $tab = explode(',', $line);
+                $research = $tab[1];
+
+                if (preg_match($research, $url)) {
+                    $urlParameters = explode('/', $url);
+                    if (preg_match('#admin#', $url)) {
+                        if(isset($urlParameters[4])){
+                            $param = $urlParameters[4];
+                        }
+                        else{
+                            $param = NULL;
+                        }
+                    } else {
+                        if (isset($urlParameters[3])){
+                            $param = $urlParameters[3];
+                        }
+                        else {
+                            $param = NULL;
+                        }
+                    }
+
+                    $found = 1;
                     $controller = $tab[2];
-                    $action = $tab[3];
-                    $route = new Route($controller, $research, $action);
-                }
-                elseif ($checkParameterInPath == 1)
-                {
-                    //On vérifie que le début du chemin est le même pour $reseach et $url
-                    //On vérifie que l'url contient bien des chiffres au bon endroit
-                    //on stocke les chiffres dans une variable $parametre que l'on envoie au routeur qui l'envoie au controller
+                    $route = new Route($controller, $url);
                 }
             }
-            if($test == 0)
-            {
-                $route = new Route('Page404Controller',$research,NULL);
+            if ($found == 0) {
+                $route = new Route('Page404', 'Page404');
             }
-            return $route;
+            return $routeAndParam = [$route, $param];
         }
         return false;
     }

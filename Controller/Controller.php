@@ -4,27 +4,22 @@ namespace Controller;
 
 trait Controller
 {
-    protected $action;
-    protected $parameters = [];
+    protected $param;
+
+    public function __construct($param)
+    {
+        $this->setParam($param);
+    }
 
     //GETTERS
-    public function getAction()
+    public function getParam()
     {
-        return $this->action;
-    }
-    public function getParameters(): array
-    {
-        return $this->parameters;
+        return $this->param;
     }
 
     //SETTERS
-    public function setAction($action): void
+    public function setParam($param): void
     {
-        $this->action = $action;
-    }
-
-    public function setParameters(array $parameters): void
-    {
-        $this->parameters = $parameters;
+        $this->param = $param;
     }
 }

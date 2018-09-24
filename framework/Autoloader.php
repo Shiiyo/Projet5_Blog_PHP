@@ -14,8 +14,7 @@ class Autoloader
     public static function autoload($class)
     {
         $path = '..\\' . $class . '.php';
-        if(file_exists($path))
-        {
+        if (file_exists($path)) {
             require $path;
         }
     }

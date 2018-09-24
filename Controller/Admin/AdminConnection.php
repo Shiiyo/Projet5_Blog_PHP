@@ -5,9 +5,7 @@ namespace Controller\Admin;
 use Controller\Controller;
 use Controller\ControllerInterface;
 
-echo 'Comment Controller';
-
-class CommentController implements ControllerInterface
+class AdminConnection implements ControllerInterface
 {
     use Controller;
 

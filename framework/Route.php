@@ -6,13 +6,11 @@ class Route implements Interfaces\RouteInterface
 {
     private $controller;
     private $path;
-    private $action = NULL;
 
-    public function __construct($controller, $path, $action=NULL)
+    public function __construct($controller, $path)
     {
         $this->setController($controller);
         $this->setPath($path);
-        $this->setAction($action);
     }
 
     //GETTERS
@@ -26,11 +24,6 @@ class Route implements Interfaces\RouteInterface
         return $this->path;
     }
 
-    public function getAction()
-    {
-        return $this->action;
-    }
-
     //SETTERS
     public function setController(string $controller): void
     {
@@ -40,10 +33,5 @@ class Route implements Interfaces\RouteInterface
     public function setPath(string $path): void
     {
         $this->path = $path;
-    }
-
-    public function setAction($action): void
-    {
-        $this->action = $action;
     }
 }

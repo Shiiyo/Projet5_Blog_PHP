@@ -1,9 +1,8 @@
-Name,Path,Controller,Action
-homepage,/,Homepage,NULL
-list_blog_post,/liste-blog-post,Blog,index
-blog_post,/blog-post/{id},Blog,view
-admin_homepage,/admin/accueil,Admin,NULL
-admin_login,/admin/login,Admin,connection
-admin_blog_post,/admin/blog-post/{id},BlogPost,NULL
-admin_comment,/admin/comment/{id},Comment,NULL
-admin_account,/admin/compte/{id},AdminAccount,NULL
+homepage,#^/Projet5-BlogPHP/$#,Homepage,
+list_blog_post,#^/Projet5-BlogPHP/liste-blog-post$#,ListBlogPost,
+blog_post,#^/Projet5-BlogPHP/blog-post/\d+$#,Blog,
+admin_homepage,#^/Projet5-BlogPHP/admin/accueil$#,AdminHome,
+admin_login,#^/Projet5-BlogPHP/admin/login$#,AdminConnection,
+admin_blog_post,#^/Projet5-BlogPHP/admin/blog-post/[0-9]+$#,BlogPost,
+admin_comment,#^/Projet5-BlogPHP/admin/comment/[0-9]+$#,Comment,
+admin_account,#^/Projet5-BlogPHP/admin/compte/[0-9]+$#,AdminAccount,

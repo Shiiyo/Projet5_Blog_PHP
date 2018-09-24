@@ -2,10 +2,14 @@
 
 namespace Controller;
 
-echo "HomePage Controller";
+echo "HomePage Controller ";
 
-//Gère le formulaire
-class HomepageController
+class HomepageController implements ControllerInterface
 {
     use Controller;
+
+    public function index()
+    {
+        // TODO: Implement index() method.
+    }
 }
