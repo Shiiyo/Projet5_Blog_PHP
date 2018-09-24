@@ -2,12 +2,10 @@
 
 namespace Controller\Admin;
 
-use Controller\Controller;
 use Controller\ControllerInterface;
+use Controller\Controller;
 
-echo 'Comment Controller';
-
-class CommentController implements ControllerInterface
+class AdminHomeController implements ControllerInterface
 {
     use Controller;
 

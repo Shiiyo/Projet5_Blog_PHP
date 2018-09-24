@@ -2,7 +2,9 @@
 
 namespace Controller;
 
-class ValidatorController implements ControllerInterface
+echo "List Blog Post Controller";
+
+class ListBlogPost implements ControllerInterface
 {
     use Controller;
 

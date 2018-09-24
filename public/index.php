@@ -6,5 +6,4 @@ framework\Autoloader::register();
 $router = new framework\Router;
 $router->resolve();
 
-$controllerName = $router->loadController();
-$controller = new $controllerName;
+$controller = $router->loadController();
