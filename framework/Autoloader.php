@@ -4,13 +4,20 @@ namespace framework;
 
 class Autoloader
 {
-    //Enregistre notre autoloader
+
+    /**
+     * Save our autoloader
+     */
     public static function register()
     {
         spl_autoload_register(array(__CLASS__, 'autoload'));
     }
 
-    //Inclue le fichier correspondant à notre classe
+
+    /**
+     * Include the file of the class we ask
+     * @param $class
+     */
     public static function autoload($class)
     {
         $path = '..\\' . $class . '.php';
