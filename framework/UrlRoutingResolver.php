@@ -8,11 +8,19 @@ class UrlRoutingResolver implements UrlRoutingResolverInterface
 {
     private $url;
 
+    /**
+     * UrlRoutingResolver constructor.
+     * @param $url
+     */
     public function __construct($url)
     {
         $this->setUrl($url);
     }
 
+    /**
+     * Analyse the URL and find the corresponding route. It return an instance of the Route and the param
+     * @return array|bool
+     */
     public function findRoute()
     {
         $csvDoc = fopen("..\\framework\\routing.csv", "r+");
@@ -27,18 +35,16 @@ class UrlRoutingResolver implements UrlRoutingResolverInterface
                 if (preg_match($research, $url)) {
                     $urlParameters = explode('/', $url);
                     if (preg_match('#admin#', $url)) {
-                        if(isset($urlParameters[4])){
+                        if (isset($urlParameters[4])) {
                             $param = $urlParameters[4];
-                        }
-                        else{
-                            $param = NULL;
+                        } else {
+                            $param = null;
                         }
                     } else {
-                        if (isset($urlParameters[3])){
+                        if (isset($urlParameters[3])) {
                             $param = $urlParameters[3];
-                        }
-                        else {
-                            $param = NULL;
+                        } else {
+                            $param = null;
                         }
                     }
 
@@ -56,12 +62,20 @@ class UrlRoutingResolver implements UrlRoutingResolverInterface
     }
 
     //GETTERS
+
+    /**
+     * @return string
+     */
     public function getUrl(): string
     {
         return $this->url;
     }
 
     //SETTERS
+
+    /**
+     * @param string $url
+     */
     public function setUrl(string $url): void
     {
         $this->url = $url;

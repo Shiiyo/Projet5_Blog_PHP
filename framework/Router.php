@@ -7,7 +7,9 @@ class Router implements Interfaces\RouterInterface
     private $route;
     private $param;
 
-    //Get the url and resolve which route is the good one
+    /**
+     * Get the url and resolve which route is the good one
+     */
     public function resolve()
     {
         $url = $_SERVER['REQUEST_URI'];
@@ -19,7 +21,10 @@ class Router implements Interfaces\RouterInterface
         $this->setParam($param);
     }
 
-    //Create and return the good controller and the action to do
+    /**
+     * Create and return the good controller and save the param ask in the URL
+     * @return mixed
+     */
     public function loadController()
     {
         $route = $this->getRoute();
@@ -35,22 +40,35 @@ class Router implements Interfaces\RouterInterface
     }
 
     //GETTERS
+    /**
+     * @return mixed
+     */
     public function getRoute()
     {
         return $this->route;
     }
 
+    /**
+     * @return mixed
+     */
     public function getParam()
     {
         return $this->param;
     }
 
     //SETTERS
+
+    /**
+     * @param $route
+     */
     public function setRoute($route): void
     {
         $this->route = $route;
     }
 
+    /**
+     * @param $param
+     */
     public function setParam($param): void
     {
         $this->param = $param;
