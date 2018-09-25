@@ -2,48 +2,47 @@
 
 namespace framework;
 
+use Controller\ControllerInterface;
+use framework\Interfaces\RouteInterface;
+
 class Router implements Interfaces\RouterInterface
 {
+    /**
+     * @var RouteInterface
+     */
     private $route;
     private $param;
 
     /**
      * Get the url and resolve which route is the good one
      */
-    public function resolve()
+    public function resolve() : void
     {
-        $url = $_SERVER['REQUEST_URI'];
-        $routingResolver = new UrlRoutingResolver($url);
-        $routeFindAndParam = $routingResolver->findRoute();
-        $route = $routeFindAndParam[0];
-        $this->setRoute($route);
-        $param = $routeFindAndParam[1];
-        $this->setParam($param);
+        $routingResolver = new UrlRoutingResolver($_SERVER['REQUEST_URI']);
+        $routingResolver->findRoute();
+        $this->setRoute($routingResolver->getRoute());
+        $this->setParam($routingResolver->getParam());
     }
 
     /**
      * Create and return the good controller and save the param ask in the URL
-     * @return mixed
+     * @return ControllerInterface
      */
-    public function loadController()
+    public function loadController() : ControllerInterface
     {
-        $route = $this->getRoute();
-        $path = $route->getPath();
-        $controllerName = $route->getController();
-        if (preg_match('#/admin/#', $path)) {
-            $controllerPath = 'Controller\\Admin\\'.$controllerName.'Controller';
+        if (preg_match('#/admin/#', $this->route->getPath())) {
+            $controllerPath = 'Controller\\Admin\\'.$this->route->getController().'Controller';
         } else {
-            $controllerPath = 'Controller\\'.$controllerName.'Controller';
+            $controllerPath = 'Controller\\'.$this->route->getController().'Controller';
         }
-        $controller = new $controllerPath($this->getParam());
-        return $controller;
+        return new $controllerPath($this->getParam());
     }
 
     //GETTERS
     /**
-     * @return mixed
+     * @return RouteInterface
      */
-    public function getRoute()
+    public function getRoute() : RouteInterface
     {
         return $this->route;
     }
@@ -61,7 +60,7 @@ class Router implements Interfaces\RouterInterface
     /**
      * @param $route
      */
-    public function setRoute($route): void
+    public function setRoute(RouteInterface $route): void
     {
         $this->route = $route;
     }
