@@ -2,11 +2,17 @@
 
 namespace framework;
 
+use framework\Interfaces\RouteInterface;
 use framework\Interfaces\UrlRoutingResolverInterface;
 
 class UrlRoutingResolver implements UrlRoutingResolverInterface
 {
     private $url;
+    /**
+     * @var RouteInterface
+     */
+    private $route;
+    private $param;
 
     /**
      * UrlRoutingResolver constructor.
@@ -18,12 +24,12 @@ class UrlRoutingResolver implements UrlRoutingResolverInterface
     }
 
     /**
-     * Analyse the URL and find the corresponding route. It return an instance of the Route and the param
-     * @return array|bool
+     * Analyse the URL and find the corresponding route.
      */
-    public function findRoute()
+    public function findRoute() : void
     {
-        $csvDoc = fopen("..\\framework\\routing.csv", "r+");
+        $param = null;
+        $csvDoc = fopen("../framework/routing.csv", "r+");
         if ($csvDoc) {
             $found = 0;
             $url = $this->getUrl();
@@ -36,33 +42,30 @@ class UrlRoutingResolver implements UrlRoutingResolverInterface
                     $urlParameters = explode('/', $url);
                     if (preg_match('#admin#', $url)) {
                         if (isset($urlParameters[4])) {
-                            $param = $urlParameters[4];
+                            $this->param = $urlParameters[4];
                         } else {
-                            $param = null;
+                            $this->param = null;
                         }
                     } else {
                         if (isset($urlParameters[3])) {
-                            $param = $urlParameters[3];
+                            $this->param = $urlParameters[3];
                         } else {
-                            $param = null;
+                            $this->$param = null;
                         }
                     }
 
                     $found = 1;
                     $controller = $tab[2];
-                    $route = new Route($controller, $url);
+                    $this->setRoute(new Route($controller, $url));
                 }
             }
             if ($found == 0) {
-                $route = new Route('Page404', 'Page404');
+                $this->setRoute(new Route('Page404', 'Page404'));
             }
-            return $routeAndParam = [$route, $param];
         }
-        return false;
     }
 
     //GETTERS
-
     /**
      * @return string
      */
@@ -71,13 +74,44 @@ class UrlRoutingResolver implements UrlRoutingResolverInterface
         return $this->url;
     }
 
-    //SETTERS
+    /**
+     * @return RouteInterface
+     */
+    public function getRoute(): RouteInterface
+    {
+        return $this->route;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getParam()
+    {
+        return $this->param;
+    }
+
+    //SETTERS
     /**
      * @param string $url
      */
     public function setUrl(string $url): void
     {
         $this->url = $url;
+    }
+
+    /**
+     * @param RouteInterface $route
+     */
+    public function setRoute(RouteInterface $route): void
+    {
+        $this->route = $route;
+    }
+
+    /**
+     * @param mixed $param
+     */
+    public function setParam($param): void
+    {
+        $this->param = $param;
     }
 }

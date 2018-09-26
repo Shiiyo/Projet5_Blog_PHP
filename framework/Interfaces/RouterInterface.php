@@ -12,6 +12,6 @@ interface RouterInterface
     public function getParam();
 
     //SETTERS
-    public function setRoute($route): void;
+    public function setRoute(RouteInterface $route): void;
     public function setParam($param): void;
 }
