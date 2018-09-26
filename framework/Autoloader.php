@@ -21,6 +21,7 @@ class Autoloader
     public static function autoload($class)
     {
         $path = '..\\' . $class . '.php';
+        $path = str_replace('\\', '/', $path);
         if (file_exists($path)) {
             require $path;
         }
