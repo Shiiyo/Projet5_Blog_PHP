@@ -30,11 +30,8 @@ class Router implements Interfaces\RouterInterface
      */
     public function loadController() : ControllerInterface
     {
-        if (preg_match('#/admin/#', $this->route->getPath())) {
-            $controllerPath = 'Controller\\Admin\\'.$this->route->getController().'Controller';
-        } else {
-            $controllerPath = 'Controller\\'.$this->route->getController().'Controller';
-        }
+        $controllerLoader = new ControllerLoader();
+        $controllerPath = $controllerLoader->load($this);
         return new $controllerPath($this->getParam());
     }
 

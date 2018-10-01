@@ -4,7 +4,7 @@ namespace Controller;
 
 echo "List Blog Post Controller";
 
-class ListBlogPost implements ControllerInterface
+class ListBlogPostController implements ControllerInterface
 {
     use Controller;
 
