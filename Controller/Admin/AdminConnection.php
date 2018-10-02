@@ -2,12 +2,12 @@
 
 namespace Controller\Admin;
 
-use Controller\Controller;
+use Controller\ControllerTrait;
 use Controller\ControllerInterface;
 
 class AdminConnection implements ControllerInterface
 {
-    use Controller;
+    use ControllerTrait;
 
     /**
      * Implement the right view

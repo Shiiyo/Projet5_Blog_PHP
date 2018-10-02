@@ -7,6 +7,8 @@ use framework\Interfaces\RouteInterface;
 
 class Router implements Interfaces\RouterInterface
 {
+    use ContainerInjectionTrait;
+
     /**
      * @var RouteInterface
      */
@@ -18,7 +20,7 @@ class Router implements Interfaces\RouterInterface
      */
     public function resolve():void
     {
-        $routingResolver = new UrlRoutingResolver($_SERVER['REQUEST_URI']);
+        $routingResolver = $this->getContainer()->newUrlRoutingResolver($this->getContainer(), $_SERVER['REQUEST_URI']);
         $routingResolver->findRoute();
         $this->setRoute($routingResolver->getRoute());
         $this->setParam($routingResolver->getParam());
@@ -30,9 +32,9 @@ class Router implements Interfaces\RouterInterface
      */
     public function loadController() : ControllerInterface
     {
-        $controllerLoader = new ControllerLoader();
+        $controllerLoader = $this->getContainer()->newControllerLoader();
         $controllerPath = $controllerLoader->load($this);
-        return new $controllerPath($this->getParam());
+        return $this->getContainer()->newController($controllerPath, $this->getParam());
     }
 
     //GETTERS

@@ -6,7 +6,7 @@ echo "List Blog Post Controller";
 
 class ListBlogPostController implements ControllerInterface
 {
-    use Controller;
+    use ControllerTrait;
 
     /**
      * Implement the right view

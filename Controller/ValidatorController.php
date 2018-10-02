@@ -4,7 +4,7 @@ namespace Controller;
 
 class ValidatorController implements ControllerInterface
 {
-    use Controller;
+    use ControllerTrait;
 
     /**
      * Implement the right view

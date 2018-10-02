@@ -2,12 +2,12 @@
 
 namespace Controller;
 
-trait Controller
+trait ControllerTrait
 {
     protected $param;
 
     /**
-     * Controller constructor.
+     * ControllerTrait constructor.
      * @param $param
      */
     public function __construct($param)
