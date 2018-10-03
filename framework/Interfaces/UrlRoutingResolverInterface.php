@@ -4,7 +4,7 @@ namespace framework\Interfaces;
 
 interface UrlRoutingResolverInterface
 {
-    public function __construct($url);
+    public function __construct($container, $url);
     public function findRoute();
 
     //GETTERS

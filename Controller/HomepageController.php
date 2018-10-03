@@ -2,11 +2,11 @@
 
 namespace Controller;
 
-echo "HomePage Controller ";
+echo "HomePage Controller";
 
 class HomepageController implements ControllerInterface
 {
-    use Controller;
+    use ControllerTrait;
 
     /**
      * Implement the right view

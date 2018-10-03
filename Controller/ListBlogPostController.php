@@ -1,11 +1,10 @@
 <?php
 
-namespace Controller\Admin;
+namespace Controller;
 
-use Controller\ControllerTrait;
-use Controller\ControllerInterface;
+echo "List Blog Post Controller";
 
-class AdminConnection implements ControllerInterface
+class ListBlogPostController implements ControllerInterface
 {
     use ControllerTrait;
 

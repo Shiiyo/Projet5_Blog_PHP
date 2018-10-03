@@ -3,11 +3,11 @@
 namespace Controller\Admin;
 
 use Controller\ControllerInterface;
-use Controller\Controller;
+use Controller\ControllerTrait;
 
 class AdminHomeController implements ControllerInterface
 {
-    use Controller;
+    use ControllerTrait;
 
     /**
      * Implement the right view

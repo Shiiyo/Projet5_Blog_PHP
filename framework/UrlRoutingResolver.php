@@ -7,19 +7,23 @@ use framework\Interfaces\UrlRoutingResolverInterface;
 
 class UrlRoutingResolver implements UrlRoutingResolverInterface
 {
-    private $url;
+    use ContainerInjectionTrait;
+
     /**
      * @var RouteInterface
      */
     private $route;
     private $param;
+    private $url;
 
     /**
      * UrlRoutingResolver constructor.
+     * @param $container
      * @param $url
      */
-    public function __construct($url)
+    public function __construct($container, $url)
     {
+        $this->setContainer($container);
         $this->setUrl($url);
     }
 
@@ -56,11 +60,11 @@ class UrlRoutingResolver implements UrlRoutingResolverInterface
 
                     $found = 1;
                     $controller = $tab[2];
-                    $this->setRoute(new Route($controller, $url));
+                    $this->setRoute($this->getContainer()->newRoute($controller, $url));
                 }
             }
             if ($found == 0) {
-                $this->setRoute(new Route('Page404', 'Page404'));
+                $this->setRoute($this->getContainer()->newRoute('Page404', 'Page404'));
             }
         }
     }
