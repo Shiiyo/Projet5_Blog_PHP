@@ -1,0 +1,213 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="public/css/home.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
+{% block header %}
+    <h1>Camille Legalland</h1>
+    <h3>Développeur Web Freelance</h3>
+    <h4>Créatrice d'application web</h4>
+    <a href="/Projet5-BlogPHP/liste-blog-post"><div class="blogButton">Voir le blog</div></a>
+{% endblock %}
+
+{% block body %}
+    <!-- Mes services -->
+    <section class="services">
+        <div class="container">
+            <h2>Mes Services</h2>
+            <p class="intro">
+                Je développe vos sites quels qu'ils soient et selon vos désirs pour PC & Mobile (responsive design adapté à
+                tous les écrans). Basé dans les Bouches du Rhônes, grâce au télétravail je vous aide sur vos projets quel que
+                soit l'endroit où vous vous trouvez.
+            </p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="cercle"><img src="public/img/pictos/chat-4-128.png" alt="Bulle de chat"/></div>
+                    <h3>Analyse</h3>
+                    <p>Analyse de votre site Web existant et propositions d'amélioration et d'évolution</p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="cercle"><img src="public/img/pictos/edit-9-128.png" alt="Stylo"/></div>
+                    <h3>Conception</h3>
+                    <p>Je vous conseille, réalise l'architecture et l'ergonomie de votre site pour qu'il procure une
+                        expérience utilisateur optimal</p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="cercle"><img src="public/img/pictos/keyboard-128.png" alt="Clavier"></div>
+                    <h3>Développement</h3>
+                    <p>Spécifique (from scratch) ou CMS du marché (type Wordpress ou Prestashop par exemple) pour obtenir
+                        l'outil adapté à vos besoins</p>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="cercle"><img src="public/img/pictos/compass-128.png" alt="Boussole"/></div>
+                    <h3>Référencement</h3>
+                    <p>Optimisation du code pour le référencement naturel. Création et suivi de campagnes payates (type Google
+                        Adwords, Facebook ads, etc.)</p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="cercle"><img src="public/img/pictos/database-6-128.png" alt="Base de données"/></div>
+                    <h3>Base de Données</h3>
+                    <p>Importation, gestion et mise en ligne de vos données</p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="cercle"><img src="public/img/pictos/website-design-128.png" alt="Design de site web"></div>
+                    <h3>Intégration</h3>
+                    <p>HTML et CSS à partir de vos maquettes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="headband-services">
+        <div class="row">
+            <div class="col-lg-4" id="headband1">
+                <div class="img-headband"><img src="public/img/pictos/chat-128.png" alt="Télécommunication"></div>
+                <h3>Préparation du projet</h3>
+                <p>Nous nous rencontrons puis je réceptionne vos besoins afin de les traduire en proposition de
+                solutions techniques</p>
+            </div>
+            <div class="col-lg-4" id="headband2">
+                <div class="img-headband"><img src="public/img/pictos/cog-128.png" alt="Rouage"></div>
+                <h3>Développement du projet</h3>
+                <p>Je procède au développement technique du projet en fonction des technologies choisies</p>
+            </div>
+            <div class="col-lg-4" id="headband3">
+                <div class="img-headband"><img src="public/img/pictos/support-128.png" alt="Clé mécanique"></div>
+                <h3>Support et maintenance du projet</h3>
+                <p>J'assure le maintien en ligne et les mises à jour nécessaires pour le fonctionnement continu
+                de votre nouveau site internet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Propos -->
+    <section class="a-propos">
+        <div class="container">
+            <h2>A Propos</h2>
+            <div class="row">
+                <div class="col-lg-6"><img id="portrait" src="public/img/pictures/Camille.jpg" alt="Portrait Camille"></div>
+                <div class="col-lg-6">
+                    <p>Je suis Camille LEGALLAND, alias Shiyo. Passionée depuis l'enfance par l'informatique, je découvre
+                        l'univers du développement en 2013. Trois ans plus tards, je réussis en candidat libre le BTS Systèmes
+                        Numériques avec mention Bien. Actuellement en formation ches OpenClassrooms je suit le parcours
+                        Développeur d'application PHP/Symony. Je mets tout mon savoir-faire au service de votre projet.
+                        Autodidacte, passionnée et à la pointe de la technologie, je fournis un travail de qualité, créé
+                        spécifiquement pour vos besoins</p>
+                    <div class="row line-technos">
+                        <div class="col-3 logo-technos"><img class="img-technos" src="public/img/logos/HTML5.png" alt="HTML 5"></div>
+                        <div class="col-3 logo-technos"><img class="img-technos" src="public/img/logos/CSS3.png" alt="CSS 3"></div>
+                        <div class="col-3 logo-technos"><img class="img-technos" src="public/img/logos/JS5.png" alt="JS 5"></div>
+                        <div class="col-3 logo-technos"><img class="img-technos" src="public/img/logos/PHP7.png" alt="PHP 7"></div>
+                    </div>
+                    <div class="row line-technos">
+                        <div class="col-3 logo-technos2"><img id="WP" class="img-technos" src="public/img/logos/wordpress.png" alt="Wordpress"></div>
+                        <div class="col-3 logo-technos2"><img class="img-technos" src="public/img/logos/Bootstrap.png" alt="Bootstrap"></div>
+                        <div class="col-3 logo-technos2"><img class="img-technos" src="public/img/logos/jquery.png" alt="jQuery"></div>
+                        <div class="col-3 logo-technos2"><img class="img-technos" src="public/img/logos/symfony.png" alt="Symfony"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <a class="col-lg-2 offset-lg-2" href="public/pdf/CVCamilleLEGALLAND.pdf"><div id="CV-button">Mon CV</div></a>
+                <div class="col-lg-6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dernières réalisations -->
+    <section class="realisations">
+        <div class="container">
+            <h2>Dernières réalisations</h2>
+            <div class="row">
+                <a href="http://centreportehaute.org/" class="col-6 link-rea">
+                    <img class="img-rea img-fluid" src="public/img/realisations/Centreportehaute.png" alt="Centre Porte Haute" >
+                    <div class="hover">
+                        <p>En savoir plus</p>
+                        <img src="public/img/pictos/zoom-in-2-64.png" alt="loupe">
+                    </div>
+                </a>
+
+                <a href="http://festival-des-films-de-plein-air.info" class="col-6 link-rea">
+                    <img class="img-rea img-fluid" src="public/img/realisations/Festivaldefilmenpleinair.png" alt="Festival de Films en Plein Air" >
+                    <div class="hover">
+                        <p>En savoir plus</p>
+                        <img src="public/img/pictos/zoom-in-2-64.png" alt="loupe">
+                    </div>
+                </a>
+            </div>
+            <div class="row">
+                <a href="http://www.tmc30.fr/" class="col-6 link-rea">
+                    <img class="img-rea img-fluid" src="public/img/realisations/TMC.png" alt="TMC" >
+                    <div class="hover">
+                        <p>En savoir plus</p>
+                        <img src="public/img/pictos/zoom-in-2-64.png" alt="loupe">
+                    </div>
+                </a>
+
+                <a href="http://chalets-et-caviar.info" class="col-6 link-rea">
+                    <img class="img-rea img-fluid" src="public/img/realisations/ChaletEtCaviar.png" alt="Chalets et Caviar" >
+                    <div class="hover">
+                        <p>En savoir plus</p>
+                        <img src="public/img/pictos/zoom-in-2-64.png" alt="loupe">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire -->
+    <section class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Parlez-moi de votre projet</h3>
+                    <h4>Réalisons-le ensemble</h4>
+                    <p id="contact-p1">Vous avez un projet:</p>
+                    <ul>
+                        <li><span>de site vitrine</span></li>
+                        <li><span>de refonte de votre site</span></li>
+                        <li><span>de conseils pour votre présence sur internet</span></li>
+                        <li><span>de maintenance de votre site existant</span></li>
+                    </ul>
+                    <p id="contact-p2">Je suis à votre disposition</p>
+                    <div class="row">
+                        <div class="col-2"><a href="mailto:camillelegalland@gmail.com"><img src="public/img/pictos/mail-64.png" alt="Enveloppe"/></a></div>
+                        <div class="col-2"><a href="tel:+33628047881"><img src="public/img/pictos/phone-64.png" alt="Téléphone"/></a></div>
+                        <div class="col-2"><a href="http://www.facebook.com/cLegallandDevWeb"><img src="public/img/pictos/facebook-64.png" alt="Facebook"/></a></div>
+                        <div class="col-2"><a href="https://www.linkedin.com/in/camille-legalland/"><img src="public/img/pictos/linkedin-64.png" alt="Linkedin"/></a></div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1" id="form">
+                    <div class="form-title"><p>Contactez-moi</p></div>
+                    <form action="">
+                        <input type="text" name="nom" id="nom" placeholder="Votre nom"/><br>
+                        <input type="text" name="prenom" id="prenom" placeholder="Votre prénom"/><br>
+                        <input type="text" name="email" id="email" placeholder="Votre email"/>
+                        <textarea name="message" id="message" cols="30" rows="3" placeholder="Message"></textarea>
+                        <div class="g-recaptcha" data-sitekey="6LeJCnQUAAAAAOlqRpKqFm-4oo8i71Luuo0j_S_F"></div>
+                        <input type="submit" value="Envoyer"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <div class="row">
+        <div class="col-lg-3">
+            <p>2018 Camille LEGALLAND</p>
+            <p>Tous droits réservés</p>
+        </div>
+        <div class="col-lg-2 offset-lg-2 link">
+            <a href="#">Mentions légales</a>
+        </div>
+        <div class="col-lg-3 offset-lg-2 link">
+            <a href="/Projet5-BlogPHP/admin/accueil">Accès Administration</a>
+        </div>
+    </div>
+{% endblock %}

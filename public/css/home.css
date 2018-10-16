@@ -1,0 +1,458 @@
+/* General style */
+
+body
+{
+    background-color: #373736;
+}
+
+section
+{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+h1, h2, h3, h4, p, a, li
+{
+    color: #ffffff;
+}
+
+h2
+{
+    font-size: 3.125rem;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    text-decoration: underline;
+}
+
+a:hover, a:focus, a:active
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+a
+{
+    cursor: pointer;
+}
+
+/* Header */
+header
+{
+    background-image: url("../img/pictures/background3.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+header h1, h3, h4
+{
+    text-align: center;
+}
+
+header h1
+{
+    padding-top: 45vh;
+    font-size: 5rem;
+    font-weight: 400;
+    font-family: 'Dancing Script', cursive;
+}
+
+header h3
+{
+    font-size: 5rem;
+    font-weight: 400;
+    font-family: 'Amatic SC', cursive;
+}
+
+header h4
+{
+    font-size: 1.875rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blogButton
+{
+    margin: auto;
+    width: 10.188rem;
+    margin-top: 5.625rem;
+    background-color: #89ac10;
+    border-radius: 0.625rem;
+    border: 1px solid #ffffff;
+    text-align: center;
+    transition: all 300ms;
+}
+
+.blogButton:hover
+{
+    transform: scale(1.05, 1.05);
+}
+
+header a
+{
+    font-family: "Amatic SC", cursive;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+/* Mes services */
+.services .intro
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    font-size: 1.5rem;
+    margin-top: 7rem;
+    margin-bottom: 6.625rem;
+}
+
+.services .cercle
+{
+    background-color: #89AC10;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    padding: 1.125rem;
+    margin: auto;
+}
+
+.services img
+{
+    width: 7.813rem;
+}
+
+.services h3
+{
+    font-family: "Amatic SC", cursive;
+    font-weight: 400;
+    font-size: 2.25rem;
+}
+
+.services p
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    font-size: 1.25rem;
+    text-align: center;
+}
+.services .row
+{
+    padding-bottom: 3.538rem;
+}
+
+/* Headband services */
+
+.headband-services .img-headband
+{
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.headband-services h3
+{
+    font-family: "Amatic SC", cursive;
+    font-weight: 700;
+    font-size: 2.25rem;
+    text-align: center;
+}
+
+.headband-services p
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.headband-services #headband1
+{
+    background-color: #2fce03;
+}
+
+.headband-services #headband2
+{
+    background-color: #fcb61e;
+}
+
+.headband-services #headband3
+{
+    background-color: #ff3d84;
+}
+
+/* A Propos */
+.a-propos h2
+{
+    padding-bottom: 4.25rem;
+}
+
+.a-propos #portrait
+{
+    max-width: 100%;
+    height: auto;
+}
+
+.a-propos p
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    font-size: 1.5rem;
+    line-height: 2.3rem;
+}
+
+.a-propos .logo-technos
+{
+    height: 7.75rem;
+}
+
+.a-propos .logo-technos2
+{
+    height: 6.875rem;
+}
+
+.a-propos .img-technos
+{
+    height: 100%;
+}
+
+.a-propos .line-technos
+{
+    padding-top: 1.375rem;
+}
+
+#WP
+{
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.a-propos #CV-button
+{
+    margin: auto;
+    width: 10rem;
+    background-color: #89ac10;
+    border-radius: 0.625rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    text-align: center;
+    transition: all 300ms;
+}
+
+#CV-button:hover
+{
+    transform: scale(1.05, 1.05);
+}
+
+.a-propos a
+{
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 2.25rem;
+    color: #ffffff;
+}
+
+/* Realisations */
+.realisations
+{
+    background-color: #89ac10;
+}
+
+.realisations h2
+{
+    padding-bottom: 5.625rem;
+}
+
+.realisations .hover
+{
+    max-width: 100%;
+    height: auto;
+    /*position: absolute;
+    top: 0;
+    width: 28.5rem;
+    height: 19rem; */
+    opacity: 0;
+    transition: .5s ease;
+    text-align: center;
+    transform: rotate(0) scale(1);
+}
+
+.realisations .hover p
+{
+    color: #d2dbda;
+    font-size: 1.5rem;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    margin-top: 6.625rem;
+}
+
+.realisations .link-rea .hover:hover
+{
+    background-color: rgba(0,0,0,0.7);
+    opacity: 1;
+}
+
+.realisations .img-rea
+{
+    margin: 0.5rem;
+}
+
+/* Formulaire */
+.contact h3
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 2.25rem;
+    text-align: left;
+}
+
+.contact h4
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+#contact-p1
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 1.375rem;
+    text-align: left;
+    padding-top: 3.5rem;
+}
+
+.contact li
+{
+    color: #89ac10;
+}
+
+.contact span
+{
+    color: #ffffff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    font-size: 1.375rem;
+}
+
+
+
+#contact-p2
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-align: left;
+    padding-top: 4.25rem;
+}
+
+.contact img:hover
+{
+    transform: scale(1.08, 1.08);
+    opacity: 1;
+}
+
+.contact img
+{
+    width: 3.125rem;
+    height: auto;
+    opacity: 0.8;
+    transition: all 300ms;
+}
+
+#form
+{
+    background-color: #d7d7d6;
+    border-radius: 0.625rem;
+}
+
+#form p
+{
+    font-family: "Amatic SC", cursive;
+    font-weight: 700;
+    font-size: 2.25rem;
+    text-align: center;
+}
+
+#form .form-title
+{
+    width: 17.688rem;
+    height: 4.06rem;
+    background-color: #89ac10;
+    position: absolute;
+    top: -1.563rem;
+    left: 22%;
+}
+
+#form form
+{
+    margin-top: 4.875rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+form input, textarea
+{
+    border: none;
+    border-bottom: 3px solid #8b8b89;
+    width: 100%;
+    margin-bottom: 1.2rem;
+    background-color: #d7d7d6;
+
+    color: #ababaa;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+form input:focus, textarea:focus
+{
+    outline: none;
+    border-bottom: 3px solid #89ac10;
+}
+
+form .g-recaptcha
+{
+    margin: 0 auto;
+    width: 304px;
+    margin-bottom: 1rem;
+}
+
+form input[type="submit"]
+{
+    width: 8rem;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 2.25rem;
+    border: none;
+    background-color: #89ac10;
+    color: #ffffff;
+    float: right;
+}
+
+/* Footer */
+footer
+{
+    background-color: #6c6c69;
+    padding-top: 2.188rem;
+    padding-bottom: 0.5rem;
+}
+
+footer p, a
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+}
+
+footer a
+{
+    text-decoration: underline;
+}
+
+footer .link
+{
+    height: 4.8em;
+    line-height: 4.8em;
+    white-space: nowrap;
+}
