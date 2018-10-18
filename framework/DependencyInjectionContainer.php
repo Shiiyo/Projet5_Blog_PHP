@@ -9,7 +9,7 @@ class DependencyInjectionContainer
 
     public function __construct(array $parameters)
     {
-        $this->parameters = $parameters;
+        $this->setParameters($parameters);
     }
 
     public function newRouter($container)
@@ -58,10 +58,32 @@ class DependencyInjectionContainer
     }
 
     /**
+     * @return array
+     */
+    public function getParameters() : array
+    {
+        return $this->parameters;
+    }
+
+    /**
+     * @param $num
+     * @return mixed
+     */
+    public function getParam($num) : mixed
+    {
+        return $this->parameters[$num];
+    }
+
+    /**
      * @param \Twig_Environment $twigEnv
      */
     public function setTwigEnv(\Twig_Environment $twigEnv): void
     {
         $this->twigEnv = $twigEnv;
+    }
+
+    public function setParameters($parameters): void
+    {
+        $this->parameters = $parameters;
     }
 }

@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         {% block title %}<title>Camille LEGALLAND</title>{% endblock %}
-        <link rel="stylesheet" href="public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Dancing+Script|Montserrat:100,400" rel="stylesheet">
         {% block stylesheet %}{% endblock %}
-        <link rel="icon" type="image/png" href="public/img/logo.png" />
+        <link rel="icon" type="image/png" href="img/logo.png" />
     </head>
 
     <body>
@@ -23,12 +23,8 @@
             {% endblock %}
         </div>
 
-        <footer>
-            <div class="container">
-                {% block footer %}
-                {% endblock %}
-            </div>
-        </footer>
+        {% block footer %}
+        {% endblock %}
 
         {% block javascripts %}
         {% endblock %}

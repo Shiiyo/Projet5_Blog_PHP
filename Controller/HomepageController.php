@@ -9,7 +9,7 @@ class HomepageController implements ControllerInterface
     /**
      * Implement the right view
      */
-    public function index()
+    public function __invoke()
     {
         $twig = $this->getTwig();
         echo $twig->render('blog/home.html.twig');

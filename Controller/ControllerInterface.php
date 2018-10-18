@@ -8,7 +8,7 @@ interface ControllerInterface
      * Implement the right view
      * @return mixed
      */
-    public function index();
+    public function __invoke();
 
     /**
      * ControllerInterface constructor.
