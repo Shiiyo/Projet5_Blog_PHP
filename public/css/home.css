@@ -200,21 +200,6 @@ header a
     line-height: 2.3rem;
 }
 
-.a-propos .logo-technos
-{
-    height: 7.75rem;
-}
-
-.a-propos .logo-technos2
-{
-    height: 6.875rem;
-}
-
-.a-propos .img-technos
-{
-    height: 100%;
-}
-
 .a-propos .line-technos
 {
     padding-top: 1.375rem;
@@ -262,14 +247,18 @@ header a
     padding-bottom: 5.625rem;
 }
 
+.realisations a
+{
+    position: relative;
+    width: 35.625rem;
+    height: 22.592rem;
+}
+
 .realisations .hover
 {
-    max-width: 100%;
-    height: auto;
-    /*position: absolute;
-    top: 0;
-    width: 28.5rem;
-    height: 19rem; */
+    position: absolute;
+    width: 35.625rem;
+    height: 22.592rem;
     opacity: 0;
     transition: .5s ease;
     text-align: center;
@@ -293,7 +282,9 @@ header a
 
 .realisations .img-rea
 {
-    margin: 0.5rem;
+    position: absolute;
+    width: 35.625rem;
+    height: 22.592rem;
 }
 
 /* Formulaire */

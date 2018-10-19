@@ -69,7 +69,7 @@ class DependencyInjectionContainer
      * @param $num
      * @return mixed
      */
-    public function getParam($num) : mixed
+    public function getParam($num) : \SimpleXMLElement
     {
         return $this->parameters[$num];
     }

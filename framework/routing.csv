@@ -1,6 +1,7 @@
 homepage,#^/accueil$#,Homepage,
 list_blog_post,#^/liste-blog-post$#,ListBlogPost,
 blog_post,#^/blog-post/\d+$#,Blog,
+legalNotice,#^/mentions-legales$#,LegalNotice,
 admin_homepage,#^/admin/accueil$#,AdminHome,
 admin_login,#^/admin/login$#,AdminConnection,
 admin_blog_post,#^/admin/blog-post/[0-9]+$#,BlogPost,
