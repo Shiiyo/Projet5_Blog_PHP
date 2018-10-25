@@ -3,6 +3,8 @@
 body
 {
     background-color: #373736;
+    overflow-X: hidden;
+    position: relative;
 }
 
 section
@@ -36,11 +38,24 @@ a
     cursor: pointer;
 }
 
+/* Navbar */
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link
+{
+    background-color: #89ac10;
+}
+
+nav li
+{
+    padding-right: 1rem;
+}
+
+
 /* Header */
 header
 {
     background-image: url("../img/pictures/background3.jpg");
     background-size: cover;
+    background-position: center;
     min-height: 100vh;
     padding-bottom: 2rem;
 }
@@ -247,44 +262,33 @@ header a
     padding-bottom: 5.625rem;
 }
 
-.realisations a
+.realisations .card
 {
-    position: relative;
-    width: 35.625rem;
-    height: 22.592rem;
+    background-color: #89ac10;
+    border: none;
+    margin-bottom: 30px;
 }
 
-.realisations .hover
-{
-    position: absolute;
-    width: 35.625rem;
-    height: 22.592rem;
-    opacity: 0;
-    transition: .5s ease;
-    text-align: center;
-    transform: rotate(0) scale(1);
-}
-
-.realisations .hover p
+.realisations .card-title
 {
     color: #d2dbda;
     font-size: 1.5rem;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
-    margin-top: 6.625rem;
+    margin-top: 18%;
 }
 
-.realisations .link-rea .hover:hover
+.realisations .card-img-overlay
+{
+    transition: .5s ease;
+    opacity: 0;
+    transform: rotate(0) scale(1);
+}
+
+.realisations .card-img-overlay:hover
 {
     background-color: rgba(0,0,0,0.7);
     opacity: 1;
-}
-
-.realisations .img-rea
-{
-    position: absolute;
-    width: 35.625rem;
-    height: 22.592rem;
 }
 
 /* Formulaire */
@@ -355,6 +359,7 @@ header a
 {
     background-color: #d7d7d6;
     border-radius: 0.625rem;
+    margin-top: 5rem;
 }
 
 #form p
@@ -363,16 +368,16 @@ header a
     font-weight: 700;
     font-size: 2.25rem;
     text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 #form .form-title
 {
-    width: 17.688rem;
-    height: 4.06rem;
     background-color: #89ac10;
     position: absolute;
-    top: -1.563rem;
-    left: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #form form
@@ -404,9 +409,12 @@ form input:focus, textarea:focus
 
 form .g-recaptcha
 {
-    margin: 0 auto;
-    width: 304px;
+    display: inline-block;
     margin-bottom: 1rem;
+    transform:scale(0.77);
+    transform-origin:0 0;
+    -webkit-transform:scale(0.77);
+    -webkit-transform-origin:0 0;
 }
 
 form input[type="submit"]
