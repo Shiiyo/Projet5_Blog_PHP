@@ -2,8 +2,6 @@
 
 namespace Controller;
 
-echo "HomePage Controller";
-
 class HomepageController implements ControllerInterface
 {
     use ControllerTrait;
@@ -11,8 +9,9 @@ class HomepageController implements ControllerInterface
     /**
      * Implement the right view
      */
-    public function index()
+    public function __invoke()
     {
-        // TODO: Implement index() method.
+        $twig = $this->getTwig();
+        echo $twig->render('blog/home.html.twig');
     }
 }

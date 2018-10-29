@@ -11,7 +11,7 @@ class ListBlogPost implements ControllerInterface
     /**
      * Implement the right view
      */
-    public function index()
+    public function __invoke()
     {
         // TODO: Implement index() method.
     }

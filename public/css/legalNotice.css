@@ -1,0 +1,30 @@
+body
+{
+    background-color: #373736;
+}
+
+section
+{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+h1, p, a
+{
+    color: #ffffff;
+}
+
+h1
+{
+    text-align: center;
+}
+
+p
+{
+    text-align: justify;
+}
+
+a:hover, a:focus, a:active
+{
+    color: inherit;
+}

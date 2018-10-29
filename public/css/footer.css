@@ -1,0 +1,26 @@
+/* Footer */
+footer
+{
+    background-color: #6c6c69;
+    padding-top: 2.188rem;
+    padding-bottom: 0.5rem;
+}
+
+footer p, a
+{
+    font-family: Montserrat, sans-serif;
+    font-weight: 300;
+    font-size: 1.125rem;
+}
+
+footer a
+{
+    text-decoration: underline;
+}
+
+footer .link
+{
+    height: 4.8em;
+    line-height: 4.8em;
+    white-space: nowrap;
+}
