@@ -4,18 +4,22 @@ namespace Controller;
 
 trait ControllerTrait
 {
+
     protected $param;
     protected $twig;
+    protected $container;
 
     /**
      * ControllerTrait constructor.
      * @param $param
      * @param $twigEnv
+     * @param $container
      */
-    public function __construct($param, $twigEnv)
+    public function __construct($param, $twigEnv, $container)
     {
         $this->setParam($param);
         $this->setTwig($twigEnv);
+        $this->setContainer($container);
     }
 
     //GETTERS
@@ -36,6 +40,16 @@ trait ControllerTrait
         return $this->twig;
     }
 
+    /**
+     * @return \framework\DependencyInjectionContainer
+     */
+    public function getContainer() :\framework\DependencyInjectionContainer
+    {
+        return $this->container;
+    }
+
+
+
 
     //SETTERS
 
@@ -54,4 +68,14 @@ trait ControllerTrait
     {
         $this->twig = $twigEnv;
     }
+
+    /**
+     * @param \framework\DependencyInjectionContainer $container
+     */
+    public function setContainer($container): void
+    {
+        $this->container = $container;
+    }
+
+
 }

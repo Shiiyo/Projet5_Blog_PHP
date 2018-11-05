@@ -1,3 +1,14 @@
-<TwigTemplate>
-    <path>../templates</path>
-</TwigTemplate>
+<config>
+    <Twig>
+        <path>../templates</path>
+    </Twig>
+    <PHPMailer>
+        <host>smtp.gmail.com</host>
+        <username>mail@gmail.com</username>
+        <password></password>
+        <SMTPSecure>ssl</SMTPSecure>
+        <port>465</port>
+        <name>Camille LEGALLAND</name>
+        <Subject>Quelqu'un vous as envoyé un message via votre blog professionelle</Subject>
+    </PHPMailer>
+</config>

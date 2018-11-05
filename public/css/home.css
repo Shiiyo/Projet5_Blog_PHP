@@ -401,12 +401,6 @@ form input, textarea
     font-size: 1.3rem;
 }
 
-form input:focus, textarea:focus
-{
-    outline: none;
-    border-bottom: 3px solid #89ac10;
-}
-
 form .g-recaptcha
 {
     display: inline-block;
@@ -427,5 +421,26 @@ form input[type="submit"]
     background-color: #89ac10;
     color: #ffffff;
     float: right;
+}
+
+form .good
+{
+    border-bottom: 3px solid #89ac10;
+}
+
+form .bad
+{
+    border-bottom: 3px solid #FF0000;
+}
+
+form #submit
+{
+    background-color: #aeb1b0;
+}
+
+form #submit.ready
+{
+    cursor: pointer;
+    background-color: #89ac10;
 }
 

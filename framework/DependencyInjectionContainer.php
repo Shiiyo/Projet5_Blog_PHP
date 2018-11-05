@@ -1,13 +1,16 @@
 <?php
 
 namespace framework;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class DependencyInjectionContainer
 {
     protected $parameters;
     protected $twigEnv;
 
-    public function __construct(array $parameters)
+    public function __construct(\SimpleXMLElement $parameters)
     {
         $this->setParameters($parameters);
     }
@@ -32,9 +35,9 @@ class DependencyInjectionContainer
         return new ControllerLoader();
     }
 
-    public function newController($path, $params)
+    public function newController($path, $params, $container)
     {
-        return new $path($params, $this->getTwigEnv());
+        return new $path($params, $this->getTwigEnv(), $container);
     }
 
     public function newTwigLoaderFilesystem($path)
@@ -46,6 +49,30 @@ class DependencyInjectionContainer
     {
         $twigEnv = new \Twig_Environment($loader, $params);
         $this->setTwigEnv($twigEnv);
+    }
+
+    public function newHttpResponseHtml($view)
+    {
+        return new Response(
+            $view,
+            Response::HTTP_OK,
+            array('content-type' => 'text/html')
+        );
+    }
+
+    public function newHttpRequest()
+    {
+        return Request::createFromGlobals();
+    }
+
+    public function createHttpRequest($url, $method, $params)
+    {
+        return Request::create($url, $method, $params);
+    }
+
+    public function newPHPMailer()
+    {
+        return new PHPMailer();
     }
 
 
@@ -60,7 +87,7 @@ class DependencyInjectionContainer
     /**
      * @return array
      */
-    public function getParameters() : array
+    public function getParameters() : \SimpleXMLElement
     {
         return $this->parameters;
     }
@@ -69,9 +96,9 @@ class DependencyInjectionContainer
      * @param $num
      * @return mixed
      */
-    public function getParam($num) : \SimpleXMLElement
+    public function getParam($path) : \SimpleXMLElement
     {
-        return $this->parameters[$num];
+        return $this->parameters->xpath($path)[0];
     }
 
     /**

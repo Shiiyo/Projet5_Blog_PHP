@@ -2,4 +2,4 @@
 vendor/
 php-cs-fixer-v2.phar
 .php_cs.cache
-framework/config.xml
+framework/config/config.xml

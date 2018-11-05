@@ -6,12 +6,10 @@ class HomepageController implements ControllerInterface
 {
     use ControllerTrait;
 
-    /**
-     * Implement the right view
-     */
     public function __invoke()
     {
-        $twig = $this->getTwig();
-        echo $twig->render('blog/home.html.twig');
+        $view = $this->getTwig()->render('blog/home.html.twig');
+        $response = $this->getContainer()->newHttpResponseHtml($view);
+        $response->send();
     }
 }
