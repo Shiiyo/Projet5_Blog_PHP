@@ -72,7 +72,7 @@ class DependencyInjectionContainer
 
     public function newPHPMailer()
     {
-        return new PHPMailer();
+        return new PHPMailer;
     }
 
 

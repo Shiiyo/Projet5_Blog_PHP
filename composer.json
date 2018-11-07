@@ -5,6 +5,7 @@
         "friendsofphp/php-cs-fixer": "^2.13",
         "phpmailer/phpmailer": "^6.0",
         "phpunit/phpunit": "^7.4",
-        "symfony/http-foundation": "^4.1"
+        "symfony/http-foundation": "^4.1",
+        "symfony/validator": "^4.1"
     }
 }

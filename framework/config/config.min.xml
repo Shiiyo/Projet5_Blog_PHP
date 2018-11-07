@@ -5,9 +5,9 @@
     <PHPMailer>
         <host>smtp.gmail.com</host>
         <username>mail@gmail.com</username>
-        <password></password>
-        <SMTPSecure>ssl</SMTPSecure>
-        <port>465</port>
+        <password>password</password>
+        <SMTPSecure>tls</SMTPSecure>
+        <port>587</port>
         <name>Camille LEGALLAND</name>
         <Subject>Quelqu'un vous as envoyé un message via votre blog professionelle</Subject>
     </PHPMailer>

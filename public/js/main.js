@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     //Slow scrolling
     $('a[href*="#"]').click(function (event) {
@@ -10,50 +10,52 @@ $(document).ready(function() {
     });
 
     //Contact form verification
-    function testNameInput(field)
-    {
-        var regex = /^[a-zA-Z]{2,}$/;
-        if(regex.test(field.value))
-        {return true;}
-        else {return false;}
+    function testNameInput(field) {
+        var regex = /^[a-zA-Z}]{2,}$/;
+        if (regex.test(field.value)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    function testEmail(field)
-    {
-        var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/ ;
-        if(regex.test(field.value))
-        {return true;}
-        else{return false;}
+    function testEmail(field) {
+        var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+        if (regex.test(field.value)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    function testMessageInput(field)
-    {
-        var regex = /^.{2,}$/;
-        if(regex.test(field.value))
-        {return true;}
-        else{return false;}
+    function testMessageInput(field) {
+        var regex = /./;
+        if (regex.test(field.value)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    function correctInputForm()
-    {
-        if (testNameInput(document.getElementById('nom')) && testNameInput(document.getElementById('prenom')) && testEmail(document.getElementById('email')) && testMessageInput(document.getElementById('message')))
-        {
+    function correctInputForm() {
+        if (testNameInput(document.getElementById('nom')) && testNameInput(document.getElementById('prenom')) && testEmail(document.getElementById('email')) && testMessageInput(document.getElementById('message'))) {
             $('#submit').addClass('ready');
             $('#submit').removeAttr('disabled');
         }
-        else
-        {
+        else {
             $('#submit').removeClass('ready');
             $('#submit').attr('disabled', 'disabled');
         }
     }
 
-    $('#form1').on('input', function()
-    {
+    $('#form1').on('input', function () {
         correctInputForm();
     });
 
-    $('#nom').on('input', function() {
+    $('#nom').on('input', function () {
 
         if (testNameInput(document.getElementById('nom'))) {
             $('#nom').addClass('good');
@@ -65,40 +67,34 @@ $(document).ready(function() {
         }
     });
 
-    $('#prenom').on('input', function() {
-        if(testNameInput(document.getElementById('prenom')))
-        {
+    $('#prenom').on('input', function () {
+        if (testNameInput(document.getElementById('prenom'))) {
             $('#prenom').addClass('good');
             $('#prenom').removeClass('bad');
         }
-        else
-        {
+        else {
             $('#prenom').removeClass('good');
             $('#prenom').addClass('bad');
         }
     });
 
-    $('#email').on('input', function() {
-        if(testEmail(document.getElementById('email')))
-        {
+    $('#email').on('input', function () {
+        if (testEmail(document.getElementById('email'))) {
             $('#email').addClass('good');
             $('#email').removeClass('bad');
         }
-        else
-        {
+        else {
             $('#email').removeClass('good');
             $('#email').addClass('bad');
         }
     });
 
-    $('#message').on('input', function() {
-        if(testMessageInput(document.getElementById('message')))
-        {
+    $('#message').on('input', function () {
+        if (testMessageInput(document.getElementById('message'))) {
             $('#message').addClass('good');
             $('#message').removeClass('bad');
         }
-        else
-        {
+        else {
             $('#message').removeClass('good');
             $('#message').addClass('bad');
         }
