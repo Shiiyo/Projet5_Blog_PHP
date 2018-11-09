@@ -11,8 +11,8 @@ $(document).ready(function () {
 
     //Contact form verification
     function testNameInput(field) {
-        var regex = /^[a-zA-Z}]{2,}$/;
-        if (regex.test(field.value)) {
+        var regex = /^[a-zA-Z]{2,}$/;
+        if (regex.test(field.val())) {
             return true;
         }
         else {
@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     function testEmail(field) {
         var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
-        if (regex.test(field.value)) {
+        if (regex.test(field.val())) {
             return true;
         }
         else {
@@ -31,17 +31,16 @@ $(document).ready(function () {
     }
 
     function testMessageInput(field) {
-        var regex = /./;
-        if (regex.test(field.value)) {
-            return true;
+        if (field.val() == '') {
+            return false;
         }
         else {
-            return false;
+            return true;
         }
     }
 
     function correctInputForm() {
-        if (testNameInput(document.getElementById('nom')) && testNameInput(document.getElementById('prenom')) && testEmail(document.getElementById('email')) && testMessageInput(document.getElementById('message'))) {
+        if (testNameInput($('#nom')) && testNameInput($('#prenom')) && testEmail($('#email')) && testMessageInput($('#message'))) {
             $('#submit').addClass('ready');
             $('#submit').removeAttr('disabled');
         }
@@ -57,7 +56,7 @@ $(document).ready(function () {
 
     $('#nom').on('input', function () {
 
-        if (testNameInput(document.getElementById('nom'))) {
+        if (testNameInput($('#nom'))) {
             $('#nom').addClass('good');
             $('#nom').removeClass('bad');
         }
@@ -68,7 +67,7 @@ $(document).ready(function () {
     });
 
     $('#prenom').on('input', function () {
-        if (testNameInput(document.getElementById('prenom'))) {
+        if (testNameInput($('#prenom'))) {
             $('#prenom').addClass('good');
             $('#prenom').removeClass('bad');
         }
@@ -79,7 +78,7 @@ $(document).ready(function () {
     });
 
     $('#email').on('input', function () {
-        if (testEmail(document.getElementById('email'))) {
+        if (testEmail($('#email'))) {
             $('#email').addClass('good');
             $('#email').removeClass('bad');
         }
@@ -90,7 +89,7 @@ $(document).ready(function () {
     });
 
     $('#message').on('input', function () {
-        if (testMessageInput(document.getElementById('message'))) {
+        if (testMessageInput($('#message'))) {
             $('#message').addClass('good');
             $('#message').removeClass('bad');
         }

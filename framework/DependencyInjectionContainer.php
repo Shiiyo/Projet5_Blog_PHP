@@ -1,6 +1,9 @@
 <?php
 
 namespace framework;
+
+use services\SendEmail;
+use services\TestRecaptcha;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -73,6 +76,16 @@ class DependencyInjectionContainer
     public function newPHPMailer()
     {
         return new PHPMailer;
+    }
+
+    public function newSendMail($container)
+    {
+        return new SendEmail($container);
+    }
+
+    public function newTestRecaptcha($container, $recaptchaResponse)
+    {
+        return new TestRecaptcha($container, $recaptchaResponse);
     }
 
 
