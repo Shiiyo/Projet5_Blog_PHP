@@ -3,7 +3,6 @@
 
 namespace services;
 
-
 class TestRecaptcha
 {
     protected $container;
@@ -22,7 +21,8 @@ class TestRecaptcha
             'POST',
             array(
                 'secret' => '6LeJCnQUAAAAABCqgPutdMDbdQAzDp4iF-DKre8X',
-                'response' => $this->getRecaptchaResponse()));
+                'response' => $this->getRecaptchaResponse())
+        );
     }
 
     /**

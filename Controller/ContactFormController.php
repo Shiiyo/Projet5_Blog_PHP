@@ -26,18 +26,16 @@ class ContactFormController implements ControllerInterface
         $violationMessage = $validationForm->validateMessage($request->request->get('message'));
 
         $violations = array($violationName, $violationFirstName, $violationEmail, $violationMessage);
-        foreach ($violations as $violation)
-        {
-            if(0 !== count($violation))
-            {
-                foreach ($violation as $v){
+        foreach ($violations as $violation) {
+            if (0 !== count($violation)) {
+                foreach ($violation as $v) {
                     echo $v->getMessage().'<br>';
                 }
             }
         }
 
 
-       // $testRecaptcha = $this->getContainer()->newTestRecaptcha($this->getContainer(), $recaptchaResponse);
+        // $testRecaptcha = $this->getContainer()->newTestRecaptcha($this->getContainer(), $recaptchaResponse);
        // $requestRecaptcha = $testRecaptcha();
 //
        // $recaptchaResult = $requestRecaptcha->overrideGlobals();

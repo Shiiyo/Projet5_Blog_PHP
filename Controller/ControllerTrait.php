@@ -4,7 +4,6 @@ namespace Controller;
 
 trait ControllerTrait
 {
-
     protected $param;
     protected $twig;
     protected $container;
@@ -76,6 +75,4 @@ trait ControllerTrait
     {
         $this->container = $container;
     }
-
-
 }
