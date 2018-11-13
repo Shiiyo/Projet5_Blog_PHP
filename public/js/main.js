@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     //Contact form verification
     function testNameInput(field) {
-        var regex = /^[a-zA-Z]{2,}$/;
+        var regex = /^[a-zA-Z]{2,}$/; //[\p{L}]
         if (regex.test(field.val())) {
             return true;
         }

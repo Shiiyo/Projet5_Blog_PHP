@@ -4,9 +4,11 @@ namespace framework;
 
 use services\SendEmail;
 use services\TestRecaptcha;
+use services\ValidationForm;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use PHPMailer\PHPMailer\PHPMailer;
+use Symfony\Component\Validator\Validation;
 
 class DependencyInjectionContainer
 {
@@ -88,6 +90,16 @@ class DependencyInjectionContainer
         return new TestRecaptcha($container, $recaptchaResponse);
     }
 
+    public function newValidator()
+    {
+        return Validation::createValidator();
+    }
+
+    public function newValidationForm($validator)
+    {
+        return new ValidationForm($validator);
+    }
+
 
     /**
      * @return \Twig_Environment
@@ -117,7 +129,7 @@ class DependencyInjectionContainer
     /**
      * @param \Twig_Environment $twigEnv
      */
-    public function setTwigEnv(\Twig_Environment $twigEnv): void
+    private function setTwigEnv(\Twig_Environment $twigEnv): void
     {
         $this->twigEnv = $twigEnv;
     }

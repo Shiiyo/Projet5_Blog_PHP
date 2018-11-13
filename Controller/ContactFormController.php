@@ -3,11 +3,8 @@
 
 namespace Controller;
 
-
-use Entity\ContactForm;
-use Symfony\Component\HttpFoundation\Response;
+use services\ValidationForm;
 use Symfony\Component\Validator\Validation;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ContactFormController implements ControllerInterface
 {
@@ -17,15 +14,28 @@ class ContactFormController implements ControllerInterface
     {
         $request = $this->getContainer()->newHttpRequest();
 
-        $name = $request->request->get('nom');
-        $first_name = $request->request->get('prenom');
-        $email = $request->request->get('email');
-        $message = $request->request->get('message');
         $recaptchaResponse = $request->request->get('g-recaptcha-response');
 
-        $validator = Validation::createValidator();
+        $validator = $this->getContainer()->newValidator();
 
-        $this->contactForm($validator, $name, $first_name, $email, $message, $recaptchaResponse);
+        $validationForm = $this->getContainer()->newValidationForm($validator);
+
+        $violationName = $validationForm->validateName($request->request->get('nom'));
+        $violationFirstName = $validationForm->validateName($request->request->get('prenom'));
+        $violationEmail = $validationForm->validateEmail($request->request->get('email'));
+        $violationMessage = $validationForm->validateMessage($request->request->get('message'));
+
+        $violations = array($violationName, $violationFirstName, $violationEmail, $violationMessage);
+        foreach ($violations as $violation)
+        {
+            if(0 !== count($violation))
+            {
+                foreach ($violation as $v){
+                    echo $v->getMessage().'<br>';
+                }
+            }
+        }
+
 
        // $testRecaptcha = $this->getContainer()->newTestRecaptcha($this->getContainer(), $recaptchaResponse);
        // $requestRecaptcha = $testRecaptcha();
@@ -44,17 +54,5 @@ class ContactFormController implements ControllerInterface
        //{
        //    echo $resultSendEmail;
        //}
-    }
-
-    public function contactForm(ValidatorInterface $validator, $name, $first_name, $email, $message, $recaptchaResponse)
-    {
-        $contactForm = new ContactForm($name, $first_name, $email, $message, $recaptchaResponse);
-        $errors = $validator->validate($contactForm);
-        if(count($errors) > 0)
-        {
-            $errorsString = (string) $errors;
-            return new Response($errorsString);
-        }
-        return new Response('Le formulaire est conforme!');
     }
 }
