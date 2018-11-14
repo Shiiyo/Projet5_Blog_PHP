@@ -14,8 +14,12 @@ class ContactFormController implements ControllerInterface
     {
         $request = $this->getContainer()->newHttpRequest();
 
+        //Testing Recaptcha
         $recaptchaResponse = $request->request->get('g-recaptcha-response');
+        $testRecaptcha = $this->getContainer()->newTestRecaptcha($this->getContainer(), $recaptchaResponse);
+        $verifyRecaptcha = $testRecaptcha();
 
+        //Testing form fields
         $validator = $this->getContainer()->newValidator();
 
         $validationForm = $this->getContainer()->newValidationForm($validator);
@@ -26,19 +30,13 @@ class ContactFormController implements ControllerInterface
         $violationMessage = $validationForm->validateMessage($request->request->get('message'));
 
         $violations = array($violationName, $violationFirstName, $violationEmail, $violationMessage);
-        foreach ($violations as $violation) {
-            if (0 !== count($violation)) {
-                foreach ($violation as $v) {
-                    echo $v->getMessage().'<br>';
-                }
-            }
-        }
 
+        //Get the error messages
+        $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
+        $error_msg = $violationMessages->violationMessages();
 
-        // $testRecaptcha = $this->getContainer()->newTestRecaptcha($this->getContainer(), $recaptchaResponse);
-       // $requestRecaptcha = $testRecaptcha();
-//
-       // $recaptchaResult = $requestRecaptcha->overrideGlobals();
+        echo $error_msg;
+
 //
        //$sendEmail = $this->getContainer()->newSendMail($this->getContainer());
        //$resultSendEmail = $sendEmail($name, $first_name, $email, $message);

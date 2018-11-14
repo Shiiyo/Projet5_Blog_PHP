@@ -16,13 +16,11 @@ class TestRecaptcha
 
     public function __invoke()
     {
-        return $this->getContainer()->createHttpRequest(
-            "https://www.google.com/recaptcha/api/siteverify",
-            'POST',
-            array(
-                'secret' => '6LeJCnQUAAAAABCqgPutdMDbdQAzDp4iF-DKre8X',
-                'response' => $this->getRecaptchaResponse())
-        );
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $secret = '6LeJCnQUAAAAABCqgPutdMDbdQAzDp4iF-DKre8X';
+        $response = $this->getRecaptchaResponse();
+        $verify = file_get_contents($url.'?secret='.$secret.'&response='.$response);
+        return json_decode($verify);
     }
 
     /**

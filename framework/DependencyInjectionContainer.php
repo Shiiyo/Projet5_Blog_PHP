@@ -5,6 +5,7 @@ namespace framework;
 use services\SendEmail;
 use services\TestRecaptcha;
 use services\ValidationForm;
+use services\ViolationMessages;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -98,6 +99,11 @@ class DependencyInjectionContainer
     public function newValidationForm($validator)
     {
         return new ValidationForm($validator);
+    }
+
+    public function newViolationMessages(array $violations, $verifyRecaptcha)
+    {
+        return new ViolationMessages($violations, $verifyRecaptcha);
     }
 
 
