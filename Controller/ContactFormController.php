@@ -35,20 +35,51 @@ class ContactFormController implements ControllerInterface
         $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
         $error_msg = $violationMessages->violationMessages();
 
-        echo $error_msg;
+        $twig = $this->getTwig();
 
-//
-       //$sendEmail = $this->getContainer()->newSendMail($this->getContainer());
-       //$resultSendEmail = $sendEmail($name, $first_name, $email, $message);
-//
-       //if ($resultSendEmail == true)
-       //{
-       //    $homeController = $this->getContainer()->newController('Controller\HomepageController', NULL ,$this->getContainer());
-       //    return $homeController();
-       //}
-       //else
-       //{
-       //    echo $resultSendEmail;
-       //}
+        //Sending Email
+        if ($error_msg == "")
+        {
+            $sendEmail = $this->getContainer()->newSendMail($this->getContainer());
+            $resultSendEmail = $sendEmail($request->request->get('nom'), $request->request->get('prenom'), $request->request->get('email'), $request->request->get('message'));
+
+            if ($resultSendEmail == true)
+            {
+               header('Location: /accueil#contact');
+                echo"<script>
+                   $('.validation-form').fadeToggle('slow');
+                   setTimeout(function()
+                    {
+                        $('.validation-form').fadeToggle('slow');
+                    }, 5000);
+                </script>";
+            }
+            else
+            {
+                $twig->addGlobal('error_msg', $error_msg);
+                header('Location: /accueil#contact');
+                //echo"<script>
+                //   $('.error-form').fadeToggle('slow');
+                //   setTimeout(function()
+                //    {
+                //        $('.error-form').fadeToggle('slow');
+                //    }, 5000);
+                //</script>";
+            }
+        }
+        else
+        {
+            $twig->addGlobal('error_msg', $error_msg);
+            header('Location: /accueil#contact');
+            //echo"<script>
+            //       $('.error-form').fadeToggle('slow');
+            //       setTimeout(function()
+            //        {
+            //            $('.error-form').fadeToggle('slow');
+            //        }, 5000);
+            //    </script>";
+        }
+
+
     }
 }

@@ -444,3 +444,50 @@ form #submit.ready
     background-color: #89ac10;
 }
 
+.contact .validation-form
+{
+    width: 21rem;
+    height: 15rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+    opacity: .9;
+    background-color: #89ac10;
+    padding-top: 2.9375rem;
+    padding-bottom: 2.9375rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    display: none;
+}
+
+.contact .validation-form img
+{
+    margin-bottom: 1rem;
+}
+
+.contact .error-form
+{
+    width: 21rem;
+    height: 15rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+    opacity: .9;
+    background-color: #d93730;
+    padding-top: 2.9375rem;
+    padding-bottom: 2.9375rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    display: none;
+}
+
+.contact .error-form img
+{
+    margin-bottom: 1rem;
+}
