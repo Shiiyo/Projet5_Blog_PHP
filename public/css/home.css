@@ -444,7 +444,7 @@ form #submit.ready
     background-color: #89ac10;
 }
 
-.contact .validation-form
+.contact #validation-form
 {
     width: 21rem;
     height: 15rem;
@@ -463,15 +463,14 @@ form #submit.ready
     display: none;
 }
 
-.contact .validation-form img
+.contact #validation-form img
 {
     margin-bottom: 1rem;
 }
 
-.contact .error-form
+.contact #error-form
 {
     width: 21rem;
-    height: 15rem;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -487,7 +486,7 @@ form #submit.ready
     display: none;
 }
 
-.contact .error-form img
+.contact #error-form img
 {
     margin-bottom: 1rem;
 }

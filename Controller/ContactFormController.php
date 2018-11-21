@@ -35,51 +35,21 @@ class ContactFormController implements ControllerInterface
         $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
         $error_msg = $violationMessages->violationMessages();
 
-        $twig = $this->getTwig();
-
         //Sending Email
-        if ($error_msg == "")
-        {
+        if ($error_msg == "") {
             $sendEmail = $this->getContainer()->newSendMail($this->getContainer());
             $resultSendEmail = $sendEmail($request->request->get('nom'), $request->request->get('prenom'), $request->request->get('email'), $request->request->get('message'));
 
-            if ($resultSendEmail == true)
-            {
-               header('Location: /accueil#contact');
-                echo"<script>
-                   $('.validation-form').fadeToggle('slow');
-                   setTimeout(function()
-                    {
-                        $('.validation-form').fadeToggle('slow');
-                    }, 5000);
-                </script>";
-            }
-            else
-            {
-                $twig->addGlobal('error_msg', $error_msg);
+            if ($resultSendEmail == true) {
+                $this->session->set('success', "Merci pour votre message.<br>Je vous répondrais dans les meilleurs délais.");
                 header('Location: /accueil#contact');
-                //echo"<script>
-                //   $('.error-form').fadeToggle('slow');
-                //   setTimeout(function()
-                //    {
-                //        $('.error-form').fadeToggle('slow');
-                //    }, 5000);
-                //</script>";
+            } else {
+                $this->session->set('error', $error_msg);
+                header('Location: /accueil#contact');
             }
-        }
-        else
-        {
-            $twig->addGlobal('error_msg', $error_msg);
+        } else {
+            $this->session->set('error', $error_msg);
             header('Location: /accueil#contact');
-            //echo"<script>
-            //       $('.error-form').fadeToggle('slow');
-            //       setTimeout(function()
-            //        {
-            //            $('.error-form').fadeToggle('slow');
-            //        }, 5000);
-            //    </script>";
         }
-
-
     }
 }

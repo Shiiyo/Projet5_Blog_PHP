@@ -3,7 +3,9 @@
 
 namespace services;
 
-class ViolationMessages
+use services\Interfaces\ViolationMessageInterface;
+
+class ViolationMessages implements ViolationMessageInterface
 {
     private $violations;
     private $verifyRecaptcha;
@@ -59,7 +61,7 @@ class ViolationMessages
     /**
      * @param array $violations
      */
-    private function setViolations($violations): void
+    public function setViolations($violations): void
     {
         $this->violations = $violations;
     }
@@ -75,7 +77,7 @@ class ViolationMessages
     /**
      * @param mixed $verifyRecaptcha
      */
-    private function setVerifyRecaptcha($verifyRecaptcha): void
+    public function setVerifyRecaptcha($verifyRecaptcha): void
     {
         $this->verifyRecaptcha = $verifyRecaptcha;
     }

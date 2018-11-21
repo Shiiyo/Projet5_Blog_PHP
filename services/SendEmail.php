@@ -3,8 +3,9 @@
 namespace services;
 
 use PHPMailer\PHPMailer\Exception;
+use services\Interfaces\SendEmailInterface;
 
-class SendEmail
+class SendEmail implements SendEmailInterface
 {
     protected $container;
 

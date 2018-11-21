@@ -3,7 +3,9 @@
 
 namespace services;
 
-class TestRecaptcha
+use services\Interfaces\TestRecaptchaInterface;
+
+class TestRecaptcha implements TestRecaptchaInterface
 {
     protected $container;
     protected $recaptchaResponse;
@@ -32,7 +34,7 @@ class TestRecaptcha
     }
 
     /**
-     * @return mixed
+     * @return
      */
     public function getRecaptchaResponse()
     {

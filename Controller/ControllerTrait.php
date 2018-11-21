@@ -2,23 +2,28 @@
 
 namespace Controller;
 
+use framework\DependencyInjectionContainer;
+use framework\Session\SessionInterface;
+
 trait ControllerTrait
 {
     protected $param;
     protected $twig;
     protected $container;
+    protected $session;
 
     /**
      * ControllerTrait constructor.
      * @param $param
      * @param $twigEnv
-     * @param $container
+     * @param DependencyInjectionContainer $container
      */
     public function __construct($param, $twigEnv, $container)
     {
         $this->setParam($param);
         $this->setTwig($twigEnv);
         $this->setContainer($container);
+        $this->setSession($container->newPHPSession());
     }
 
     //GETTERS
@@ -74,5 +79,13 @@ trait ControllerTrait
     public function setContainer($container): void
     {
         $this->container = $container;
+    }
+
+    /**
+     * @param SessionInterface $session
+     */
+    public function setSession($session): void
+    {
+        $this->session = $session;
     }
 }

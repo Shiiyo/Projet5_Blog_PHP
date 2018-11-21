@@ -3,10 +3,11 @@
 
 namespace services;
 
+use services\Interfaces\ValidationFormInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validation;
 
-class ValidationForm
+class ValidationForm implements ValidationFormInterface
 {
     private $validator;
 

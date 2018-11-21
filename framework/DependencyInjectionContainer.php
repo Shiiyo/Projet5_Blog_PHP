@@ -2,6 +2,7 @@
 
 namespace framework;
 
+use framework\Session\PHPSession;
 use services\SendEmail;
 use services\TestRecaptcha;
 use services\ValidationForm;
@@ -104,6 +105,11 @@ class DependencyInjectionContainer
     public function newViolationMessages(array $violations, $verifyRecaptcha)
     {
         return new ViolationMessages($violations, $verifyRecaptcha);
+    }
+
+    public function newPHPSession()
+    {
+        return new PHPSession();
     }
 
 

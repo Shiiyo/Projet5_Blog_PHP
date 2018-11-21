@@ -255,14 +255,20 @@
                 </div>
             </div>
         </div>
-        <div class="validation-form">
-            <img src="img/pictos/ok-128.png" alt="ok symbole">
-            <p>Merci pour votre message.<br>Je vous répondrais dans les meilleurs délais.</p>
-        </div>
-        <div class="error-form">
-            <img src="img/pictos/error-5-128.png" alt="erreur symbole">
-            <p>{{ error_msg }}</p>
-        </div>
+
+        {% if session.success %}
+            <div id="validation-form">
+                <img src="img/pictos/ok-128.png" alt="ok symbole">
+                <p>{{ session.success|raw }}</p>
+            </div>
+        {% endif %}
+
+        {% if session.error %}
+            <div id="error-form">
+                <img src="img/pictos/error-5-128.png" alt="erreur symbole">
+                <p>{{ session.error|raw }}</p>
+            </div>
+        {% endif %}
     </section>
 {% endblock %}
 

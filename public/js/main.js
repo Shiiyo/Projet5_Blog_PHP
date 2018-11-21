@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     //Contact form verification
     function testNameInput(field) {
-        var regex = /^[\p{L}]{2,}$/; //[\p{L}]
+        var regex = /^[A-zÀ-ú]{2,}$/;
         if (regex.test(field.val())) {
             return true;
         }
@@ -98,4 +98,25 @@ $(document).ready(function () {
             $('#message').addClass('bad');
         }
     });
+
+    if($('#validation-form')){
+        setTimeout(function() {
+            $('#validation-form').fadeIn('slow');
+        }, 1000);
+        setTimeout(function()
+        {
+            $('#validation-form').fadeOut('slow');
+        }, 5000);
+    }
+
+    if($('#error-form')){
+        setTimeout(function() {
+            $('#error-form').fadeIn('slow');
+        }, 1000);
+        setTimeout(function()
+        {
+            $('#error-form').fadeOut('slow');
+        }, 8000);
+    }
+
 });

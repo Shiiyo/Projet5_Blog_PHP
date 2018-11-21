@@ -13,6 +13,11 @@ if (isset($configXML)) {
 $loader = $container->newTwigLoaderFilesystem($container->getParam('Twig/path'));
 $container->newTwigEnvironment($loader, []);
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$container->getTwigEnv()->addGlobal('session', $_SESSION);
+
 $router = $container->newRouter($container);
 $router->resolve();
 
