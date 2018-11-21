@@ -34,7 +34,7 @@ class Router implements Interfaces\RouterInterface
     {
         $controllerLoader = $this->getContainer()->newControllerLoader();
         $controllerPath = $controllerLoader->load($this);
-        return $this->getContainer()->newController($controllerPath, $this->getParam());
+        return $this->getContainer()->newController($controllerPath, $this->getParam(), $this->getContainer());
     }
 
     //GETTERS

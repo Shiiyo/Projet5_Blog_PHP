@@ -5,16 +5,19 @@ require '../vendor/autoload.php';
 framework\Autoloader::register();
 
 $configXML = simplexml_load_file('../framework/config/config.xml');
-foreach ($configXML as $param) {
-    $parameters[] = $param;
+
+if (isset($configXML)) {
+    $container = new \framework\DependencyInjectionContainer($configXML);
 }
 
-if (isset($parameters)) {
-    $container = new \framework\DependencyInjectionContainer($parameters);
-}
-
-$loader = $container->newTwigLoaderFilesystem($container->getParam(0));
+$loader = $container->newTwigLoaderFilesystem($container->getParam('Twig/path'));
 $container->newTwigEnvironment($loader, []);
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$container->getTwigEnv()->addGlobal('session', $_SESSION);
 
 $router = $container->newRouter($container);
 $router->resolve();

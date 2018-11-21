@@ -14,7 +14,7 @@ interface ControllerInterface
      * ControllerInterface constructor.
      * @param $param
      */
-    public function __construct($param, $twigEnv);
+    public function __construct($param, $twigEnv, $container);
 
     //GETTERS
 

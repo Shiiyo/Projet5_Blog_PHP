@@ -401,12 +401,6 @@ form input, textarea
     font-size: 1.3rem;
 }
 
-form input:focus, textarea:focus
-{
-    outline: none;
-    border-bottom: 3px solid #89ac10;
-}
-
 form .g-recaptcha
 {
     display: inline-block;
@@ -429,3 +423,64 @@ form input[type="submit"]
     float: right;
 }
 
+form .good
+{
+    border-bottom: 3px solid #89ac10;
+}
+
+form .bad
+{
+    border-bottom: 3px solid #FF0000;
+}
+
+form #submit
+{
+    background-color: #aeb1b0;
+}
+
+form #submit.ready
+{
+    cursor: pointer;
+    background-color: #89ac10;
+}
+
+.contact #validation-form
+{
+    width: 21rem;
+    height: 15rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+    opacity: .9;
+    background-color: #89ac10;
+    padding: 2.9375rem 1rem 2.9375rem 1rem;
+    display: none;
+}
+
+.contact #validation-form img
+{
+    margin-bottom: 1rem;
+}
+
+.contact #error-form
+{
+    width: 21rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+    opacity: .9;
+    background-color: #d93730;
+    padding: 2.9375rem 1rem 2.9375rem 1rem;
+    display: none;
+}
+
+.contact #error-form img
+{
+    margin-bottom: 1rem;
+}

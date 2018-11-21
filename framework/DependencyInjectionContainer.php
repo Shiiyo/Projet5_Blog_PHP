@@ -2,12 +2,22 @@
 
 namespace framework;
 
+use framework\Session\PHPSession;
+use services\SendEmail;
+use services\TestRecaptcha;
+use services\ValidationForm;
+use services\ViolationMessages;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use PHPMailer\PHPMailer\PHPMailer;
+use Symfony\Component\Validator\Validation;
+
 class DependencyInjectionContainer
 {
     protected $parameters;
     protected $twigEnv;
 
-    public function __construct(array $parameters)
+    public function __construct(\SimpleXMLElement $parameters)
     {
         $this->setParameters($parameters);
     }
@@ -32,9 +42,9 @@ class DependencyInjectionContainer
         return new ControllerLoader();
     }
 
-    public function newController($path, $params)
+    public function newController($path, $params, $container)
     {
-        return new $path($params, $this->getTwigEnv());
+        return new $path($params, $this->getTwigEnv(), $container);
     }
 
     public function newTwigLoaderFilesystem($path)
@@ -46,6 +56,62 @@ class DependencyInjectionContainer
     {
         $twigEnv = new \Twig_Environment($loader, $params);
         $this->setTwigEnv($twigEnv);
+    }
+
+    public function newHttpResponseHtml($view)
+    {
+        return new Response(
+            $view,
+            Response::HTTP_OK,
+            array('content-type' => 'text/html')
+        );
+    }
+
+    public function newHttpRequest()
+    {
+        $req = new Request();
+        return $req->createFromGlobals();
+    }
+
+    public function createHttpRequest($url, $method, $params)
+    {
+        $req = new Request();
+        return $req->create($url, $method, $params);
+    }
+
+    public function newPHPMailer()
+    {
+        return new PHPMailer;
+    }
+
+    public function newSendMail($container)
+    {
+        return new SendEmail($container);
+    }
+
+    public function newTestRecaptcha($container, $recaptchaResponse)
+    {
+        return new TestRecaptcha($container, $recaptchaResponse);
+    }
+
+    public function newValidator()
+    {
+        return Validation::createValidator();
+    }
+
+    public function newValidationForm($validator)
+    {
+        return new ValidationForm($validator);
+    }
+
+    public function newViolationMessages(array $violations, $verifyRecaptcha)
+    {
+        return new ViolationMessages($violations, $verifyRecaptcha);
+    }
+
+    public function newPHPSession()
+    {
+        return new PHPSession();
     }
 
 
@@ -60,7 +126,7 @@ class DependencyInjectionContainer
     /**
      * @return array
      */
-    public function getParameters() : array
+    public function getParameters() : \SimpleXMLElement
     {
         return $this->parameters;
     }
@@ -69,15 +135,15 @@ class DependencyInjectionContainer
      * @param $num
      * @return mixed
      */
-    public function getParam($num) : \SimpleXMLElement
+    public function getParam($path) : \SimpleXMLElement
     {
-        return $this->parameters[$num];
+        return $this->parameters->xpath($path)[0];
     }
 
     /**
      * @param \Twig_Environment $twigEnv
      */
-    public function setTwigEnv(\Twig_Environment $twigEnv): void
+    private function setTwigEnv(\Twig_Environment $twigEnv): void
     {
         $this->twigEnv = $twigEnv;
     }
