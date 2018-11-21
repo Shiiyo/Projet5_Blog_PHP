@@ -31,7 +31,7 @@ $(document).ready(function () {
     }
 
     function testMessageInput(field) {
-        if (field.val() == '') {
+        if (field.val() === "") {
             return false;
         }
         else {
@@ -40,82 +40,82 @@ $(document).ready(function () {
     }
 
     function correctInputForm() {
-        if (testNameInput($('#nom')) && testNameInput($('#prenom')) && testEmail($('#email')) && testMessageInput($('#message'))) {
-            $('#submit').addClass('ready');
-            $('#submit').removeAttr('disabled');
+        if (testNameInput($("#nom")) && testNameInput($("#prenom")) && testEmail($("#email")) && testMessageInput($("#message"))) {
+            $("#submit").addClass("ready");
+            $("#submit").removeAttr("disabled");
         }
         else {
-            $('#submit').removeClass('ready');
-            $('#submit').attr('disabled', 'disabled');
+            $("#submit").removeClass("ready");
+            $("#submit").attr("disabled", "disabled");
         }
     }
 
-    $('#form1').on('input', function () {
+    $("#form1").on("input", function () {
         correctInputForm();
     });
 
-    $('#nom').on('input', function () {
+    $("#nom").on("input", function () {
 
-        if (testNameInput($('#nom'))) {
-            $('#nom').addClass('good');
-            $('#nom').removeClass('bad');
+        if (testNameInput($("#nom"))) {
+            $("#nom").addClass("good");
+            $("#nom").removeClass("bad");
         }
         else {
-            $('#nom').removeClass('good');
-            $('#nom').addClass('bad');
+            $("#nom").removeClass("good");
+            $("#nom").addClass("bad");
         }
     });
 
-    $('#prenom').on('input', function () {
-        if (testNameInput($('#prenom'))) {
-            $('#prenom').addClass('good');
-            $('#prenom').removeClass('bad');
+    $("#prenom").on("input", function () {
+        if (testNameInput($("#prenom"))) {
+            $("#prenom").addClass("good");
+            $("#prenom").removeClass("bad");
         }
         else {
-            $('#prenom').removeClass('good');
-            $('#prenom').addClass('bad');
+            $("#prenom").removeClass("good");
+            $("#prenom").addClass("bad");
         }
     });
 
-    $('#email').on('input', function () {
-        if (testEmail($('#email'))) {
-            $('#email').addClass('good');
-            $('#email').removeClass('bad');
+    $("#email").on("input", function () {
+        if (testEmail($("#email"))) {
+            $("#email").addClass("good");
+            $("#email").removeClass("bad");
         }
         else {
-            $('#email').removeClass('good');
-            $('#email').addClass('bad');
+            $("#email").removeClass("good");
+            $("#email").addClass("bad");
         }
     });
 
-    $('#message').on('input', function () {
-        if (testMessageInput($('#message'))) {
-            $('#message').addClass('good');
-            $('#message').removeClass('bad');
+    $("#message").on("input", function () {
+        if (testMessageInput($("#message"))) {
+            $("#message").addClass("good");
+            $("#message").removeClass("bad");
         }
         else {
-            $('#message').removeClass('good');
-            $('#message').addClass('bad');
+            $("#message").removeClass("good");
+            $("#message").addClass("bad");
         }
     });
 
-    if($('#validation-form')){
+    if($("#validation-form")){
         setTimeout(function() {
-            $('#validation-form').fadeIn('slow');
+            $("#validation-form").fadeIn("slow");
         }, 1000);
         setTimeout(function()
         {
-            $('#validation-form').fadeOut('slow');
+            $("#validation-form").fadeOut("slow");
         }, 5000);
     }
 
-    if($('#error-form')){
+    if($("#error-form")){
         setTimeout(function() {
-            $('#error-form').fadeIn('slow');
+            $("#error-form").fadeIn("slow");
         }, 1000);
         setTimeout(function()
         {
-            $('#error-form').fadeOut('slow');
+            $("#error-form").fadeOut("slow");
         }, 8000);
     }
 

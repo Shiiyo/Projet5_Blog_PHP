@@ -69,12 +69,14 @@ class DependencyInjectionContainer
 
     public function newHttpRequest()
     {
-        return Request::createFromGlobals();
+        $req = new Request();
+        return $req->createFromGlobals();
     }
 
     public function createHttpRequest($url, $method, $params)
     {
-        return Request::create($url, $method, $params);
+        $req = new Request();
+        return $req->create($url, $method, $params);
     }
 
     public function newPHPMailer()

@@ -48,9 +48,8 @@ class SendEmail implements SendEmailInterface
 
         if (!$mail->send()) {
             return "Mailer Error: " . $mail->ErrorInfo;
-        } else {
-            return true;
         }
+        return true;
     }
 
     /**

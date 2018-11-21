@@ -456,10 +456,7 @@ form #submit.ready
     text-align: center;
     opacity: .9;
     background-color: #89ac10;
-    padding-top: 2.9375rem;
-    padding-bottom: 2.9375rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding: 2.9375rem 1rem 2.9375rem 1rem;
     display: none;
 }
 
@@ -479,10 +476,7 @@ form #submit.ready
     text-align: center;
     opacity: .9;
     background-color: #d93730;
-    padding-top: 2.9375rem;
-    padding-bottom: 2.9375rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding: 2.9375rem 1rem 2.9375rem 1rem;
     display: none;
 }
 
