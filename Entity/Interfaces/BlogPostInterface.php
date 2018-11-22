@@ -4,6 +4,18 @@ namespace Entity\Interfaces;
 
 interface BlogPostInterface
 {
+
+    /**
+     * BlogPostInterface constructor.
+     * @param $id
+     * @param $idAdmin
+     * @param $title
+     * @param $resume
+     * @param $content
+     * @param $addDate
+     */
+    public function __construct($id, $idAdmin, $title, $resume, $content, $addDate);
+
     //GETTERS
     /**
      * @return mixed

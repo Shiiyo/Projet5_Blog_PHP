@@ -24,20 +24,20 @@
 
 {% block body %}
     <div class="container blog-post-container">
-        {% for blogPost in blogPosts %}
+        {% for blogPost in articleCollection %}
             <div class="row">
                 <div class="col-2">
                     <div class="cercle">
-                        <p class="month">{{ date.month }}</p>
-                        <p class="day">{{ date.day }}</p>
+                        <p class="month">{{ blogPost.date.month }}</p>
+                        <p class="day">{{ blogPost.date.day }}</p>
                         <hr class="date-separator">
-                        <p class="year">{{ date.year }}</p>
+                        <p class="year">{{ blogPost.date.year }}</p>
                     </div>
                 </div>
 
                 <div class="col-10">
-                    <h2>{{ title }}</h2>
-                    <p class="overview">{{ overview }}</p>
+                    <h2>{{ blogPost.title }}</h2>
+                    <p class="overview">{{ blogPost.overview }}</p>
                 </div>
 
                 <hr class="article-separator">

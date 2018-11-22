@@ -4,7 +4,7 @@ namespace Entity;
 
 use Entity\Interfaces as Interfaces;
 
-class BlogPost implements Interfaces\BlogPostInterface
+class Article implements Interfaces\BlogPostInterface
 {
     private $id;
     private $idAdmin;
@@ -13,6 +13,17 @@ class BlogPost implements Interfaces\BlogPostInterface
     private $content;
     private $addDate;
     private $updateDate;
+
+
+    public function __construct($id, $idAdmin, $title, $resume, $content, $addDate)
+    {
+        $this->id = $id;
+        $this->idAdmin = $idAdmin;
+        $this->title = $title;
+        $this->resume = $resume;
+        $this->content = $content;
+        $this->addDate = $addDate;
+    }
 
     //GETTERS
 

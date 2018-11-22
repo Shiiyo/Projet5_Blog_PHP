@@ -2,7 +2,11 @@
 
 namespace framework;
 
+use Entity\Article;
 use framework\Session\PHPSession;
+use services\ArticlesManagement\ArticleCollection;
+use services\ArticlesManagement\ArticleLoader;
+use services\ArticlesManagement\PDOArticleStorage;
 use services\SendEmail;
 use services\TestRecaptcha;
 use services\ValidationForm;
@@ -16,6 +20,9 @@ class DependencyInjectionContainer
 {
     protected $parameters;
     protected $twigEnv;
+    protected $pdo;
+    protected $articleStorage;
+    protected $articleLoader;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -114,6 +121,54 @@ class DependencyInjectionContainer
         return new PHPSession();
     }
 
+    public function newArticle($id, $idAdmin, $title, $resume, $content, $addDate)
+    {
+        return new Article($id, $idAdmin, $title, $resume, $content, $addDate);
+    }
+
+    public function newArticleCollection($articlesArray)
+    {
+        return new ArticleCollection($articlesArray);
+    }
+
+    /**
+     * @param $num
+     * @return mixed
+     */
+    public function getParam($path) : \SimpleXMLElement
+    {
+        return $this->parameters->xpath($path)[0];
+    }
+
+    /**
+     * @return \PDO
+     */
+    public function getPDO()
+    {
+        if ($this->pdo === null) {
+            $this->pdo = new \PDO($this->getParam('PDO/db_dsn'), $this->getParam('PDO/db_user'), $this->getParam('PDO/db_pass'));
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }
+        return $this->pdo;
+    }
+
+    public function getArticleLoader($container)
+    {
+        if ($this->articleLoader === null) {
+            $this->articleLoader = new ArticleLoader($this->getArticleStorage(), $container);
+        }
+        return $this->articleLoader;
+    }
+
+    public function getArticleStorage()
+    {
+        if ($this->articleStorage === null) {
+            $this->articleStorage = new PDOArticleStorage($this->getPDO());
+        }
+        return $this->articleStorage;
+    }
+
+    //GETTERS
 
     /**
      * @return \Twig_Environment
@@ -129,15 +184,6 @@ class DependencyInjectionContainer
     public function getParameters() : \SimpleXMLElement
     {
         return $this->parameters;
-    }
-
-    /**
-     * @param $num
-     * @return mixed
-     */
-    public function getParam($path) : \SimpleXMLElement
-    {
-        return $this->parameters->xpath($path)[0];
     }
 
     /**
