@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="css/blog/blogHome.css">
+    <link rel="stylesheet" href="css/footer.css">
+{% endblock %}
+
+{% block header %}
+    <div class="row">
+        <div class="col-1">
+            <a href="/accueil"><img src="img/pictos/house-64-white.png" alt="Maison picto"></a>
+        </div>
+        <div class="col-3" id="return">
+            <h4><a href="/accueil">Retour à l'Accueil</a></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h1>Carnet de bord d'une développeuse web PHP</h1>
+            <h3>Astuces et actualités du monde du développement</h3>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container blog-post-container">
+        {% for blogPost in blogPosts %}
+            <div class="row">
+                <div class="col-2">
+                    <div class="cercle">
+                        <p class="month">{{ date.month }}</p>
+                        <p class="day">{{ date.day }}</p>
+                        <hr class="date-separator">
+                        <p class="year">{{ date.year }}</p>
+                    </div>
+                </div>
+
+                <div class="col-10">
+                    <h2>{{ title }}</h2>
+                    <p class="overview">{{ overview }}</p>
+                </div>
+
+                <hr class="article-separator">
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html.twig' %}
+{% endblock %}

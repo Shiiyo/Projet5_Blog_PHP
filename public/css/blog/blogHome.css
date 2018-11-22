@@ -1,0 +1,110 @@
+body
+{
+    background-color: #373736;
+}
+
+h1, h3, h4
+{
+    color: #ffffff;
+}
+
+h4
+{
+    font-size: 1.25rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+#return
+{
+    display: flex;
+}
+
+h1
+{
+    font-size: 3.125rem;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+}
+
+h3
+{
+    font-size: 1.5rem;
+    font-weight: 100;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blog-post-container
+{
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-top: 5.06rem;
+}
+
+.cercle
+{
+
+}
+
+.month
+{
+    font-size: 1.125rem;
+    font-weight: 100;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.day
+{
+    font-size: 3.75rem;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.date-separator
+{
+    width: 4.25rem;
+    height: 0.0625rem;
+    margin-top: 1.125rem;
+    margin-bottom: 1.125rem;
+    color: #ffffff;
+}
+
+.year
+{
+    font-size: 1rem;
+    font-weight: 100;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2
+{
+    color: #030303;
+    font-size: 2.25rem;
+    font-weight: 700;
+    font-family: 'Amatic SC', cursive;
+}
+
+.overview
+{
+    color: #030303;
+    font-size: 1.125rem;
+    font-weight: 100;
+    text-align: justify;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.article-separator
+{
+    width: 37.5rem;
+    height: 0.0625rem;
+    margin-top: 1.375rem;
+    margin-bottom: 1.375rem;
+    color: #89ac10;
+}
