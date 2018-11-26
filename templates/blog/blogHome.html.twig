@@ -7,10 +7,10 @@
 
 {% block header %}
     <div class="row">
-        <div class="col-1">
+        <div class="col-3 col-lg-1">
             <a href="/accueil"><img src="img/pictos/house-64-white.png" alt="Maison picto"></a>
         </div>
-        <div class="col-3" id="return">
+        <div class="col-9 col-lg-3" id="return">
             <h4><a href="/accueil">Retour à l'Accueil</a></h4>
         </div>
     </div>
@@ -26,7 +26,7 @@
     <div class="container blog-post-container">
         {% for article in articleCollection %}
             <div class="row article-row">
-                <div class="col-2">
+                <div class="col-6 offset-3 col-sm-4 offset-sm-4 col-md-3 offset-md-0 col-lg-2">
                     <div class="cercle">
                         <p class="month">{{ article.updateDate|date('M') }}</p>
                         <p class="day">{{ article.updateDate|date('d') }}</p>
@@ -35,9 +35,10 @@
                     </div>
                 </div>
 
-                <div class="col-10">
+                <div class="col-12 col-md-9 col-lg-10">
                     <h2><a href={{"/blog-post/" ~ article.id }}>{{ article.title }}</a></h2>
                     <p class="overview">{{ article.resume }}</p>
+                    <p class="link-article"><a href={{"/blog-post/" ~ article.id }}>Lire l'article ></a></p>
                 </div>
             </div>
             <hr class="article-separator">

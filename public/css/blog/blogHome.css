@@ -39,6 +39,7 @@ h1
     font-weight: 400;
     text-align: center;
     font-family: 'Amatic SC', cursive;
+    padding-top: 4rem;
 }
 
 h3
@@ -139,9 +140,22 @@ h2 a:hover, h2 a:focus, h2 a:active
     font-family: 'Montserrat', sans-serif;
 }
 
+.link-article a
+{
+    color: #89ac10;
+    text-decoration: none;
+}
+
+.link-article a:hover, .link-article a:focus, .link-article a:active
+{
+    text-decoration: underline;
+    color: inherit;
+}
+
 .article-separator
 {
-    width: 37.5rem;
+    /* width: 37.5rem; */
+    width: 40vw;
     height: 0.0625rem;
     background-color: #89ac10;
 }
