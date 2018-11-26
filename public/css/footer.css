@@ -1,16 +1,11 @@
 /* Footer */
-a:hover, a:focus, a:active
+ a:hover,  a:focus,  a:active
 {
     text-decoration: none;
     color: inherit;
 }
 
-a
-{
-    cursor: pointer;
-}
-
-h1, h2, h3, h4, p, a, li
+footer h1, footer h2, footer h3, footer h4, footer p, footer a, footer li
 {
     color: #ffffff;
 }
@@ -22,7 +17,7 @@ footer
     padding-bottom: 0.5rem;
 }
 
-footer p, a
+footer p, footer a
 {
     font-family: Montserrat, sans-serif;
     font-weight: 300;
@@ -32,6 +27,7 @@ footer p, a
 footer a
 {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 footer .link

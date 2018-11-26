@@ -17,7 +17,7 @@ class PDOArticleStorage implements ArticleStorageInterface
     {
         $pdo = $this->pdo;
         try {
-            $req = $pdo->prepare('SELECT * FROM blog_post');
+            $req = $pdo->prepare('SELECT * FROM blog_post ORDER BY update_date DESC');
             $req->execute();
             $articleArray = $req->fetchAll(\PDO::FETCH_ASSOC);
             return $articleArray;

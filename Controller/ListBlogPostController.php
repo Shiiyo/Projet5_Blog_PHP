@@ -11,7 +11,7 @@ class ListBlogPostController implements ControllerInterface
         $articleLoader = $this->container->getArticleLoader($this->container);
         $articleCollection = $articleLoader->getArticleCollection();
 
-        $view = $this->getTwig()->render('blog/blogHome.html.twig', array($articleCollection));
+        $view = $this->getTwig()->render('blog/blogHome.html.twig', ['articleCollection' => $articleCollection]);
         $response = $this->getContainer()->newHttpResponseHtml($view);
         $response->send();
     }

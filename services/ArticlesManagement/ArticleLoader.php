@@ -10,6 +10,7 @@ class ArticleLoader implements ArticleLoaderInterface
 {
     private $articleStorage;
     private $container;
+    private $articleHydrator;
 
     /**
      * ArticleLoader constructor.
@@ -26,28 +27,15 @@ class ArticleLoader implements ArticleLoaderInterface
     {
         $articlesArray = $this->articleStorage->fetchAllArticle();
         $articlesObject = [];
+        if ($this->articleHydrator === null) {
+            $this->articleHydrator = $this->container->newArticleHydrator();
+        }
         foreach ($articlesArray as $articleData) {
-            $articlesObject[] = $this->createArticleFromArray($articleData);
+            $article = $this->container->newArticle();
+            $this->articleHydrator->hydrate($articleData, $article);
+            $articlesObject[] =$article;
         }
         $articlesCollection = $this->container->newArticleCollection($articlesObject);
         return $articlesCollection;
-    }
-
-    public function createArticleFromArray($articleData)
-    {
-        $article = $this->container->newArticle(
-            $articleData['id'],
-            $articleData['id_admin'],
-            $articleData['title'],
-            $articleData['resume'],
-            $articleData['content'],
-            $articleData['add_date']
-        );
-
-        if ($articleData['update_date'] !== null) {
-            $article->setUpdateDate($articleData['update_date']);
-        }
-
-        return $article;
     }
 }

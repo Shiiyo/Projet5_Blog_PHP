@@ -24,24 +24,23 @@
 
 {% block body %}
     <div class="container blog-post-container">
-        {% for blogPost in articleCollection %}
-            <div class="row">
+        {% for article in articleCollection %}
+            <div class="row article-row">
                 <div class="col-2">
                     <div class="cercle">
-                        <p class="month">{{ blogPost.date.month }}</p>
-                        <p class="day">{{ blogPost.date.day }}</p>
+                        <p class="month">{{ article.updateDate|date('M') }}</p>
+                        <p class="day">{{ article.updateDate|date('d') }}</p>
                         <hr class="date-separator">
-                        <p class="year">{{ blogPost.date.year }}</p>
+                        <p class="year">{{ article.updateDate|date('Y') }}</p>
                     </div>
                 </div>
 
                 <div class="col-10">
-                    <h2>{{ blogPost.title }}</h2>
-                    <p class="overview">{{ blogPost.overview }}</p>
+                    <h2><a href={{"/blog-post/" ~ article.id }}>{{ article.title }}</a></h2>
+                    <p class="overview">{{ article.resume }}</p>
                 </div>
-
-                <hr class="article-separator">
             </div>
+            <hr class="article-separator">
         {% endfor %}
     </div>
 {% endblock %}

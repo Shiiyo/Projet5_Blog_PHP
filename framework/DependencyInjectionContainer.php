@@ -5,6 +5,7 @@ namespace framework;
 use Entity\Article;
 use framework\Session\PHPSession;
 use services\ArticlesManagement\ArticleCollection;
+use services\ArticlesManagement\ArticleHydrator;
 use services\ArticlesManagement\ArticleLoader;
 use services\ArticlesManagement\PDOArticleStorage;
 use services\SendEmail;
@@ -62,6 +63,7 @@ class DependencyInjectionContainer
     public function newTwigEnvironment($loader, $params = [])
     {
         $twigEnv = new \Twig_Environment($loader, $params);
+        $twigEnv->addExtension(new \Twig_Extension_Debug());
         $this->setTwigEnv($twigEnv);
     }
 
@@ -121,14 +123,19 @@ class DependencyInjectionContainer
         return new PHPSession();
     }
 
-    public function newArticle($id, $idAdmin, $title, $resume, $content, $addDate)
+    public function newArticle()
     {
-        return new Article($id, $idAdmin, $title, $resume, $content, $addDate);
+        return new Article();
     }
 
     public function newArticleCollection($articlesArray)
     {
         return new ArticleCollection($articlesArray);
+    }
+
+    public function newArticleHydrator()
+    {
+        return new ArticleHydrator();
     }
 
     /**

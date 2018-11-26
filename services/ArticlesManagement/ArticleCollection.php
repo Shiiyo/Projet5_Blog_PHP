@@ -2,7 +2,7 @@
 
 namespace services\ArticlesManagement;
 
-class ArticleCollection implements \ArrayAccess
+class ArticleCollection implements \ArrayAccess, \IteratorAggregate
 {
     private $articles;
 
@@ -29,5 +29,10 @@ class ArticleCollection implements \ArrayAccess
     public function offsetUnset($offset)
     {
         unset($this->articles[$offset]);
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->articles);
     }
 }

@@ -22,6 +22,17 @@ h4
     display: flex;
 }
 
+#return a
+{
+    color: #ffffff;
+}
+
+#return a:hover, #return a:focus, #return a:active
+{
+    text-decoration: underline;
+    color: inherit;
+}
+
 h1
 {
     font-size: 3.125rem;
@@ -38,17 +49,28 @@ h3
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Article */
+
 .blog-post-container
 {
     background-color: #ffffff;
     border-radius: 5px;
     margin-top: 5.06rem;
     margin-bottom: 2.125rem;
+    padding: 1.15rem 2.25rem 2.125rem 2.25rem;
+}
+
+.article-row
+{
+    padding-top: 1.15rem;
 }
 
 .cercle
 {
-
+    background-color: #89ac10;
+    border-radius: 50%;
+    border: 0.3rem solid #ffffff;
+    box-shadow:0 0 2px #757574;
 }
 
 .month
@@ -56,7 +78,10 @@ h3
     font-size: 1.125rem;
     font-weight: 100;
     text-align: center;
+    color: #ffffff;
+    margin-bottom: 0;
     font-family: 'Montserrat', sans-serif;
+    padding-top: 0.4rem;
 }
 
 .day
@@ -64,16 +89,19 @@ h3
     font-size: 3.75rem;
     font-weight: 400;
     text-align: center;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0;
     font-family: 'Montserrat', sans-serif;
 }
 
 .date-separator
 {
     width: 4.25rem;
-    height: 0.0625rem;
-    margin-top: 1.125rem;
-    margin-bottom: 1.125rem;
-    color: #ffffff;
+    height: 0.03rem;
+    background-color: #ffffff;
+    margin-top: 0.61rem;
+    margin-bottom: 0.61rem;
 }
 
 .year
@@ -81,20 +109,30 @@ h3
     font-size: 1rem;
     font-weight: 100;
     text-align: center;
+    color: #ffffff;
+    margin-bottom: 0;
     font-family: 'Montserrat', sans-serif;
+    padding-bottom: 0.4rem;
 }
 
-h2
+h2 a
 {
-    color: #030303;
+    color: #373736;
     font-size: 2.25rem;
     font-weight: 700;
     font-family: 'Amatic SC', cursive;
+    text-decoration: none;
+}
+
+h2 a:hover, h2 a:focus, h2 a:active
+{
+    text-decoration: underline;
+    color: inherit;
 }
 
 .overview
 {
-    color: #030303;
+    color: #373736;
     font-size: 1.125rem;
     font-weight: 100;
     text-align: justify;
@@ -105,7 +143,10 @@ h2
 {
     width: 37.5rem;
     height: 0.0625rem;
-    margin-top: 1.375rem;
-    margin-bottom: 1.375rem;
-    color: #89ac10;
+    background-color: #89ac10;
+}
+
+.blog-post-container .article-separator:last-child
+{
+    display: none;
 }
