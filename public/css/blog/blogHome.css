@@ -1,0 +1,166 @@
+body
+{
+    background-color: #373736;
+}
+
+h1, h3, h4
+{
+    color: #ffffff;
+}
+
+h4
+{
+    font-size: 1.25rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+#return
+{
+    display: flex;
+}
+
+#return a
+{
+    color: #ffffff;
+}
+
+#return a:hover, #return a:focus, #return a:active
+{
+    text-decoration: underline;
+    color: inherit;
+}
+
+h1
+{
+    font-size: 3.125rem;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    padding-top: 4rem;
+}
+
+h3
+{
+    font-size: 1.5rem;
+    font-weight: 100;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Article */
+
+.blog-post-container
+{
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-top: 5.06rem;
+    margin-bottom: 2.125rem;
+    padding: 1.15rem 2.25rem 2.125rem 2.25rem;
+}
+
+.article-row
+{
+    padding-top: 1.15rem;
+}
+
+.cercle
+{
+    background-color: #89ac10;
+    border-radius: 50%;
+    border: 0.3rem solid #ffffff;
+    box-shadow:0 0 2px #757574;
+}
+
+.month
+{
+    font-size: 1.125rem;
+    font-weight: 100;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 0.4rem;
+}
+
+.day
+{
+    font-size: 3.75rem;
+    font-weight: 400;
+    text-align: center;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.date-separator
+{
+    width: 4.25rem;
+    height: 0.03rem;
+    background-color: #ffffff;
+    margin-top: 0.61rem;
+    margin-bottom: 0.61rem;
+}
+
+.year
+{
+    font-size: 1rem;
+    font-weight: 100;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 0.4rem;
+}
+
+h2 a
+{
+    color: #373736;
+    font-size: 2.25rem;
+    font-weight: 700;
+    font-family: 'Amatic SC', cursive;
+    text-decoration: none;
+}
+
+h2 a:hover, h2 a:focus, h2 a:active
+{
+    text-decoration: underline;
+    color: inherit;
+}
+
+.overview
+{
+    color: #373736;
+    font-size: 1.125rem;
+    font-weight: 100;
+    text-align: justify;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.link-article a
+{
+    color: #89ac10;
+    text-decoration: none;
+}
+
+.link-article a:hover, .link-article a:focus, .link-article a:active
+{
+    text-decoration: underline;
+    color: inherit;
+}
+
+.article-separator
+{
+    /* width: 37.5rem; */
+    width: 40vw;
+    height: 0.0625rem;
+    background-color: #89ac10;
+}
+
+.blog-post-container .article-separator:last-child
+{
+    display: none;
+}

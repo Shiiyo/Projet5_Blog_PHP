@@ -4,7 +4,7 @@ namespace Entity;
 
 use Entity\Interfaces as Interfaces;
 
-class BlogPost implements Interfaces\BlogPostInterface
+class Article implements Interfaces\ArticleInterface
 {
     private $id;
     private $idAdmin;
@@ -13,6 +13,7 @@ class BlogPost implements Interfaces\BlogPostInterface
     private $content;
     private $addDate;
     private $updateDate;
+
 
     //GETTERS
 
@@ -67,12 +68,19 @@ class BlogPost implements Interfaces\BlogPostInterface
     /**
      * @return string
      */
-    public function getUpdatDate(): string
+    public function getUpdateDate(): string
     {
         return $this->updateDate;
     }
 
     //SETTERS
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
 
     /**
      * @param int $idAdmin

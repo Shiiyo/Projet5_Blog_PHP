@@ -2,7 +2,7 @@
 
 namespace Entity\Interfaces;
 
-interface BlogPostInterface
+interface ArticleInterface
 {
     //GETTERS
     /**
@@ -38,7 +38,7 @@ interface BlogPostInterface
     /**
      * @return mixed
      */
-    public function getUpdatDate();
+    public function getUpdateDate();
 
     //SETTERS
 

@@ -2,17 +2,17 @@
 
 namespace Controller;
 
-echo "List Blog Post Controller";
-
 class ListBlogPostController implements ControllerInterface
 {
     use ControllerTrait;
 
-    /**
-     * Implement the right view
-     */
     public function __invoke()
     {
-        // TODO: Implement index() method.
+        $articleLoader = $this->container->getArticleLoader($this->container);
+        $articleCollection = $articleLoader->getArticleCollection();
+
+        $view = $this->getTwig()->render('blog/blogHome.html.twig', ['articleCollection' => $articleCollection]);
+        $response = $this->getContainer()->newHttpResponseHtml($view);
+        $response->send();
     }
 }

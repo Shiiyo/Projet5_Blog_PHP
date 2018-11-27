@@ -11,7 +11,9 @@ if (isset($configXML)) {
 }
 
 $loader = $container->newTwigLoaderFilesystem($container->getParam('Twig/path'));
-$container->newTwigEnvironment($loader, []);
+$twig = $container->newTwigEnvironment($loader, [
+    'debug' => true,
+]);
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
