@@ -1,6 +1,6 @@
 homepage,#^/accueil$#,Homepage,
 list_blog_post,#^/liste-blog-post$#,ListBlogPost,
-blog_post,#^/blog-post/\d+$#,Blog,
+blog_post,#^/blog-post/\d+$#,BlogPost,
 legalNotice,#^/mentions-legales$#,LegalNotice,
 postContactForm,#^/post-contact-form$#,ContactForm,
 admin_homepage,#^/admin/accueil$#,AdminHome,

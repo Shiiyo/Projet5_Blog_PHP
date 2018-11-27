@@ -38,4 +38,15 @@ class ArticleLoader implements ArticleLoaderInterface
         $articlesCollection = $this->container->newArticleCollection($articlesObject);
         return $articlesCollection;
     }
+
+    public function findOneById($id)
+    {
+        $articleArray = $this->articleStorage->fetchSingleArticle($id);
+        if ($this->articleHydrator === null) {
+            $this->articleHydrator = $this->container->newArticleHydrator();
+        }
+        $article = $this->container->newArticle();
+        $this->articleHydrator->hydrate($articleArray[0], $article);
+        return $article;
+    }
 }

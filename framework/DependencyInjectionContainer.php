@@ -8,6 +8,7 @@ use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleHydrator;
 use services\ArticlesManagement\ArticleLoader;
 use services\ArticlesManagement\PDOArticleStorage;
+use services\IdArticleFromURI;
 use services\SendEmail;
 use services\TestRecaptcha;
 use services\ValidationForm;
@@ -136,6 +137,11 @@ class DependencyInjectionContainer
     public function newArticleHydrator()
     {
         return new ArticleHydrator();
+    }
+
+    public function newIdArticleFromURI()
+    {
+        return new IdArticleFromURI();
     }
 
     /**
