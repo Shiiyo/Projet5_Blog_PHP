@@ -7,6 +7,7 @@ use Entity\Interfaces as Interfaces;
 class Comment implements Interfaces\CommentInterface
 {
     private $id;
+    private $idArticle;
     private $pseudo;
     private $message;
     private $email;
@@ -21,6 +22,14 @@ class Comment implements Interfaces\CommentInterface
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdArticle()
+    {
+        return $this->idArticle;
     }
 
     /**
@@ -65,6 +74,22 @@ class Comment implements Interfaces\CommentInterface
 
 
     //SETTERS
+
+    /**
+     * @param int $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param int $idArticle
+     */
+    public function setIdArticle($idArticle): void
+    {
+        $this->idArticle = $idArticle;
+    }
 
     /**
      * @param string $pseudo

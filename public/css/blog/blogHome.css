@@ -66,56 +66,6 @@ h3
     padding-top: 1.15rem;
 }
 
-.cercle
-{
-    background-color: #89ac10;
-    border-radius: 50%;
-    border: 0.3rem solid #ffffff;
-    box-shadow:0 0 2px #757574;
-}
-
-.month
-{
-    font-size: 1.125rem;
-    font-weight: 100;
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 0;
-    font-family: 'Montserrat', sans-serif;
-    padding-top: 0.4rem;
-}
-
-.day
-{
-    font-size: 3.75rem;
-    font-weight: 400;
-    text-align: center;
-    color: #ffffff;
-    line-height: 1;
-    margin-bottom: 0;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.date-separator
-{
-    width: 4.25rem;
-    height: 0.03rem;
-    background-color: #ffffff;
-    margin-top: 0.61rem;
-    margin-bottom: 0.61rem;
-}
-
-.year
-{
-    font-size: 1rem;
-    font-weight: 100;
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 0;
-    font-family: 'Montserrat', sans-serif;
-    padding-bottom: 0.4rem;
-}
-
 h2 a
 {
     color: #373736;
