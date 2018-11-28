@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block header %}
-    <div class="row">
+    <div class="row return-row">
         <div class="col-3 col-lg-1">
             <a href="/accueil"><img src="../img/pictos/house-64-white.png" alt="Maison picto"></a>
         </div>
@@ -15,7 +15,7 @@
             <h4><a href="/accueil">Retour à l'accueil</a></h4>
         </div>
     </div>
-    <div class="row">
+    <div class="row return-row">
         <div class="col-3 col-lg-1">
             <a href="/accueil"><img src="../img/pictos/arrow-105-64.png" alt="Flèche gauche"></a>
         </div>
@@ -33,9 +33,11 @@
 {% block body %}
     <div class="container blog-post-container">
         <div class="row article-row">
-            {% include 'blog\\dateCercle.html.twig' %}
-            <strong>Publié par:</strong>
-            <p class="author">{{ article.idAdmin}}</p>
+            <div class="col-6 offset-3 col-sm-4 offset-sm-4 col-md-3 offset-md-0 col-lg-2">
+                {% include 'blog\\dateCercle.html.twig' %}
+                <p id="publish">Publié par:</p>
+                <p id="author">{{ admin.name}} {{ admin.firstName}}</p>
+            </div>
 
             <div class="col-12 col-md-9 col-lg-10">
                 <p id="content">{{ article.content}}</p>

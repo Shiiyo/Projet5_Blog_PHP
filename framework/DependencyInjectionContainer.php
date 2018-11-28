@@ -2,8 +2,12 @@
 
 namespace framework;
 
+use Entity\Admin;
 use Entity\Article;
 use framework\Session\PHPSession;
+use services\AdminManagement\AdminHydrator;
+use services\AdminManagement\AdminLoader;
+use services\AdminManagement\PDOAdminStorage;
 use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleHydrator;
 use services\ArticlesManagement\ArticleLoader;
@@ -25,6 +29,8 @@ class DependencyInjectionContainer
     protected $pdo;
     protected $articleStorage;
     protected $articleLoader;
+    protected $adminStorage;
+    protected $adminLoader;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -144,6 +150,16 @@ class DependencyInjectionContainer
         return new IdArticleFromURI();
     }
 
+    public function newAdminHydrator()
+    {
+        return new AdminHydrator();
+    }
+
+    public function newAdmin()
+    {
+        return new Admin();
+    }
+
     /**
      * @param $num
      * @return mixed
@@ -179,6 +195,22 @@ class DependencyInjectionContainer
             $this->articleStorage = new PDOArticleStorage($this->getPDO());
         }
         return $this->articleStorage;
+    }
+
+    public function getAdminLoader($container)
+    {
+        if ($this->adminLoader === null) {
+            $this->adminLoader = new AdminLoader($this->getAdminStorage(), $container);
+        }
+        return $this->adminLoader;
+    }
+
+    public function getAdminStorage()
+    {
+        if ($this->adminStorage === null) {
+            $this->adminStorage = new PDOAdminStorage($this->getPDO());
+        }
+        return $this->adminStorage;
     }
 
     //GETTERS

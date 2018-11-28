@@ -3,7 +3,9 @@
 
 namespace services\ArticlesManagement\Interfaces;
 
+use Entity\Article;
 use framework\DependencyInjectionContainer;
+use services\ArticlesManagement\ArticleCollection;
 
 interface ArticleLoaderInterface
 {
@@ -15,7 +17,13 @@ interface ArticleLoaderInterface
     public function __construct(ArticleStorageInterface $articleStorage, DependencyInjectionContainer $container);
 
     /**
-     * @return ArticleCollectionInterface
+     * @return ArticleCollection
      */
     public function getArticleCollection();
+
+    /**
+     * @param $id
+     * @return Article
+     */
+    public function findOneById($id);
 }

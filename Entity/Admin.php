@@ -5,10 +5,10 @@ namespace Entity;
 class Admin implements Interfaces\AdminInterface
 {
     private $id;
-    private $email;
-    private $password;
     private $name;
     private $firstName;
+    private $email;
+    private $password;
 
     //GETTERS
 
@@ -55,6 +55,13 @@ class Admin implements Interfaces\AdminInterface
 
     // SETTERS
 
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
     /**
      * @param string $email
      */

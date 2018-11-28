@@ -23,6 +23,9 @@ class ArticleLoader implements ArticleLoaderInterface
         $this->container = $container;
     }
 
+    /**
+     * @return ArticleCollection
+     */
     public function getArticleCollection()
     {
         $articlesArray = $this->articleStorage->fetchAllArticle();
@@ -39,6 +42,10 @@ class ArticleLoader implements ArticleLoaderInterface
         return $articlesCollection;
     }
 
+    /**
+     * @param $id
+     * @return \Entity\Article
+     */
     public function findOneById($id)
     {
         $articleArray = $this->articleStorage->fetchSingleArticle($id);

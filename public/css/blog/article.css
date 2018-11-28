@@ -3,6 +3,11 @@ body
     background-color: #373736;
 }
 
+h1, h3, h4
+{
+    color: #ffffff;
+}
+
 h4
 {
     font-size: 1.25rem;
@@ -12,9 +17,15 @@ h4
     margin-top: auto;
 }
 
+.return-row
+{
+    padding-top: 1rem;
+}
+
 .return
 {
     display: flex;
+
 }
 
 .return a
@@ -35,5 +46,48 @@ h1
     font-weight: 400;
     text-align: center;
     font-family: 'Amatic SC', cursive;
-    padding-top: 4rem;
+    padding-top: 3rem;
+}
+
+#publish
+{
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+#author
+{
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blog-post-container
+{
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-top: 5.06rem;
+    margin-bottom: 2.125rem;
+    padding: 2.25rem 2.25rem 2.25rem 2.25rem;
+}
+
+#content
+{
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    text-indent: 5rem;
+}
+
+#content::first-letter
+{
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: 'Dancing Script', sans-serif;
 }
