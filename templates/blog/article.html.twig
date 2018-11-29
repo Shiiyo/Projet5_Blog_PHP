@@ -43,7 +43,33 @@
                 <p id="content">{{ article.content}}</p>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-6 offset-3" id="form-block">
+                <p id="formTitle">Qu'en pensez vous?</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-10">
+                <p id="numComments">{{ nbComment }} commentaires</p>
+            </div>
+
+        </div>
+
+        {% for comment in commentCollection %}
+            <div class="row justify-content-center">
+                <div class="col-10 article-box">
+                    <span class="pseudo">{{ comment.pseudo }}</span>
+                    <span class="bull"> &bull; </span>
+                    <span class="date">le {{ comment.addDate|date('d/m/Y à H\\h i\\m\\i\\n s\\s') }}</span>
+                    <br>
+                    <p class="message">{{ comment.message }}</p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
+
 {% endblock %}
 
 {% block footer %}

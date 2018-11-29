@@ -91,3 +91,58 @@ h1
     font-weight: 400;
     font-family: 'Dancing Script', sans-serif;
 }
+
+#form-block
+{
+    margin-top: 3.625rem;
+    margin-bottom: 1.56rem;
+}
+
+#formTitle
+{
+    font-size: 1.875em;
+    font-weight: 400;
+    font-family: 'Amatic SC', cursive;
+}
+
+#numComments
+{
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.article-box
+{
+    background-color: #9fba3d;
+    border-radius: 10px;
+    margin: 1.25rem;
+}
+
+.pseudo
+{
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Amatic SC', cursive;
+}
+
+.bull
+{
+    font-size: 2rem;
+    padding-left: 0.5rem;
+}
+
+.date
+{
+    font-size: 1rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.message
+{
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    text-indent: 2rem;
+}

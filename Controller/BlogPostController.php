@@ -17,7 +17,15 @@ class BlogPostController implements ControllerInterface
         $adminLoader = $this->container->getAdminLoader($this->container);
         $admin = $adminLoader->findOneById($article->getIdAdmin());
 
-        $view = $this->getTwig()->render('blog/article.html.twig', ['article' => $article, 'admin' => $admin]);
+        $commentLoader = $this->container->getCommentLoader($this->container);
+        $commentCollection = $commentLoader->getCommentCollectionForOneArticle($article->getId());
+
+        $nbComment = $commentLoader->getNbCommentForOneArticle($article->getId());
+
+        $view = $this->getTwig()->render('blog/article.html.twig', ['article' => $article,
+                                                                            'admin' => $admin,
+                                                                            'commentCollection' => $commentCollection,
+                                                                            'nbComment' => $nbComment]);
         $response = $this->getContainer()->newHttpResponseHtml($view);
         $response->send();
     }
