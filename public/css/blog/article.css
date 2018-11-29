@@ -1,0 +1,148 @@
+body
+{
+    background-color: #373736;
+}
+
+h1, h3, h4
+{
+    color: #ffffff;
+}
+
+h4
+{
+    font-size: 1.25rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.return-row
+{
+    padding-top: 1rem;
+}
+
+.return
+{
+    display: flex;
+
+}
+
+.return a
+{
+    color: #ffffff;
+}
+
+.return a:hover, .return a:focus, .return a:active
+{
+    text-decoration: underline;
+    color: inherit;
+}
+
+h1
+{
+    color: #ffffff;
+    font-size: 3.125rem;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    padding-top: 3rem;
+}
+
+#publish
+{
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+#author
+{
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blog-post-container
+{
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-top: 5.06rem;
+    margin-bottom: 2.125rem;
+    padding: 2.25rem 2.25rem 2.25rem 2.25rem;
+}
+
+#content
+{
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    text-indent: 5rem;
+}
+
+#content::first-letter
+{
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: 'Dancing Script', sans-serif;
+}
+
+#form-block
+{
+    margin-top: 3.625rem;
+    margin-bottom: 1.56rem;
+}
+
+#formTitle
+{
+    font-size: 1.875em;
+    font-weight: 400;
+    font-family: 'Amatic SC', cursive;
+}
+
+#numComments
+{
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.article-box
+{
+    background-color: #9fba3d;
+    border-radius: 10px;
+    margin: 1.25rem;
+}
+
+.pseudo
+{
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Amatic SC', cursive;
+}
+
+.bull
+{
+    font-size: 2rem;
+    padding-left: 0.5rem;
+}
+
+.date
+{
+    font-size: 1rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.message
+{
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    text-indent: 2rem;
+}

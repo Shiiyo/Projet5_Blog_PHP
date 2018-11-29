@@ -2,12 +2,22 @@
 
 namespace framework;
 
+use Entity\Admin;
 use Entity\Article;
+use Entity\Comment;
 use framework\Session\PHPSession;
+use services\AdminManagement\AdminHydrator;
+use services\AdminManagement\AdminLoader;
+use services\AdminManagement\PDOAdminStorage;
 use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleHydrator;
 use services\ArticlesManagement\ArticleLoader;
 use services\ArticlesManagement\PDOArticleStorage;
+use services\CommentManagement\CommentCollection;
+use services\CommentManagement\CommentHydrator;
+use services\CommentManagement\CommentLoader;
+use services\CommentManagement\PDOCommentStorage;
+use services\IdArticleFromURI;
 use services\SendEmail;
 use services\TestRecaptcha;
 use services\ValidationForm;
@@ -24,6 +34,10 @@ class DependencyInjectionContainer
     protected $pdo;
     protected $articleStorage;
     protected $articleLoader;
+    protected $adminStorage;
+    protected $adminLoader;
+    protected $commentStorage;
+    protected $commentLoader;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -138,6 +152,36 @@ class DependencyInjectionContainer
         return new ArticleHydrator();
     }
 
+    public function newIdArticleFromURI()
+    {
+        return new IdArticleFromURI();
+    }
+
+    public function newAdminHydrator()
+    {
+        return new AdminHydrator();
+    }
+
+    public function newAdmin()
+    {
+        return new Admin();
+    }
+
+    public function newCommentHydrator()
+    {
+        return new CommentHydrator();
+    }
+
+    public function newComment()
+    {
+        return new Comment();
+    }
+
+    public function newCommentCollection($commentsArray)
+    {
+        return new CommentCollection($commentsArray);
+    }
+
     /**
      * @param $num
      * @return mixed
@@ -173,6 +217,38 @@ class DependencyInjectionContainer
             $this->articleStorage = new PDOArticleStorage($this->getPDO());
         }
         return $this->articleStorage;
+    }
+
+    public function getAdminLoader($container)
+    {
+        if ($this->adminLoader === null) {
+            $this->adminLoader = new AdminLoader($this->getAdminStorage(), $container);
+        }
+        return $this->adminLoader;
+    }
+
+    public function getAdminStorage()
+    {
+        if ($this->adminStorage === null) {
+            $this->adminStorage = new PDOAdminStorage($this->getPDO());
+        }
+        return $this->adminStorage;
+    }
+
+    public function getCommentLoader($container)
+    {
+        if ($this->commentLoader === null) {
+            $this->commentLoader = new CommentLoader($this->getCommentStorage(), $container);
+        }
+        return $this->commentLoader;
+    }
+
+    public function getCommentStorage()
+    {
+        if ($this->commentStorage === null) {
+            $this->commentStorage = new PDOCommentStorage($this->getPDO());
+        }
+        return $this->commentStorage;
     }
 
     //GETTERS

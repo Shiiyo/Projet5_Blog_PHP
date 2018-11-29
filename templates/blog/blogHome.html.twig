@@ -3,6 +3,7 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="css/blog/blogHome.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/blog/cercleDate.css">
 {% endblock %}
 
 {% block header %}
@@ -11,7 +12,7 @@
             <a href="/accueil"><img src="img/pictos/house-64-white.png" alt="Maison picto"></a>
         </div>
         <div class="col-9 col-lg-3" id="return">
-            <h4><a href="/accueil">Retour à l'Accueil</a></h4>
+            <h4><a href="/accueil">Retour à l'accueil</a></h4>
         </div>
     </div>
     <div class="row">
@@ -27,14 +28,8 @@
         {% for article in articleCollection %}
             <div class="row article-row">
                 <div class="col-6 offset-3 col-sm-4 offset-sm-4 col-md-3 offset-md-0 col-lg-2">
-                    <div class="cercle">
-                        <p class="month">{{ article.updateDate|date('M') }}</p>
-                        <p class="day">{{ article.updateDate|date('d') }}</p>
-                        <hr class="date-separator">
-                        <p class="year">{{ article.updateDate|date('Y') }}</p>
-                    </div>
+                    {% include 'blog\\dateCercle.html.twig' %}
                 </div>
-
                 <div class="col-12 col-md-9 col-lg-10">
                     <h2><a href={{"/blog-post/" ~ article.id }}>{{ article.title }}</a></h2>
                     <p class="overview">{{ article.resume }}</p>

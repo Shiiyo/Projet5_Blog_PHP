@@ -23,6 +23,9 @@ class ArticleLoader implements ArticleLoaderInterface
         $this->container = $container;
     }
 
+    /**
+     * @return ArticleCollection
+     */
     public function getArticleCollection()
     {
         $articlesArray = $this->articleStorage->fetchAllArticle();
@@ -37,5 +40,20 @@ class ArticleLoader implements ArticleLoaderInterface
         }
         $articlesCollection = $this->container->newArticleCollection($articlesObject);
         return $articlesCollection;
+    }
+
+    /**
+     * @param $id
+     * @return \Entity\Article
+     */
+    public function findOneById($id)
+    {
+        $articleArray = $this->articleStorage->fetchSingleArticle($id);
+        if ($this->articleHydrator === null) {
+            $this->articleHydrator = $this->container->newArticleHydrator();
+        }
+        $article = $this->container->newArticle();
+        $this->articleHydrator->hydrate($articleArray[0], $article);
+        return $article;
     }
 }
