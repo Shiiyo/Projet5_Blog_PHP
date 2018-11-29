@@ -105,6 +105,33 @@ h1
     font-family: 'Amatic SC', cursive;
 }
 
+label
+{
+    font-size: 1.125rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#nom, #email, #message
+{
+    width: 100%;
+}
+
+#submit
+{
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Amatic SC', cursive;
+    background-color: #89ac10;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+#subP
+{
+    text-align: center;
+}
+
 #numComments
 {
     font-size: 1.2rem;

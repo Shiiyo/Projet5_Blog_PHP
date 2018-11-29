@@ -47,6 +47,29 @@
         <div class="row">
             <div class="col-6 offset-3" id="form-block">
                 <p id="formTitle">Qu'en pensez vous?</p>
+                <form action="/post-comment" method="post">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="nom">Nom</label>
+                            <input type="text" name="nom" id="nom" required/>
+                        </div>
+                        <div class="col-6">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" required/><br>
+                        </div>
+                        <div class="col-12">
+                            <label for="message">Message</label><br>
+                            <textarea name="message" id="message" cols="50" rows="4" required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <p id="subP"><input type="submit" value="Valider" id="submit"/></p>
+                        </div>
+                    </div>
+
+
+
+
+                </form>
             </div>
         </div>
 
