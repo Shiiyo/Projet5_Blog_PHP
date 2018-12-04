@@ -2,15 +2,15 @@
 
 namespace services;
 
-use services\Interfaces\IdArticleFromURIInterface;
+use services\Interfaces\ArticleFromURIInterface;
 
-class IdArticleFromURI implements IdArticleFromURIInterface
+class ArticleFromURI implements ArticleFromURIInterface
 {
     /**
      * @param $uri
      * @return string
      */
-    public function getIdArticleFromURI()
+    public function getArticleFromURI()
     {
         $uri = $_SERVER['REQUEST_URI'];
         $arrayUri = explode('/', $uri);

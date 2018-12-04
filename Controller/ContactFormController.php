@@ -29,7 +29,7 @@ class ContactFormController implements ControllerInterface
         $violationEmail = $validationForm->validateEmail($request->request->get('email'));
         $violationMessage = $validationForm->validateMessage($request->request->get('message'));
 
-        $violations = array($violationName, $violationFirstName, $violationEmail, $violationMessage);
+        $violations = [$violationName, $violationFirstName, $violationEmail, $violationMessage];
 
         //Get the error messages
         $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);

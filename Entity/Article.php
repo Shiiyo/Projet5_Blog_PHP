@@ -9,6 +9,7 @@ class Article implements Interfaces\ArticleInterface
     private $id;
     private $idAdmin;
     private $title;
+    private $slug;
     private $resume;
     private $content;
     private $addDate;
@@ -39,6 +40,15 @@ class Article implements Interfaces\ArticleInterface
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
@@ -96,6 +106,14 @@ class Article implements Interfaces\ArticleInterface
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
     }
 
     /**

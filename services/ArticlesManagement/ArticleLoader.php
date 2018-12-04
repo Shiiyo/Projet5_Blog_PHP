@@ -46,9 +46,9 @@ class ArticleLoader implements ArticleLoaderInterface
      * @param $id
      * @return \Entity\Article
      */
-    public function findOneById($id)
+    public function findOneBySlug($slug)
     {
-        $articleArray = $this->articleStorage->fetchSingleArticle($id);
+        $articleArray = $this->articleStorage->fetchSingleArticle($slug);
         if ($this->articleHydrator === null) {
             $this->articleHydrator = $this->container->newArticleHydrator();
         }

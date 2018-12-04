@@ -15,6 +15,7 @@ class ArticleHydrator
         $articleEntity->setId($articlesArray['id']);
         $articleEntity->setIdAdmin($articlesArray['id_admin']);
         $articleEntity->setTitle($articlesArray['title']);
+        $articleEntity->setSlug($articlesArray['slug']);
         $articleEntity->setResume($articlesArray['resume']);
         $articleEntity->setContent($articlesArray['content']);
         $articleEntity->setAddDate($articlesArray['add_date']);

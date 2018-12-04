@@ -26,12 +26,12 @@ class PDOArticleStorage implements ArticleStorageInterface
         }
     }
 
-    public function fetchSingleArticle($id)
+    public function fetchSingleArticle($slug)
     {
         $pdo = $this->pdo;
         try {
-            $req = $pdo->prepare('SELECT * FROM blog_post WHERE id = :id');
-            $req->execute(array('id' => $id));
+            $req = $pdo->prepare('SELECT * FROM blog_post WHERE slug = :slug');
+            $req->execute(array('slug' => $slug));
             $articleArray = $req->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             trigger_error($e->getMessage());

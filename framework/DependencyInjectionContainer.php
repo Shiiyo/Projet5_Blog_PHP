@@ -17,7 +17,7 @@ use services\CommentManagement\CommentCollection;
 use services\CommentManagement\CommentHydrator;
 use services\CommentManagement\CommentLoader;
 use services\CommentManagement\PDOCommentStorage;
-use services\IdArticleFromURI;
+use services\ArticleFromURI;
 use services\SendEmail;
 use services\TestRecaptcha;
 use services\ValidationForm;
@@ -152,9 +152,9 @@ class DependencyInjectionContainer
         return new ArticleHydrator();
     }
 
-    public function newIdArticleFromURI()
+    public function newArticleFromURI()
     {
-        return new IdArticleFromURI();
+        return new ArticleFromURI();
     }
 
     public function newAdminHydrator()

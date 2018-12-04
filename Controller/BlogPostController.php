@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use services\IdArticleFromURI;
+use services\ArticleFromURI;
 
 class BlogPostController implements ControllerInterface
 {
@@ -10,9 +10,9 @@ class BlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $idArticle = $this->container->newIdArticleFromURI()->getIdArticleFromURI();
+        $slugArticle = $this->container->newArticleFromURI()->getArticleFromURI();
         $articleLoader = $this->container->getArticleLoader($this->container);
-        $article = $articleLoader->findOneById($idArticle);
+        $article = $articleLoader->findOneBySlug($slugArticle);
 
         $adminLoader = $this->container->getAdminLoader($this->container);
         $admin = $adminLoader->findOneById($article->getIdAdmin());
