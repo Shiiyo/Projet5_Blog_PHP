@@ -444,10 +444,10 @@ form #submit.ready
     background-color: #89ac10;
 }
 
-.contact #validation-form
+
+#validation-form, #error-form
 {
     width: 21rem;
-    height: 15rem;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -455,32 +455,22 @@ form #submit.ready
     border-radius: 10px;
     text-align: center;
     opacity: .9;
-    background-color: #89ac10;
     padding: 2.9375rem 1rem 2.9375rem 1rem;
     display: none;
+    color: #ffffff;
 }
 
-.contact #validation-form img
+#error-form
 {
-    margin-bottom: 1rem;
-}
-
-.contact #error-form
-{
-    width: 21rem;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform:translate(-50%, -50%);
-    border-radius: 10px;
-    text-align: center;
-    opacity: .9;
     background-color: #d93730;
-    padding: 2.9375rem 1rem 2.9375rem 1rem;
-    display: none;
 }
 
-.contact #error-form img
+#validation-form
+{
+    background-color: #89ac10;
+}
+
+#error-form img, #validation-form img
 {
     margin-bottom: 1rem;
 }

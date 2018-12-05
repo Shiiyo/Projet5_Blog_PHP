@@ -28,5 +28,11 @@ class BlogPostController implements ControllerInterface
                                                                             'nbComment' => $nbComment]);
         $response = $this->getContainer()->newHttpResponseHtml($view);
         $response->send();
+
+        if ($this->session->get('success')!= null) {
+            $this->session->delete('success');
+        } elseif ($this->session->get('error')!= null) {
+            $this->session->delete('error');
+        }
     }
 }
