@@ -1,12 +1,8 @@
 <?php
 
-
 namespace Controller;
 
-use services\ValidationForm;
-use Symfony\Component\Validator\Validation;
-
-class ContactFormController implements ControllerInterface
+class CommentFormController implements ControllerInterface
 {
     use ControllerTrait;
 
@@ -21,34 +17,25 @@ class ContactFormController implements ControllerInterface
 
         //Testing form fields
         $validator = $this->getContainer()->newValidator();
-
         $validationForm = $this->getContainer()->newValidationForm($validator);
 
         $violationName = $validationForm->validateName($request->request->get('nom'));
-        $violationFirstName = $validationForm->validateName($request->request->get('prenom'));
         $violationEmail = $validationForm->validateEmail($request->request->get('email'));
         $violationMessage = $validationForm->validateMessage($request->request->get('message'));
-
-        $violations = [$violationName, $violationFirstName, $violationEmail, $violationMessage];
+        $violations = array($violationName, $violationEmail, $violationMessage);
 
         //Get the error messages
         $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
         $error_msg = $violationMessages->violationMessages();
 
-        //Sending Email
         if ($error_msg == "") {
-            $sendEmail = $this->getContainer()->newSendMail($this->getContainer());
-            $resultSendEmail = $sendEmail($request->request->get('nom'), $request->request->get('prenom'), $request->request->get('email'), $request->request->get('message'));
-
-            if ($resultSendEmail == true) {
-                $this->session->set('success', "Merci pour votre message.<br>Je vous répondrais dans les meilleurs délais.");
-                $this->redirect('/accueil#contact');
-            }
-            $this->session->set('error', $error_msg);
-            $this->redirect('/accueil#contact');
+            $commentWriter = $this->container->getCommentWriter($this->container);
+            $commentWriter->write($request);
+            echo "Bravo c'est bien enregistré ! ";
         } else {
             $this->session->set('error', $error_msg);
-            $this->redirect('/accueil#contact');
+            var_dump($error_msg);
+            //$this->redirect('/liste-blog-post');
         }
     }
 }

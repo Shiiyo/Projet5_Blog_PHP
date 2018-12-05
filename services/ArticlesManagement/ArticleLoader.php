@@ -10,7 +10,7 @@ class ArticleLoader implements ArticleLoaderInterface
 {
     private $articleStorage;
     private $container;
-    private $articleHydrator;
+    private $articleBuilder;
 
     /**
      * ArticleLoader constructor.
@@ -30,12 +30,11 @@ class ArticleLoader implements ArticleLoaderInterface
     {
         $articlesArray = $this->articleStorage->fetchAllArticle();
         $articlesObject = [];
-        if ($this->articleHydrator === null) {
-            $this->articleHydrator = $this->container->newArticleHydrator();
+        if ($this->articleBuilder === null) {
+            $this->articleBuilder = $this->container->newArticleBuilder();
         }
         foreach ($articlesArray as $articleData) {
-            $article = $this->container->newArticle();
-            $this->articleHydrator->hydrate($articleData, $article);
+            $article = $this->articleBuilder->build($articleData);
             $articlesObject[] =$article;
         }
         $articlesCollection = $this->container->newArticleCollection($articlesObject);
@@ -46,14 +45,13 @@ class ArticleLoader implements ArticleLoaderInterface
      * @param $id
      * @return \Entity\Article
      */
-    public function findOneById($id)
+    public function findOneBySlug($slug)
     {
-        $articleArray = $this->articleStorage->fetchSingleArticle($id);
-        if ($this->articleHydrator === null) {
-            $this->articleHydrator = $this->container->newArticleHydrator();
+        $articleArray = $this->articleStorage->fetchSingleArticle($slug);
+        if ($this->articleBuilder === null) {
+            $this->articleBuilder = $this->container->newArticleBuilder();
         }
-        $article = $this->container->newArticle();
-        $this->articleHydrator->hydrate($articleArray[0], $article);
+        $article = $this->articleBuilder->build($articleArray[0]);
         return $article;
     }
 }

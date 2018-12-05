@@ -13,11 +13,15 @@ use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleHydrator;
 use services\ArticlesManagement\ArticleLoader;
 use services\ArticlesManagement\PDOArticleStorage;
+use services\Builders\AdminBuilder;
+use services\Builders\ArticleBuilder;
+use services\Builders\CommentBuilder;
 use services\CommentManagement\CommentCollection;
 use services\CommentManagement\CommentHydrator;
 use services\CommentManagement\CommentLoader;
+use services\CommentManagement\CommentWriter;
 use services\CommentManagement\PDOCommentStorage;
-use services\IdArticleFromURI;
+use services\ArticleFromURI;
 use services\SendEmail;
 use services\TestRecaptcha;
 use services\ValidationForm;
@@ -38,6 +42,7 @@ class DependencyInjectionContainer
     protected $adminLoader;
     protected $commentStorage;
     protected $commentLoader;
+    protected $commentWriter;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -137,49 +142,34 @@ class DependencyInjectionContainer
         return new PHPSession();
     }
 
-    public function newArticle()
-    {
-        return new Article();
-    }
-
     public function newArticleCollection($articlesArray)
     {
         return new ArticleCollection($articlesArray);
     }
 
-    public function newArticleHydrator()
+    public function newArticleFromURI()
     {
-        return new ArticleHydrator();
-    }
-
-    public function newIdArticleFromURI()
-    {
-        return new IdArticleFromURI();
-    }
-
-    public function newAdminHydrator()
-    {
-        return new AdminHydrator();
-    }
-
-    public function newAdmin()
-    {
-        return new Admin();
-    }
-
-    public function newCommentHydrator()
-    {
-        return new CommentHydrator();
-    }
-
-    public function newComment()
-    {
-        return new Comment();
+        return new ArticleFromURI();
     }
 
     public function newCommentCollection($commentsArray)
     {
         return new CommentCollection($commentsArray);
+    }
+
+    public function newAdminBuilder()
+    {
+        return new AdminBuilder();
+    }
+
+    public function newArticleBuilder()
+    {
+        return new ArticleBuilder();
+    }
+
+    public function newCommentBuilder()
+    {
+        return new CommentBuilder();
     }
 
     /**
@@ -249,6 +239,14 @@ class DependencyInjectionContainer
             $this->commentStorage = new PDOCommentStorage($this->getPDO());
         }
         return $this->commentStorage;
+    }
+
+    public function getCommentWriter($container)
+    {
+        if ($this->commentWriter === null) {
+            $this->commentWriter = new CommentWriter($this->getCommentStorage(), $container);
+        }
+        return $this->commentWriter;
     }
 
     //GETTERS

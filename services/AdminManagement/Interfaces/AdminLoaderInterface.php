@@ -18,5 +18,5 @@ interface AdminLoaderInterface
      * @param int $id
      * @return mixed
      */
-    public function findOneById($id);
+    public function findOneById($article);
 }

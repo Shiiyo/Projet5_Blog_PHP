@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="../css/blog/article.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/blog/cercleDate.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
 
 {% block header %}
@@ -47,6 +48,34 @@
         <div class="row">
             <div class="col-6 offset-3" id="form-block">
                 <p id="formTitle">Qu'en pensez vous?</p>
+                <form action="/post-comment" method="post">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="nom">Nom</label>
+                            <input type="text" name="nom" id="nom" required/>
+                        </div>
+                        <div class="col-6">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" required/><br>
+                        </div>
+                        <div class="col-12">
+                            <label for="message">Message</label><br>
+                            <textarea name="message" id="message" cols="50" rows="4" required></textarea>
+                        </div>
+                        <div class="col-12 text-center">
+                            <div class="g-recaptcha" data-sitekey="6LeJCnQUAAAAAOlqRpKqFm-4oo8i71Luuo0j_S_F"></div>
+                        </div>
+                        <!-- Id Article en masqué -->
+                        <input type="hidden" name="id_blog_post" id="id_blog_post" value="{{ article.id }}">
+                        <div class="col-12">
+                            <p id="subP"><input type="submit" value="Valider" id="submit"/></p>
+                        </div>
+                    </div>
+
+
+
+
+                </form>
             </div>
         </div>
 

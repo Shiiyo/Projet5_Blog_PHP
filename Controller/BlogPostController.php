@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use services\IdArticleFromURI;
+use services\ArticleFromURI;
 
 class BlogPostController implements ControllerInterface
 {
@@ -10,17 +10,17 @@ class BlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $idArticle = $this->container->newIdArticleFromURI()->getIdArticleFromURI();
+        $slugArticle = $this->container->newArticleFromURI()->getArticleFromURI();
         $articleLoader = $this->container->getArticleLoader($this->container);
-        $article = $articleLoader->findOneById($idArticle);
+        $article = $articleLoader->findOneBySlug($slugArticle);
 
         $adminLoader = $this->container->getAdminLoader($this->container);
-        $admin = $adminLoader->findOneById($article->getIdAdmin());
+        $admin = $adminLoader->findOneById($article);
 
         $commentLoader = $this->container->getCommentLoader($this->container);
-        $commentCollection = $commentLoader->getCommentCollectionForOneArticle($article->getId());
+        $commentCollection = $commentLoader->getCommentCollectionForOneArticle($article);
 
-        $nbComment = $commentLoader->getNbCommentForOneArticle($article->getId());
+        $nbComment = $commentLoader->getNbCommentForOneArticle($article);
 
         $view = $this->getTwig()->render('blog/article.html.twig', ['article' => $article,
                                                                             'admin' => $admin,

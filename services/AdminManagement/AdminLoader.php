@@ -10,7 +10,7 @@ class AdminLoader
 {
     private $adminStorage;
     private $container;
-    private $adminHydrator;
+    private $adminBuilder;
 
     /**
      * ArticleLoader constructor.
@@ -26,14 +26,13 @@ class AdminLoader
     /**
      * @param int $id
      */
-    public function findOneById($id)
+    public function findOneById($article)
     {
-        $adminArray = $this->adminStorage->fetchSingleAdmin($id);
-        if ($this->adminHydrator === null) {
-            $this->adminHydrator = $this->container->newAdminHydrator();
+        $adminArray = $this->adminStorage->fetchSingleAdmin($article);
+        if ($this->adminBuilder === null) {
+            $this->adminBuilder = $this->container->newAdminBuilder();
         }
-        $admin = $this->container->newAdmin();
-        $this->adminHydrator->hydrate($adminArray[0], $admin);
+        $admin = $this->adminBuilder->build($adminArray[0]);
         return $admin;
     }
 }
