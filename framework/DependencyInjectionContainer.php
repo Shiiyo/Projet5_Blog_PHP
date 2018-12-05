@@ -13,6 +13,9 @@ use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleHydrator;
 use services\ArticlesManagement\ArticleLoader;
 use services\ArticlesManagement\PDOArticleStorage;
+use services\Builders\AdminBuilder;
+use services\Builders\ArticleBuilder;
+use services\Builders\CommentBuilder;
 use services\CommentManagement\CommentCollection;
 use services\CommentManagement\CommentHydrator;
 use services\CommentManagement\CommentLoader;
@@ -137,19 +140,9 @@ class DependencyInjectionContainer
         return new PHPSession();
     }
 
-    public function newArticle()
-    {
-        return new Article();
-    }
-
     public function newArticleCollection($articlesArray)
     {
         return new ArticleCollection($articlesArray);
-    }
-
-    public function newArticleHydrator()
-    {
-        return new ArticleHydrator();
     }
 
     public function newArticleFromURI()
@@ -157,29 +150,24 @@ class DependencyInjectionContainer
         return new ArticleFromURI();
     }
 
-    public function newAdminHydrator()
-    {
-        return new AdminHydrator();
-    }
-
-    public function newAdmin()
-    {
-        return new Admin();
-    }
-
-    public function newCommentHydrator()
-    {
-        return new CommentHydrator();
-    }
-
-    public function newComment()
-    {
-        return new Comment();
-    }
-
     public function newCommentCollection($commentsArray)
     {
         return new CommentCollection($commentsArray);
+    }
+
+    public function newAdminBuilder()
+    {
+        return new AdminBuilder();
+    }
+
+    public function newArticleBuilder()
+    {
+        return new ArticleBuilder();
+    }
+
+    public function newCommentBuilder()
+    {
+        return new CommentBuilder();
     }
 
     /**

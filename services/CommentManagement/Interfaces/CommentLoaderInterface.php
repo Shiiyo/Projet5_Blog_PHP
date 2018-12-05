@@ -17,5 +17,5 @@ interface CommentLoaderInterface
     /**
      * @return CommentCollection
      */
-    public function getCommentCollectionForOneArticle($idArticle);
+    public function getCommentCollectionForOneArticle($article);
 }

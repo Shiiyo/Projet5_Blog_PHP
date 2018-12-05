@@ -15,12 +15,12 @@ class BlogPostController implements ControllerInterface
         $article = $articleLoader->findOneBySlug($slugArticle);
 
         $adminLoader = $this->container->getAdminLoader($this->container);
-        $admin = $adminLoader->findOneById($article->getIdAdmin());
+        $admin = $adminLoader->findOneById($article);
 
         $commentLoader = $this->container->getCommentLoader($this->container);
-        $commentCollection = $commentLoader->getCommentCollectionForOneArticle($article->getId());
+        $commentCollection = $commentLoader->getCommentCollectionForOneArticle($article);
 
-        $nbComment = $commentLoader->getNbCommentForOneArticle($article->getId());
+        $nbComment = $commentLoader->getNbCommentForOneArticle($article);
 
         $view = $this->getTwig()->render('blog/article.html.twig', ['article' => $article,
                                                                             'admin' => $admin,

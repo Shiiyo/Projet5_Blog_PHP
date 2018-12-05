@@ -10,7 +10,7 @@ class CommentLoader implements CommentLoaderInterface
 {
     private $commentStorage;
     private $container;
-    private $commentHydrator;
+    private $commentBuilder;
 
     /**
      * CommentLoader constructor.
@@ -26,25 +26,24 @@ class CommentLoader implements CommentLoaderInterface
     /**
      * @return CommentCollection
      */
-    public function getCommentCollectionForOneArticle($idArticle)
+    public function getCommentCollectionForOneArticle($article)
     {
-        $commentsArray = $this->commentStorage->fetchAllCommentByArticleId($idArticle);
+        $commentsArray = $this->commentStorage->fetchAllCommentByArticle($article);
         $commentsObject = [];
-        if ($this->commentHydrator === null) {
-            $this->commentHydrator = $this->container->newCommentHydrator();
+        if ($this->commentBuilder === null) {
+            $this->commentBuilder = $this->container->newCommentBuilder();
         }
         foreach ($commentsArray as $commentData) {
-            $comment = $this->container->newComment();
-            $this->commentHydrator->hydrate($commentData, $comment);
+            $comment = $this->commentBuilder->build($commentData);
             $commentsObject[] =$comment;
         }
         $commentsCollection = $this->container->newCommentCollection($commentsObject);
         return $commentsCollection;
     }
 
-    public function getNbCommentForOneArticle($idArticle)
+    public function getNbCommentForOneArticle($article)
     {
-        $commentArray = $this->commentStorage->countCommentByArticleId($idArticle);
+        $commentArray = $this->commentStorage->countCommentByArticle($article);
         $nbComment = $commentArray[0]['nb_comment'];
         return $nbComment;
     }

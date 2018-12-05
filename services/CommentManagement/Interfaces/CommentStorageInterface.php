@@ -8,11 +8,11 @@ interface CommentStorageInterface
      * @param int $articleId
      * @return mixed
      */
-    public function fetchAllCommentByArticleId($articleId);
+    public function fetchAllCommentByArticle($article);
 
     /**
      * @param int $articleId
      * @return mixed
      */
-    public function countCommentByArticleId($articleId);
+    public function countCommentByArticle($article);
 }

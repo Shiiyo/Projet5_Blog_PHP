@@ -42,13 +42,13 @@ class ContactFormController implements ControllerInterface
 
             if ($resultSendEmail == true) {
                 $this->session->set('success', "Merci pour votre message.<br>Je vous répondrais dans les meilleurs délais.");
-                header('Location: /accueil#contact');
+                $this->redirect('/accueil#contact');
             }
             $this->session->set('error', $error_msg);
-            header('Location: /accueil#contact');
+            $this->redirect('/accueil#contact');
         } else {
             $this->session->set('error', $error_msg);
-            header('Location: /accueil#contact');
+            $this->redirect('/accueil#contact');
         }
     }
 }

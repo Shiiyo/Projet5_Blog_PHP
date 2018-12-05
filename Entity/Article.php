@@ -19,17 +19,17 @@ class Article implements Interfaces\ArticleInterface
     //GETTERS
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return  $this->id;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getIdAdmin(): int
+    public function getIdAdmin(): string
     {
         return $this->idAdmin;
     }
@@ -85,7 +85,7 @@ class Article implements Interfaces\ArticleInterface
 
     //SETTERS
     /**
-     * @param mixed $id
+     * @param string $id
      */
     public function setId($id): void
     {
@@ -93,9 +93,9 @@ class Article implements Interfaces\ArticleInterface
     }
 
     /**
-     * @param int $idAdmin
+     * @param string $idAdmin
      */
-    public function setIdAdmin(int $idAdmin): void
+    public function setIdAdmin($idAdmin): void
     {
         $this->idAdmin = $idAdmin;
     }

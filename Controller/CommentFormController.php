@@ -31,7 +31,7 @@ class CommentFormController implements ControllerInterface
         if ($error_msg == "") {
         } else {
             $this->session->set('error', $error_msg);
-            header('Location: /liste-blog-post');
+            $this->redirect('/liste-blog-post');
         }
     }
 }
