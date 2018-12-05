@@ -31,11 +31,12 @@ class CommentFormController implements ControllerInterface
         if ($error_msg == "") {
             $commentWriter = $this->container->getCommentWriter($this->container);
             $commentWriter->write($request);
-            echo "Bravo c'est bien enregistré ! ";
+
+            $this->session->set('success', "Merci pour votre commentaire, il sera lu et validé dans les meilleurs délais.");
+            $this->redirect('blog-post/'.$request->request->get('slug'));
         } else {
             $this->session->set('error', $error_msg);
-            var_dump($error_msg);
-            //$this->redirect('/liste-blog-post');
+            $this->redirect('blog-post/'.$request->request->get('slug'));
         }
     }
 }

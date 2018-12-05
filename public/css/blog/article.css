@@ -183,3 +183,33 @@ label
 @media screen and (max-height: 575px){
     #rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
 }
+
+#validation-form, #error-form
+{
+    width: 21rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+    opacity: .9;
+    padding: 2.9375rem 1rem 2.9375rem 1rem;
+    display: none;
+    color: #ffffff;
+}
+
+#error-form
+{
+    background-color: #d93730;
+}
+
+#validation-form
+{
+    background-color: #89ac10;
+}
+
+#error-form img, #validation-form img
+{
+    margin-bottom: 1rem;
+}
