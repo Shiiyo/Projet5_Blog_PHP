@@ -19,13 +19,13 @@ class Comment implements Interfaces\CommentInterface
     /**
      * @return string
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getIdArticle()
     {

@@ -29,9 +29,13 @@ class CommentFormController implements ControllerInterface
         $error_msg = $violationMessages->violationMessages();
 
         if ($error_msg == "") {
+            $commentWriter = $this->container->getCommentWriter($this->container);
+            $commentWriter->write($request);
+            echo "Bravo c'est bien enregistré ! ";
         } else {
             $this->session->set('error', $error_msg);
-            $this->redirect('/liste-blog-post');
+            var_dump($error_msg);
+            //$this->redirect('/liste-blog-post');
         }
     }
 }

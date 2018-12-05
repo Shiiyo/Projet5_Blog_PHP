@@ -19,6 +19,7 @@ use services\Builders\CommentBuilder;
 use services\CommentManagement\CommentCollection;
 use services\CommentManagement\CommentHydrator;
 use services\CommentManagement\CommentLoader;
+use services\CommentManagement\CommentWriter;
 use services\CommentManagement\PDOCommentStorage;
 use services\ArticleFromURI;
 use services\SendEmail;
@@ -41,6 +42,7 @@ class DependencyInjectionContainer
     protected $adminLoader;
     protected $commentStorage;
     protected $commentLoader;
+    protected $commentWriter;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -237,6 +239,14 @@ class DependencyInjectionContainer
             $this->commentStorage = new PDOCommentStorage($this->getPDO());
         }
         return $this->commentStorage;
+    }
+
+    public function getCommentWriter($container)
+    {
+        if ($this->commentWriter === null) {
+            $this->commentWriter = new CommentWriter($this->getCommentStorage(), $container);
+        }
+        return $this->commentWriter;
     }
 
     //GETTERS
