@@ -25,5 +25,5 @@ interface ArticleLoaderInterface
      * @param $id
      * @return Article
      */
-    public function findOneBySlug($slug);
+    public function findOneById($id);
 }

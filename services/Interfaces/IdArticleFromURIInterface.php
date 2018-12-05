@@ -2,10 +2,10 @@
 
 namespace services\Interfaces;
 
-interface ArticleFromURIInterface
+interface IdArticleFromURIInterface
 {
     /**
      * @return string
      */
-    public function getArticleFromURI();
+    public function getIdArticleFromURI();
 }

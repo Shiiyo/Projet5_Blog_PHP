@@ -14,12 +14,12 @@ class PDOCommentStorage implements CommentStorageInterface
         $this->pdo = $pdo;
     }
 
-    public function fetchAllCommentByArticle($article)
+    public function fetchAllCommentByArticleId($articleId)
     {
         $pdo = $this->pdo;
         try {
             $req = $pdo->prepare('SELECT * FROM comment WHERE id_blog_post = :articleId AND validation = 1 ORDER BY add_date DESC');
-            $req->execute(array('articleId' => $article->getId()));
+            $req->execute(array('articleId' => $articleId));
             $commentArray = $req->fetchAll(\PDO::FETCH_ASSOC);
             return $commentArray;
         } catch (\PDOException $e) {
@@ -27,33 +27,14 @@ class PDOCommentStorage implements CommentStorageInterface
         }
     }
 
-    public function countCommentByArticle($article)
+    public function countCommentByArticleId($articleId)
     {
         $pdo = $this->pdo;
         try {
             $req = $pdo->prepare('SELECT COUNT(id) AS nb_comment FROM comment WHERE id_blog_post = :articleId AND validation = 1');
-            $req->execute(array('articleId' => $article->getId()));
+            $req->execute(array('articleId' => $articleId));
             $commentArray = $req->fetchAll(\PDO::FETCH_ASSOC);
             return $commentArray;
-        } catch (\PDOException $e) {
-            return trigger_error($e->getMessage());
-        }
-    }
-
-    public function save($article)
-    {
-        $pdo = $this->pdo;
-        try {
-            $req = $pdo->prepare('INSERT INTO comment VALUES (:id, :id_blog_post, :pseudo, :message, :email, :validation, :add_date)');
-            $req->execute([
-                'id' => $article->getId(),
-                'id_blog_post' => $article->getIdArticle(),
-                'pseudo' => $article->getPseudo(),
-                'message' => $article->getMessage(),
-                'email' => $article->getEmail(),
-                'validation' => $article->getValidation(),
-                'add_date' => $article->getAddDate()
-            ]);
         } catch (\PDOException $e) {
             return trigger_error($e->getMessage());
         }

@@ -9,7 +9,6 @@ class Article implements Interfaces\ArticleInterface
     private $id;
     private $idAdmin;
     private $title;
-    private $slug;
     private $resume;
     private $content;
     private $addDate;
@@ -19,17 +18,17 @@ class Article implements Interfaces\ArticleInterface
     //GETTERS
 
     /**
-     * @return string
+     * @return int
      */
-    public function getId(): string
+    public function getId(): int
     {
         return  $this->id;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getIdAdmin(): string
+    public function getIdAdmin(): int
     {
         return $this->idAdmin;
     }
@@ -40,15 +39,6 @@ class Article implements Interfaces\ArticleInterface
     public function getTitle(): string
     {
         return $this->title;
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 
     /**
@@ -85,7 +75,7 @@ class Article implements Interfaces\ArticleInterface
 
     //SETTERS
     /**
-     * @param string $id
+     * @param mixed $id
      */
     public function setId($id): void
     {
@@ -93,9 +83,9 @@ class Article implements Interfaces\ArticleInterface
     }
 
     /**
-     * @param string $idAdmin
+     * @param int $idAdmin
      */
-    public function setIdAdmin($idAdmin): void
+    public function setIdAdmin(int $idAdmin): void
     {
         $this->idAdmin = $idAdmin;
     }
@@ -106,14 +96,6 @@ class Article implements Interfaces\ArticleInterface
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    /**
-     * @param string $slug
-     */
-    public function setSlug($slug): void
-    {
-        $this->slug = $slug;
     }
 
     /**

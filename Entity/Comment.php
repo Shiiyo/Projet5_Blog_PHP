@@ -17,15 +17,15 @@ class Comment implements Interfaces\CommentInterface
     //GETTERS
 
     /**
-     * @return string
+     * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getIdArticle()
     {
@@ -76,7 +76,7 @@ class Comment implements Interfaces\CommentInterface
     //SETTERS
 
     /**
-     * @param string $id
+     * @param int $id
      */
     public function setId($id): void
     {

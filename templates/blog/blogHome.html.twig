@@ -31,9 +31,9 @@
                     {% include 'blog\\dateCercle.html.twig' %}
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                    <h2><a href={{"/blog-post/" ~ article.slug }}>{{ article.title }}</a></h2>
+                    <h2><a href={{"/blog-post/" ~ article.id }}>{{ article.title }}</a></h2>
                     <p class="overview">{{ article.resume }}</p>
-                    <p class="link-article"><a href={{"/blog-post/" ~ article.slug }}>Lire l'article ></a></p>
+                    <p class="link-article"><a href={{"/blog-post/" ~ article.id }}>Lire l'article ></a></p>
                 </div>
             </div>
             <hr class="article-separator">

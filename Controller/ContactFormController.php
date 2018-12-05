@@ -29,7 +29,7 @@ class ContactFormController implements ControllerInterface
         $violationEmail = $validationForm->validateEmail($request->request->get('email'));
         $violationMessage = $validationForm->validateMessage($request->request->get('message'));
 
-        $violations = [$violationName, $violationFirstName, $violationEmail, $violationMessage];
+        $violations = array($violationName, $violationFirstName, $violationEmail, $violationMessage);
 
         //Get the error messages
         $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
@@ -42,13 +42,13 @@ class ContactFormController implements ControllerInterface
 
             if ($resultSendEmail == true) {
                 $this->session->set('success', "Merci pour votre message.<br>Je vous répondrais dans les meilleurs délais.");
-                $this->redirect('/accueil#contact');
+                header('Location: /accueil#contact');
             }
             $this->session->set('error', $error_msg);
-            $this->redirect('/accueil#contact');
+            header('Location: /accueil#contact');
         } else {
             $this->session->set('error', $error_msg);
-            $this->redirect('/accueil#contact');
+            header('Location: /accueil#contact');
         }
     }
 }

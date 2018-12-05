@@ -13,7 +13,7 @@ class Admin implements Interfaces\AdminInterface
     //GETTERS
 
     /**
-     * @return string
+     * @return int
      */
     public function getId(): int
     {
@@ -56,9 +56,9 @@ class Admin implements Interfaces\AdminInterface
     // SETTERS
 
     /**
-     * @param string $id
+     * @param int $id
      */
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

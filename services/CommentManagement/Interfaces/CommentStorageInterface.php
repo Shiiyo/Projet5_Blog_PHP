@@ -2,25 +2,17 @@
 
 namespace services\CommentManagement\Interfaces;
 
-use Entity\Article;
-
 interface CommentStorageInterface
 {
     /**
-     * @param Article $article
+     * @param int $articleId
      * @return mixed
      */
-    public function fetchAllCommentByArticle($article);
+    public function fetchAllCommentByArticleId($articleId);
 
     /**
-     * @param Article $article
+     * @param int $articleId
      * @return mixed
      */
-    public function countCommentByArticle($article);
-
-    /**
-     * @param Article $article
-     * @return mixed
-     */
-    public function save($article);
+    public function countCommentByArticleId($articleId);
 }

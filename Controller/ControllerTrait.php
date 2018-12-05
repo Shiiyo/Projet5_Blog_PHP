@@ -26,14 +26,6 @@ trait ControllerTrait
         $this->setSession($container->newPHPSession());
     }
 
-    /**
-     * @param string $url
-     */
-    public function redirect($url)
-    {
-        header('Location: '.$url);
-    }
-
     //GETTERS
 
     /**
