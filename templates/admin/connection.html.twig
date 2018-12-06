@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../css/admin/connection.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row" id="return-row">
+            <div class="col-3 col-lg-1">
+                <a href="/accueil"><img id="img-return" src="../img/pictos/arrow-105-64.png" alt="Flèche gauche"></a>
+            </div>
+        </div>
+        <div class="row">
+            <div id="block-form" class="col-8 offset-2">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Connexion</h1>
+                        <p id="connection-intro">Pour pouvoir accéder à la partie administration du site, merci de vous identifier.</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 offset-1" id="form-block">
+                        <form action="/post-connection" method="post">
+                            <div class="row">
+                                <div class="col-12">
+                                    <input type="text" name="email" id="email" placeholder="Email" required/>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" name="mdp" id="mdp" placeholder="Mot de passe" required/><br>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <div class="g-recaptcha" data-sitekey="6LeJCnQUAAAAAOlqRpKqFm-4oo8i71Luuo0j_S_F"></div>
+                                </div>
+                                <div class="col-12">
+                                    <p id="subP"><input type="submit" value="Valider" id="submit"/></p>
+                                </div>
+                            </div>
+
+                            {% if session.success %}
+                                <div id="validation-form">
+                                    <img src="../img/pictos/ok-128.png" alt="ok symbole">
+                                    <p>{{ session.success|raw }}</p>
+                                </div>
+                            {% endif %}
+
+                            {% if session.error %}
+                                <div id="error-form">
+                                    <img src="../img/pictos/error-5-128.png" alt="erreur symbole">
+                                    <p>{{ session.error|raw }}</p>
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

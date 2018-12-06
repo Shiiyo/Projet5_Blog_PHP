@@ -1,0 +1,105 @@
+body
+{
+    background-color: #89ac10;
+    overflow-X: hidden;
+    position: relative;
+}
+
+#return-row
+{
+    margin-top: 3rem;
+    margin-bottom: 5.3125rem;
+}
+
+#img-return
+{
+    transition: all 300ms;
+}
+
+#img-return:hover
+{
+    transform: scale(1.05, 1.05);
+}
+
+#block-form
+{
+    background-color: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 10px 6px -6px #777;
+    margin-bottom: 2rem;
+    padding-left: 3.93rem;
+    padding-right: 3.93rem;
+}
+
+h1
+{
+    font-size: 3.75rem;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+    color: #373736;
+}
+
+#connection-intro
+{
+    font-size: 1.3rem;
+    font-weight: 100;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #89ac10;
+    padding-bottom: 2rem;
+}
+
+form input
+{
+    border: none;
+    border-bottom: 3px solid #8b8b89;
+    width: 100%;
+    margin-bottom: 3.25rem;
+
+    color: #373736;
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    font-size: 1.2rem;
+}
+
+form .g-recaptcha
+{
+    display: inline-block;
+    margin-bottom: 2.25rem;
+}
+
+@media screen and (max-height: 575px){
+    #rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+}
+
+form input[type="submit"]
+{
+    width: 8rem;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    border: none;
+    background-color: #89ac10;
+    color: #373736;
+    border-radius: 10px;
+    margin-bottom: 4rem;
+    cursor: pointer;
+}
+
+#subP
+{
+    text-align: center;
+}
+
+#submit
+{
+    transition: all 300ms;
+}
+
+#submit:hover
+{
+    transform: scale(1.05, 1.05);
+}
