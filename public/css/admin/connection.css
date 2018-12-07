@@ -103,3 +103,28 @@ form input[type="submit"]
 {
     transform: scale(1.05, 1.05);
 }
+
+#error-form
+{
+    width: 21rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+    opacity: .9;
+    padding: 2.9375rem 1rem 2.9375rem 1rem;
+    display: none;
+    color: #ffffff;
+}
+
+#error-form
+{
+    background-color: #d93730;
+}
+
+#error-form img
+{
+    margin-bottom: 1rem;
+}

@@ -1,8 +1,11 @@
 <?php
 
-namespace Controller;
+namespace Controller\Admin;
 
-class CommentFormController implements ControllerInterface
+use Controller\ControllerInterface;
+use Controller\ControllerTrait;
+
+class ConnectionFormController implements ControllerInterface
 {
     use ControllerTrait;
 
@@ -18,25 +21,20 @@ class CommentFormController implements ControllerInterface
         //Testing form fields
         $validator = $this->getContainer()->newValidator();
         $validationForm = $this->getContainer()->newValidationForm($validator);
-
-        $violationName = $validationForm->validateName($request->request->get('nom'));
         $violationEmail = $validationForm->validateEmail($request->request->get('email'));
-        $violationMessage = $validationForm->validateMessage($request->request->get('message'));
-        $violations = [$violationName, $violationEmail, $violationMessage];
+
+        $violations = [$violationEmail];
 
         //Get the error messages
         $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
         $error_msg = $violationMessages->violationMessages();
 
         if ($error_msg == "") {
-            $commentWriter = $this->container->getCommentWriter($this->container);
-            $commentWriter->write($request);
 
-            $this->session->set('success', "Merci pour votre commentaire, il sera lu et validé dans les meilleurs délais.");
-            $this->redirect('blog-post/'.$request->request->get('slug'));
+            $this->redirect('/accueil');
         } else {
             $this->session->set('error', $error_msg);
-            $this->redirect('blog-post/'.$request->request->get('slug'));
+            $this->redirect('/admin/login');
         }
     }
 }
