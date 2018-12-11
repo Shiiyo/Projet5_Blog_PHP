@@ -15,4 +15,10 @@ interface AdminStorageInterface
      * @return array|null
      */
     public function selectAdminByEmail($email);
+
+    /**
+     * @param $uuid
+     * @return array|null
+     */
+    public function selectAdminByUuid($uuid);
 }

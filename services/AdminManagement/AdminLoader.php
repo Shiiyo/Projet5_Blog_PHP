@@ -36,9 +36,30 @@ class AdminLoader
         return $admin;
     }
 
+    /**
+     * @param $email
+     * @return bool|\Entity\Admin|mixed
+     */
     public function findOneByEmail($email)
     {
         $adminArray = $this->adminStorage->selectAdminByEmail($email);
+        if ($adminArray == null) {
+            return false;
+        }
+        if ($this->adminBuilder === null) {
+            $this->adminBuilder = $this->container->newAdminBuilder();
+        }
+        $admin = $this->adminBuilder->build($adminArray[0]);
+        return $admin;
+    }
+
+    /**
+     * @param $uuid
+     * @return bool|\Entity\Admin|mixed
+     */
+    public function findOneByUuid($uuid)
+    {
+        $adminArray = $this->adminStorage->selectAdminByUuid($uuid);
         if ($adminArray == null) {
             return false;
         }
