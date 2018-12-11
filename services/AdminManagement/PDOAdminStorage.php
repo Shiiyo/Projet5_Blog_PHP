@@ -28,4 +28,25 @@ class PDOAdminStorage
         }
         return $adminArray;
     }
+
+    /**
+     * @param $email
+     * @return array|null
+     */
+    public function selectAdminByEmail($email)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('SELECT * FROM admin WHERE email = :email');
+            $req->execute(array('email' => $email));
+            $adminArray = $req->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            trigger_error($e->getMessage());
+        }
+
+        if (!$adminArray) {
+            return null;
+        }
+        return $adminArray;
+    }
 }

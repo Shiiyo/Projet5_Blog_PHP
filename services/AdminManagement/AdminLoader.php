@@ -35,4 +35,17 @@ class AdminLoader
         $admin = $this->adminBuilder->build($adminArray[0]);
         return $admin;
     }
+
+    public function findOneByEmail($email)
+    {
+        $adminArray = $this->adminStorage->selectAdminByEmail($email);
+        if ($adminArray == null) {
+            return false;
+        }
+        if ($this->adminBuilder === null) {
+            $this->adminBuilder = $this->container->newAdminBuilder();
+        }
+        $admin = $this->adminBuilder->build($adminArray[0]);
+        return $admin;
+    }
 }

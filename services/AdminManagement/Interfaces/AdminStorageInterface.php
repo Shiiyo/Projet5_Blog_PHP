@@ -9,4 +9,10 @@ interface AdminStorageInterface
      * @return mixed
      */
     public function fetchSingleAdmin($id);
+
+    /**
+     * @param $email
+     * @return array|null
+     */
+    public function selectAdminByEmail($email);
 }
