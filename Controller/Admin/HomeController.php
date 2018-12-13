@@ -14,7 +14,6 @@ class HomeController implements ControllerInterface
         if ($this->session->get('uuid')!= null) {
             $adminLoader = $this->container->getAdminLoader($this->container);
             $admin = $adminLoader->findOneByUuid($this->session->get('uuid'));
-
             if ($admin == false) {
                 $this->session->delete('uuid');
                 $this->redirect('/admin/login');
