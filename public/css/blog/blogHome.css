@@ -33,6 +33,16 @@ h4
     color: inherit;
 }
 
+#img-home
+{
+    transition: all 300ms;
+}
+
+#img-home:hover
+{
+    transform: scale(1.05, 1.05);
+}
+
 h1
 {
     font-size: 3.125rem;

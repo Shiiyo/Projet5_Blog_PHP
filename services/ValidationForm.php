@@ -22,7 +22,7 @@ class ValidationForm implements ValidationFormInterface
            new Assert\NotBlank(array('message' => 'Le champ de nom ne doit pas être vide')),
            new Assert\Length(array(
                'min' => 2,
-               'max' => 30,
+               'max' => 36,
                'minMessage' => 'Le nom doit avoir minimum {{ limit }} caractères',
                'maxMessage' => 'Le nom doit avoir maximum {{ limit }} caractères')),
            new Assert\Regex(array('pattern' => "/^\p{L}{2,}$/", 'message' => 'Le nom doit être uniquement composé de caractères alphabétiques'))

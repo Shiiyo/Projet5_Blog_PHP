@@ -19,4 +19,10 @@ interface AdminLoaderInterface
      * @return mixed
      */
     public function findOneById($article);
+
+    /**
+     * @param $uuid
+     * @return bool|\Entity\Admin|mixed
+     */
+    public function findOneByUuid($uuid);
 }

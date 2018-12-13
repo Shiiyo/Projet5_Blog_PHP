@@ -2,12 +2,10 @@
 
 namespace Controller\Admin;
 
-use Controller\ControllerTrait;
 use Controller\ControllerInterface;
+use Controller\ControllerTrait;
 
-echo 'Comment ControllerTrait';
-
-class CommentController implements ControllerInterface
+class HomeController implements ControllerInterface
 {
     use ControllerTrait;
 
@@ -21,7 +19,7 @@ class CommentController implements ControllerInterface
                 $this->session->delete('uuid');
                 $this->redirect('/admin/login');
             } else {
-                $view = $this->getTwig()->render('admin/commentAdmin.html.twig', ['admin' => $admin]);
+                $view = $this->getTwig()->render('admin/homepage.html.twig', ['admin' => $admin]);
                 $response = $this->getContainer()->newHttpResponseHtml($view);
                 $response->send();
             }

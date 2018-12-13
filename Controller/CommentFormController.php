@@ -22,7 +22,7 @@ class CommentFormController implements ControllerInterface
         $violationName = $validationForm->validateName($request->request->get('nom'));
         $violationEmail = $validationForm->validateEmail($request->request->get('email'));
         $violationMessage = $validationForm->validateMessage($request->request->get('message'));
-        $violations = array($violationName, $violationEmail, $violationMessage);
+        $violations = [$violationName, $violationEmail, $violationMessage];
 
         //Get the error messages
         $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
