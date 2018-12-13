@@ -5,7 +5,7 @@ namespace Controller\Admin;
 use Controller\ControllerInterface;
 use Controller\ControllerTrait;
 
-class HomeController implements ControllerInterface
+class ListBlogPostController implements ControllerInterface
 {
     use ControllerTrait;
 
@@ -14,7 +14,9 @@ class HomeController implements ControllerInterface
         $testAdminLogIn = $this->container->newTestAdminLogIn();
         $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
         if ($adminLogIn != false) {
-            $view = $this->getTwig()->render('admin/homepage.html.twig', ['admin' => $adminLogIn]);
+            $articleLoader = $this->container->getArticleLoader($this->container);
+            $articleCollection = $articleLoader->getArticleCollection();
+            $view = $this->getTwig()->render('admin/blogPostList.html.twig', ['articleCollection' => $articleCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
         } else {

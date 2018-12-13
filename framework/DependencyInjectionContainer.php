@@ -23,6 +23,7 @@ use services\CommentManagement\CommentWriter;
 use services\CommentManagement\PDOCommentStorage;
 use services\ArticleFromURI;
 use services\SendEmail;
+use services\TestAdminLogIn;
 use services\TestRecaptcha;
 use services\ValidationForm;
 use services\ViolationMessages;
@@ -170,6 +171,11 @@ class DependencyInjectionContainer
     public function newCommentBuilder()
     {
         return new CommentBuilder();
+    }
+
+    public function newTestAdminLogIn()
+    {
+        return new TestAdminLogIn();
     }
 
     /**
