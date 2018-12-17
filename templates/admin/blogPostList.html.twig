@@ -30,7 +30,9 @@
                 </select>
             </div>
             <div class="col-2"><button type="button" class="btn btn-primary">Appliquer</button></div>
-            <div class="offset-3 col-2"><button type="button" class="btn btn-success">Ajouter un article</button></div>
+            <div class="offset-3 col-2">
+                <a href="/admin/blog-post/add"><button type="button" class="btn btn-success">Ajouter un article</button></a>
+            </div>
         </div>
         <div class="row">
             <div class="offset-1 col-10">
@@ -47,33 +49,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="col"><input type="checkbox"/></th>
-                            <th scope="col"><a href="#">Lorem ipsum</a></th>
-                            <th scope="col">Camille</th>
-                            <th scope="col">28/08/2017</th>
-                            <th scope="col">09/01/2018</th>
-                            <th scope="col">42</th>
-                            <th scope="col"><a href="#"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
-                        </tr>
-                        <tr>
-                            <th scope="col"><input type="checkbox"/></th>
-                            <th scope="col"><a href="#">Lorem ipsum</a></th>
-                            <th scope="col">Camille</th>
-                            <th scope="col">28/08/2017</th>
-                            <th scope="col">09/01/2018</th>
-                            <th scope="col">42</th>
-                            <th scope="col"><a href="#"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
-                        </tr>
-                        <tr>
-                            <th scope="col"><input type="checkbox"/></th>
-                            <th scope="col"><a href="#">Lorem ipsum</a></th>
-                            <th scope="col">Camille</th>
-                            <th scope="col">28/08/2017</th>
-                            <th scope="col">09/01/2018</th>
-                            <th scope="col">42</th>
-                            <th scope="col"><a href="#"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
-                        </tr>
+                        {% for article in articleCollection %}
+                            <tr>
+                                <th scope="col"><input type="checkbox"/></th>
+                                <th scope="col"><a href={{"/admin/blog-post/" ~ article.slug }}>{{ article.title }}</a></th>
+                                <th scope="col">{{ article.adminName }}</th>
+                                <th scope="col">{{ article.addDate|date('d/m/Y') }}</th>
+                                <th scope="col">{{ article.updateDate|date('d/m/Y') }}</th>
+                                <th scope="col">{{ article.nbComment }}</th>
+                                <th scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
+                            </tr>
+                        {% endfor %}
                 </table>
             </div>
         </div>

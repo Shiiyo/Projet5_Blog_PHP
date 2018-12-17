@@ -16,6 +16,13 @@ class ListBlogPostController implements ControllerInterface
         if ($adminLogIn != false) {
             $articleLoader = $this->container->getArticleLoader($this->container);
             $articleCollection = $articleLoader->getArticleCollection();
+
+            $commentLoader = $this->container->getCommentLoader($this->container);
+            $commentLoader->setNbCommentForArticleCollection($articleCollection);
+
+            $adminLoader = $this->container->getAdminLoader($this->container);
+            $adminLoader->setAdminNameForArticleCollection($articleCollection);
+
             $view = $this->getTwig()->render('admin/blogPostList.html.twig', ['articleCollection' => $articleCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
