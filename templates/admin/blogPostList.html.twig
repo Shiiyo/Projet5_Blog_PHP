@@ -22,24 +22,15 @@
 
         </div>
         <div class="row">
-            <div class="offset-1 col-3" id="actions">
-                <select name="action" id="action" class=form-control>
-                    <option value="default">Action groupée</option>
-                    <option value="edit">Editer</option>
-                    <option value="suppr">Supprimer</option>
-                </select>
-            </div>
-            <div class="col-2"><button type="button" class="btn btn-primary">Appliquer</button></div>
-            <div class="offset-3 col-2">
+            <div class="offset-md-8 col-md-2 offset-1 col-3" id="actions">
                 <a href="/admin/blog-post/add"><button type="button" class="btn btn-success">Ajouter un article</button></a>
             </div>
         </div>
         <div class="row">
-            <div class="offset-1 col-10">
+            <div class="offset-1 col-10 table-responsive">
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr class="table-dark">
-                            <th scope="col"><input type="checkbox"/></th>
                             <th scope="col">Titre</th>
                             <th scope="col">Auteur</th>
                             <th scope="col">Date Ajout</th>
@@ -51,7 +42,6 @@
                     <tbody>
                         {% for article in articleCollection %}
                             <tr>
-                                <th scope="col"><input type="checkbox"/></th>
                                 <th scope="col"><a href={{"/admin/blog-post/" ~ article.slug }}>{{ article.title }}</a></th>
                                 <th scope="col">{{ article.adminName }}</th>
                                 <th scope="col">{{ article.addDate|date('d/m/Y') }}</th>
