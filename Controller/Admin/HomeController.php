@@ -11,18 +11,14 @@ class HomeController implements ControllerInterface
 
     public function __invoke()
     {
-        if ($this->session->get('uuid')!= null) {
-            $adminLoader = $this->container->getAdminLoader($this->container);
-            $admin = $adminLoader->findOneByUuid($this->session->get('uuid'));
-            if ($admin == false) {
-                $this->session->delete('uuid');
-                $this->redirect('/admin/login');
-            } else {
-                $view = $this->getTwig()->render('admin/homepage.html.twig', ['admin' => $admin]);
-                $response = $this->getContainer()->newHttpResponseHtml($view);
-                $response->send();
-            }
+        $testAdminLogIn = $this->container->newTestAdminLogIn();
+        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        if ($adminLogIn != false) {
+            $view = $this->getTwig()->render('admin/homepage.html.twig', ['admin' => $adminLogIn]);
+            $response = $this->getContainer()->newHttpResponseHtml($view);
+            $response->send();
         } else {
+            $this->session->delete('uuid');
             $this->redirect('/admin/login');
         }
     }

@@ -16,6 +16,10 @@ class Article implements Interfaces\ArticleInterface
     private $updateDate;
 
 
+    private $nbComment;
+    private $adminName;
+
+
     //GETTERS
 
     /**
@@ -83,6 +87,22 @@ class Article implements Interfaces\ArticleInterface
         return $this->updateDate;
     }
 
+    /**
+     * @return int
+     */
+    public function getNbComment()
+    {
+        return $this->nbComment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdminName()
+    {
+        return $this->adminName;
+    }
+
     //SETTERS
     /**
      * @param string $id
@@ -146,5 +166,21 @@ class Article implements Interfaces\ArticleInterface
     public function setUpdateDate(string $updateDate): void
     {
         $this->updateDate = $updateDate;
+    }
+
+    /**
+     * @param int $nbComment
+     */
+    public function setNbComment($nbComment): void
+    {
+        $this->nbComment = $nbComment;
+    }
+
+    /**
+     * @param string $adminName
+     */
+    public function setAdminName($adminName): void
+    {
+        $this->adminName = $adminName;
     }
 }

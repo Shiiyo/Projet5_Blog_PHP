@@ -71,4 +71,18 @@ class PDOAdminStorage
             return $adminArray;
         }
     }
+
+
+    public function getName($article)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('SELECT name, first_name FROM admin WHERE id = :uuid');
+            $req->execute(array('uuid' => $article->getIdAdmin()));
+            $adminArray = $req->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            trigger_error($e->getMessage());
+        }
+        return $adminArray[0]['name'] . ' ' . $adminArray[0]['first_name'];
+    }
 }

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../css/admin/blogPostList.css">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <a href="/admin/accueil">
+                    <img id="img-home" src="../img/pictos/arrow-105-64.png" alt="Flèche gauche">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1>Gestion des articles</h1>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <div class="offset-md-8 col-md-2 offset-1 col-3" id="actions">
+                <a href="/admin/blog-post/add"><button type="button" class="btn btn-success">Ajouter un article</button></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-1 col-10 table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr class="table-dark">
+                            <th scope="col">Titre</th>
+                            <th scope="col">Auteur</th>
+                            <th scope="col">Date Ajout</th>
+                            <th scope="col">Date Modif</th>
+                            <th scope="col">Commentaires</th>
+                            <th scope="col">Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for article in articleCollection %}
+                            <tr>
+                                <th scope="col"><a href={{"/admin/blog-post/" ~ article.slug }}>{{ article.title }}</a></th>
+                                <th scope="col">{{ article.adminName }}</th>
+                                <th scope="col">{{ article.addDate|date('d/m/Y') }}</th>
+                                <th scope="col">{{ article.updateDate|date('d/m/Y') }}</th>
+                                <th scope="col">{{ article.nbComment }}</th>
+                                <th scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
+                            </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

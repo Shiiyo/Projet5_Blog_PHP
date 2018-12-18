@@ -69,4 +69,11 @@ class AdminLoader
         $admin = $this->adminBuilder->build($adminArray[0]);
         return $admin;
     }
+
+    public function setAdminNameForArticleCollection($articleCollection)
+    {
+        foreach ($articleCollection as $article) {
+            $article->setAdminName($this->adminStorage->getName($article));
+        }
+    }
 }

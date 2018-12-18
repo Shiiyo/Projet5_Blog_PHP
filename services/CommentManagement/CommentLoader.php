@@ -47,4 +47,11 @@ class CommentLoader implements CommentLoaderInterface
         $nbComment = $commentArray[0]['nb_comment'];
         return $nbComment;
     }
+
+    public function setNbCommentForArticleCollection($articleCollection)
+    {
+        foreach ($articleCollection as $article) {
+            $article->setNbComment($this->getNbCommentForOneArticle($article));
+        }
+    }
 }
