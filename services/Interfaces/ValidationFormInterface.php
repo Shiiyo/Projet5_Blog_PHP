@@ -30,6 +30,18 @@ interface ValidationFormInterface
     public function validateMessage($message);
 
     /**
+     * @param $title
+     * @return mixed
+     */
+    public function validateTitle($title);
+
+    /**
+     * @param $resume
+     * @return mixed
+     */
+    public function validateResume($resume);
+
+    /**
      * @return mixed
      */
     public function getValidator();

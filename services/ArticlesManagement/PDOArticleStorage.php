@@ -42,4 +42,24 @@ class PDOArticleStorage implements ArticleStorageInterface
         }
         return $articleArray;
     }
+
+    public function save($article)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('INSERT INTO blog_post VALUES (:id, :id_admin, :title, :slug, :resume, :content, :add_date, :update_date)');
+            $req->execute([
+                'id' => $article->getId(),
+                'id_admin' => $article->getIdAdmin(),
+                'title' => $article->getTitle(),
+                'slug' => $article->getSlug(),
+                'resume' => $article->getResume(),
+                'content' => $article->getContent(),
+                'add_date' => $article->getAddDate(),
+                'update_date' => $article->getUpdateDate()
+            ]);
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
 }

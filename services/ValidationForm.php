@@ -48,6 +48,28 @@ class ValidationForm implements ValidationFormInterface
         return $violations;
     }
 
+    public function validateTitle($title)
+    {
+        $violations = $this->getValidator()->validate($title, array(
+           new Assert\NotBlank(array('message' => 'Le champ de titre ne doit pas être vide')),
+           new Assert\Length(array(
+             'max' => 200,
+             'maxMessage' => 'Le titre doit avoir un maximum de {{ limit }} caractères'))
+        ));
+        return $violations;
+    }
+
+    public function validateResume($resume)
+    {
+        $violations = $this->getValidator()->validate($resume, array(
+            new Assert\NotBlank(array('message' => 'Le champ de chapô ne doit pas être vide')),
+            new Assert\Length(array(
+                'max' => 255,
+                'maxMessage' => 'Le chapô doit avoir un maximum de {{ limit }} caractères'))
+        ));
+        return $violations;
+    }
+
     /**
      * @return Validation
      */
