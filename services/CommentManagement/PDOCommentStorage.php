@@ -40,19 +40,19 @@ class PDOCommentStorage implements CommentStorageInterface
         }
     }
 
-    public function save($article)
+    public function save($comment)
     {
         $pdo = $this->pdo;
         try {
             $req = $pdo->prepare('INSERT INTO comment VALUES (:id, :id_blog_post, :pseudo, :message, :email, :validation, :add_date)');
             $req->execute([
-                'id' => $article->getId(),
-                'id_blog_post' => $article->getIdArticle(),
-                'pseudo' => $article->getPseudo(),
-                'message' => $article->getMessage(),
-                'email' => $article->getEmail(),
-                'validation' => $article->getValidation(),
-                'add_date' => $article->getAddDate()
+                'id' => $comment->getId(),
+                'id_blog_post' => $comment->getIdArticle(),
+                'pseudo' => $comment->getPseudo(),
+                'message' => $comment->getMessage(),
+                'email' => $comment->getEmail(),
+                'validation' => $comment->getValidation(),
+                'add_date' => $comment->getAddDate()
             ]);
         } catch (\PDOException $e) {
             return trigger_error($e->getMessage());

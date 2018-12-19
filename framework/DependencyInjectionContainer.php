@@ -12,6 +12,7 @@ use services\AdminManagement\PDOAdminStorage;
 use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleHydrator;
 use services\ArticlesManagement\ArticleLoader;
+use services\ArticlesManagement\ArticleWriter;
 use services\ArticlesManagement\PDOArticleStorage;
 use services\Builders\AdminBuilder;
 use services\Builders\ArticleBuilder;
@@ -31,6 +32,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Component\Validator\Validation;
+use Cocur\Slugify\Slugify;
 
 class DependencyInjectionContainer
 {
@@ -44,6 +46,7 @@ class DependencyInjectionContainer
     protected $commentStorage;
     protected $commentLoader;
     protected $commentWriter;
+    protected $articleWriter;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -178,6 +181,11 @@ class DependencyInjectionContainer
         return new TestAdminLogIn();
     }
 
+    public function newSlugify()
+    {
+        return new Slugify();
+    }
+
     /**
      * @param $num
      * @return mixed
@@ -253,6 +261,14 @@ class DependencyInjectionContainer
             $this->commentWriter = new CommentWriter($this->getCommentStorage(), $container);
         }
         return $this->commentWriter;
+    }
+
+    public function getArticleWriter($container)
+    {
+        if ($this->articleWriter === null) {
+            $this->articleWriter = new ArticleWriter($this->getArticleStorage(), $container);
+        }
+        return $this->articleWriter;
     }
 
     //GETTERS

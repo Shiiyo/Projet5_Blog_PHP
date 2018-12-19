@@ -1,7 +1,7 @@
 body
 {
     background-color: #373736;
-    margin-top: 3.125rem;
+    margin-top: 3rem;
 }
 
 h1
@@ -11,8 +11,8 @@ h1
     font-weight: 700;
     font-family: 'Amatic SC', cursive;
     text-align: center;
-    margin-top: 2.6rem;
-    margin-bottom: 6.3rem;
+    margin-top: 2rem;
+    margin-bottom: 5.5rem;
 }
 
 a
@@ -43,6 +43,16 @@ form input, form textarea
     border-radius: 10px;
 }
 
+form .g-recaptcha
+{
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-height: 575px){
+    #rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+}
+
 form input[type="submit"]
 {
     width: 8rem;
@@ -60,4 +70,34 @@ form input[type="submit"]
 form input[type="submit"]:hover
 {
     transform: scale(1.05, 1.05);
+}
+
+#validation-form, #error-form
+{
+    width: 21rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+    opacity: .9;
+    padding: 2.9375rem 1rem 2.9375rem 1rem;
+    display: none;
+    color: #ffffff;
+}
+
+#error-form
+{
+    background-color: #d93730;
+}
+
+#validation-form
+{
+    background-color: #89ac10;
+}
+
+#error-form img, #validation-form img
+{
+    margin-bottom: 1rem;
 }
