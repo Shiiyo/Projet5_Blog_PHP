@@ -44,11 +44,24 @@
                                 <th scope="col">{{ article.addDate|date('d/m/Y') }}</th>
                                 <th scope="col">{{ article.updateDate|date('d/m/Y') }}</th>
                                 <th scope="col">{{ article.nbComment }}</th>
-                                <th scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
+                                <th scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}" onclick="return confirm('Etes-vous sûr?')"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
                             </tr>
                         {% endfor %}
                 </table>
             </div>
+            {% if session.success %}
+                <div id="validation-form">
+                    <img src="../img/pictos/ok-128.png" alt="ok symbole">
+                    <p>{{ session.success|raw }}</p>
+                </div>
+            {% endif %}
+
+            {% if session.error %}
+                <div id="error-form">
+                    <img src="../img/pictos/error-5-128.png" alt="erreur symbole">
+                    <p>{{ session.error|raw }}</p>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -62,4 +62,18 @@ class PDOArticleStorage implements ArticleStorageInterface
             return trigger_error($e->getMessage());
         }
     }
+
+    public function delete($article)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('DELETE FROM blog_post WHERE id = :id');
+            $req->execute([
+               'id' => $article->getId()
+            ]);
+            return true;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
 }
