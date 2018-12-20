@@ -49,6 +49,19 @@
                         {% endfor %}
                 </table>
             </div>
+            {% if session.success %}
+                <div id="validation-form">
+                    <img src="../img/pictos/ok-128.png" alt="ok symbole">
+                    <p>{{ session.success|raw }}</p>
+                </div>
+            {% endif %}
+
+            {% if session.error %}
+                <div id="error-form">
+                    <img src="../img/pictos/error-5-128.png" alt="erreur symbole">
+                    <p>{{ session.error|raw }}</p>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

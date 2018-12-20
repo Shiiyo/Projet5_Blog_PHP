@@ -10,6 +10,7 @@ use services\AdminManagement\AdminHydrator;
 use services\AdminManagement\AdminLoader;
 use services\AdminManagement\PDOAdminStorage;
 use services\ArticlesManagement\ArticleCollection;
+use services\ArticlesManagement\ArticleDeleter;
 use services\ArticlesManagement\ArticleHydrator;
 use services\ArticlesManagement\ArticleLoader;
 use services\ArticlesManagement\ArticleWriter;
@@ -184,6 +185,11 @@ class DependencyInjectionContainer
     public function newSlugify()
     {
         return new Slugify();
+    }
+
+    public function newArticleDeleter()
+    {
+        return new ArticleDeleter($this->getArticleStorage());
     }
 
     /**

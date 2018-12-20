@@ -30,5 +30,11 @@ class ListBlogPostController implements ControllerInterface
             $this->session->delete('uuid');
             $this->redirect('/admin/login');
         }
+
+        if ($this->session->get('success')!= null) {
+            $this->session->delete('success');
+        } elseif ($this->session->get('error')!= null) {
+            $this->session->delete('error');
+        }
     }
 }

@@ -3,8 +3,9 @@
 namespace services\ArticlesManagement;
 
 use Ramsey\Uuid\Uuid;
+use services\ArticlesManagement\Interfaces\ArticleWriterInterface;
 
-class ArticleWriter
+class ArticleWriter implements ArticleWriterInterface
 {
     private $articleStorage;
     private $container;

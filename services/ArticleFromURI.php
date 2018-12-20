@@ -14,6 +14,6 @@ class ArticleFromURI implements ArticleFromURIInterface
     {
         $uri = $_SERVER['REQUEST_URI'];
         $arrayUri = explode('/', $uri);
-        return $arrayUri[2];
+        return end($arrayUri);
     }
 }
