@@ -44,7 +44,7 @@
                                 <th scope="col">{{ article.addDate|date('d/m/Y') }}</th>
                                 <th scope="col">{{ article.updateDate|date('d/m/Y') }}</th>
                                 <th scope="col">{{ article.nbComment }}</th>
-                                <th scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
+                                <th scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}" onclick="return confirm('Etes-vous sûr?')"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
                             </tr>
                         {% endfor %}
                 </table>
