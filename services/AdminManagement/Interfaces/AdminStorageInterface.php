@@ -5,6 +5,11 @@ namespace services\AdminManagement\Interfaces;
 interface AdminStorageInterface
 {
     /**
+     * @return mixed
+     */
+    public function fetchAllAdmin();
+
+    /**
      * @param int $id
      * @return mixed
      */

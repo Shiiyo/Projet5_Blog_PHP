@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../../css/admin/addBlogPost.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <a href="/admin/blog-post">
+                    <img id="img-home" src="../../img/pictos/arrow-105-64.png" alt="Flèche gauche">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1>Modifier un article</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-1 col-10">
+                <form method="post" action="/admin/post-update-article">
+                    <div class="col-12">
+                        <label for="titre">Titre</label>
+                        <input type="text" name="titre" id="titre" value="{{ article.title }}" required/>
+                    </div>
+                    <div class="col-12">
+                        <label for="chapo">Chapô</label>
+                        <textarea name="chapo" id="chapo" cols="30" rows="2">{{ article.resume }}</textarea>
+                    </div>
+                    <div class="col-12">
+                        <label for="contenu">Contenu</label>
+                        <textarea name="contenu" id="contenu" cols="30" rows="10">{{ article.content }}</textarea>
+                    </div>
+                    <div class="col-12">
+                        <label for="auteur">Auteur</label>
+                        <select name="auteur" id="auteur">
+                            {% for admin in adminCollection %}
+                                {% if admin.id == article.idAdmin %} <option value="{{ article.idAdmin }}" selected> {{ admin.name}} {{ admin.firstName}} </option>
+                                {% else %}<option value="{{ admin.id }}">{{ admin.name}} {{ admin.firstName}}</option> {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 text-center">
+                        <div class="g-recaptcha" data-sitekey="6LeJCnQUAAAAAOlqRpKqFm-4oo8i71Luuo0j_S_F"></div>
+                    </div>
+                    <input type="hidden" name="id" id="id" value="{{ article.id }}">
+                    <input type="hidden" name="add_date" id="add_date" value="{{ article.addDate }}">
+                    <div class="col-12">
+                        <p id="subP"><input type="submit" value="Valider" id="submit"/></p>
+                    </div>
+                </form>
+            </div>
+
+            {% if session.success %}
+                <div id="validation-form">
+                    <img src="../../img/pictos/ok-128.png" alt="ok symbole">
+                    <p>{{ session.success|raw }}</p>
+                </div>
+            {% endif %}
+
+            {% if session.error %}
+                <div id="error-form">
+                    <img src="../../img/pictos/error-5-128.png" alt="erreur symbole">
+                    <p>{{ session.error|raw }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

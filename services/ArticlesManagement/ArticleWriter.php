@@ -39,4 +39,26 @@ class ArticleWriter implements ArticleWriterInterface
         $article = $this->articleBuilder->build($articleArray);
         $this->articleStorage->save($article);
     }
+
+    public function update($request)
+    {
+        $slugify = $this->container->newSlugify();
+        $articleArray = [
+            'id' => $request->request->get('id'),
+            'id_admin' => $request->request->get('auteur'),
+            'title' => $request->request->get('titre'),
+            'slug' => $slugify->slugify($request->request->get('titre')),
+            'resume' => $request->request->get('chapo'),
+            'content' => $request->request->get('contenu'),
+            'add_date' => $request->request->get('add_date'),
+            'update_date' => date('Y-m-d H:i:s')
+        ];
+
+        if ($this->articleBuilder === null) {
+            $this->articleBuilder = $this->container->newArticleBuilder();
+        }
+
+        $article = $this->articleBuilder->build($articleArray);
+        $this->articleStorage->update($article);
+    }
 }
