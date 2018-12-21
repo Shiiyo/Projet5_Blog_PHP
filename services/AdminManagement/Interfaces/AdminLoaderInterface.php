@@ -4,6 +4,7 @@
 namespace services\AdminManagement\Interfaces;
 
 use framework\DependencyInjectionContainer;
+use services\AdminManagement\AdminCollection;
 
 interface AdminLoaderInterface
 {
@@ -13,6 +14,11 @@ interface AdminLoaderInterface
      * @param DependencyInjectionContainer $container
      */
     public function __construct($adminStorage, $container);
+
+    /**
+     * @return AdminCollection
+     */
+    public function getAdminCollection();
 
     /**
      * @param int $id

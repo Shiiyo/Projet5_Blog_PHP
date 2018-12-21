@@ -6,6 +6,7 @@ use Entity\Admin;
 use Entity\Article;
 use Entity\Comment;
 use framework\Session\PHPSession;
+use services\AdminManagement\AdminCollection;
 use services\AdminManagement\AdminHydrator;
 use services\AdminManagement\AdminLoader;
 use services\AdminManagement\PDOAdminStorage;
@@ -165,6 +166,11 @@ class DependencyInjectionContainer
     public function newAdminBuilder()
     {
         return new AdminBuilder();
+    }
+
+    public function newAdminCollection($adminArray)
+    {
+        return new AdminCollection($adminArray);
     }
 
     public function newArticleBuilder()

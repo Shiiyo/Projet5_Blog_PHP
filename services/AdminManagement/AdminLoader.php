@@ -23,6 +23,21 @@ class AdminLoader
         $this->container = $container;
     }
 
+    public function getAdminCollection()
+    {
+        $adminArray = $this->adminStorage->fetchAllAdmin();
+        $adminObjects = [];
+        if ($this->adminBuilder === null) {
+            $this->adminBuilder = $this->container->newAdminBuilder();
+        }
+        foreach ($adminArray as $adminData) {
+            $admin = $this->adminBuilder->build($adminData);
+            $adminObjects[] = $admin;
+        }
+        $adminCollection = $this->container->newAdminCollection($adminObjects);
+        return $adminCollection;
+    }
+
     /**
      * @param int $id
      */

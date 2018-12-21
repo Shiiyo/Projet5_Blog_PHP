@@ -16,7 +16,14 @@ class UpdateBlogPostController implements ControllerInterface
         $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
 
         if ($adminLogIn != false) {
-            $view = $this->getTwig()->render('admin/updateBlogPost.html.twig', ['id_admin' => $this->session->get('uuid')]);
+            $slugArticle = $this->container->newArticleFromURI()->getArticleFromURI();
+            $articleLoader = $this->container->getArticleLoader($this->container);
+            $article = $articleLoader->findOneBySlug($slugArticle);
+
+            $adminLoader = $this->container->getAdminLoader($this->container);
+            $adminCollection = $adminLoader->getAdminCollection();
+
+            $view = $this->getTwig()->render('admin/updateBlogPost.html.twig', ['article' => $article, 'adminCollection' => $adminCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
         } else {

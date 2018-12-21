@@ -1,6 +1,5 @@
 <?php
 
-
 namespace services\AdminManagement;
 
 class PDOAdminStorage
@@ -10,6 +9,22 @@ class PDOAdminStorage
     public function __construct(\PDO $pdo)
     {
         $this->pdo = $pdo;
+    }
+
+    public function fetchAllAdmin()
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('SELECT * FROM admin');
+            $req->execute();
+            $adminArray = $req->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            trigger_error($e->getMessage());
+        }
+        if (!$adminArray) {
+            return null;
+        }
+        return $adminArray;
     }
 
     public function fetchSingleAdmin($article)
