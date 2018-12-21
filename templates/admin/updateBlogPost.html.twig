@@ -37,7 +37,10 @@
                     <div class="col-12">
                         <label for="auteur">Auteur</label>
                         <select name="auteur" id="auteur">
-
+                            {% for admin in adminCollection %}
+                                {% if admin.id == article.idAdmin %} <option value="{{ article.idAdmin }}" selected> {{ admin.name}} {{ admin.firstName}} </option>
+                                {% else %}<option value="{{ admin.id }}">{{ admin.name}} {{ admin.firstName}}</option> {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="col-12 text-center">
