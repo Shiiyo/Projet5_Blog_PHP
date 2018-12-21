@@ -58,6 +58,7 @@ class PDOArticleStorage implements ArticleStorageInterface
                 'add_date' => $article->getAddDate(),
                 'update_date' => $article->getUpdateDate()
             ]);
+            return true;
         } catch (\PDOException $e) {
             return trigger_error($e->getMessage());
         }
@@ -70,6 +71,26 @@ class PDOArticleStorage implements ArticleStorageInterface
             $req = $pdo->prepare('DELETE FROM blog_post WHERE id = :id');
             $req->execute([
                'id' => $article->getId()
+            ]);
+            return true;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
+
+    public function update($article)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('UPDATE blog_post SET id_admin = :id_admin, title = :title, slug = :slug, resume = :resume, content = :content, update_date = :update_date WHERE id = :id');
+            $req->execute([
+                'id' => $article->getId(),
+                'id_admin' => $article->getIdAdmin(),
+                'title' => $article->getTitle(),
+                'slug' => $article->getSlug(),
+                'resume' => $article->getResume(),
+                'content' => $article->getContent(),
+                'update_date' => $article->getUpdateDate()
             ]);
             return true;
         } catch (\PDOException $e) {
