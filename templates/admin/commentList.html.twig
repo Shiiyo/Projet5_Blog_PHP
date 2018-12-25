@@ -18,6 +18,34 @@
             <h1>Gestion les commentaires</h1>
         </div>
     </div>
-
+    <div class="row">
+        <div class="offset-1 col-10 table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">Nom</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Titre article</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for comment in commentCollection %}
+                    <tr>
+                        <th scope="col">{{ comment.pseudo }}</th>
+                        <th scope="col">{{ comment.message }}</th>
+                        <th scope="col">{{ comment.addDate|date('d/m/Y') }}</th>
+                        <th scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></th>
+                        <th scope="col">
+                            <a href=""><img src="../img/pictos/ok-32.png" alt="ok"></a>
+                            <a href=""><img src="../img/pictos/x-mark-3-32.png" alt="croix rouge"></a>
+                        </th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}

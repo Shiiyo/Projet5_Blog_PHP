@@ -5,6 +5,7 @@ namespace services\ArticlesManagement;
 use services\ArticlesManagement\Interfaces\ArticleStorageInterface;
 use services\ArticlesManagement\Interfaces\ArticleLoaderInterface;
 use framework\DependencyInjectionContainer;
+use Cocur\Slugify\Slugify;
 
 class ArticleLoader implements ArticleLoaderInterface
 {
@@ -53,5 +54,16 @@ class ArticleLoader implements ArticleLoaderInterface
         }
         $article = $this->articleBuilder->build($articleArray[0]);
         return $article;
+    }
+
+    public function setArticleNameForCommentCollection($commentCollection)
+    {
+        $slugify = new Slugify();
+
+        foreach ($commentCollection as $comment) {
+            $articleTitle = $this->articleStorage->findArticleName($comment);
+            $comment->setArticleName($articleTitle);
+            $comment->setArticleSlug($slugify->slugify($articleTitle));
+        }
     }
 }

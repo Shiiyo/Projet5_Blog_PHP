@@ -26,3 +26,33 @@ a:hover
     text-decoration: none;
     transform: scale(1.05, 1.05);
 }
+
+.table
+{
+    background-color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+    color: #373736;
+    text-align: center;
+}
+
+th img
+{
+    height: 20px;
+    width: 20px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+th a
+{
+    display: inline-block;
+    color: inherit;
+    text-decoration: underline;
+}
+
+th a:hover
+{
+    color: inherit;
+}

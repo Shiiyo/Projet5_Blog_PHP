@@ -47,6 +47,7 @@
                                 <th scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}" onclick="return confirm('Etes-vous sûr?')"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
                             </tr>
                         {% endfor %}
+                    </tbody>
                 </table>
             </div>
             {% if session.success %}

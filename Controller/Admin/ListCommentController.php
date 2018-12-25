@@ -19,6 +19,9 @@ class ListCommentController implements ControllerInterface
             $commentLoader = $this->container->getCommentLoader($this->container);
             $commentCollection = $commentLoader->getCommentCollection();
 
+            $articleLoader = $this->container->getArticleLoader($this->container);
+            $articleLoader->setArticleNameForCommentCollection($commentCollection);
+
             $view = $this->getTwig()->render('admin/commentList.html.twig', ['commentCollection' => $commentCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
