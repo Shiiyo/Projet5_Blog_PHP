@@ -24,17 +24,32 @@ a
 a:hover
 {
     text-decoration: none;
+    color: inherit;
     transform: scale(1.05, 1.05);
 }
 
-.table
+.table, .nav-link .active
 {
     background-color: #ffffff;
     font-size: 0.8rem;
-    font-weight: 100;
+    font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     color: #373736;
     text-align: center;
+}
+
+.nav-link
+{
+    background-color: #a1c22d;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color: #373736;
+    text-align: center;
+    padding-right: 2.9rem;
+    padding-left: 2.9rem;
+    border: 1px solid #373736 !important;
+    border-bottom: 1px solid transparent !important;
 }
 
 th img
