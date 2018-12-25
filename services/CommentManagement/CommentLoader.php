@@ -23,6 +23,21 @@ class CommentLoader implements CommentLoaderInterface
         $this->container = $container;
     }
 
+    public function getCommentCollection()
+    {
+        $commentArray = $this->commentStorage->fetchAllComment();
+        $commentsObject = [];
+        if ($this->commentBuilder === null) {
+            $this->commentBuilder = $this->container->newCommentBuilder();
+        }
+        foreach ($commentArray as $commentData) {
+            $comment = $this->commentBuilder->build($commentData);
+            $commentsObject[] =$comment;
+        }
+        $commentCollection = $this->container->newCommentCollection($commentsObject);
+        return $commentCollection;
+    }
+
     /**
      * @return CommentCollection
      */

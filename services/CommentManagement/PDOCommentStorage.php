@@ -14,6 +14,19 @@ class PDOCommentStorage implements CommentStorageInterface
         $this->pdo = $pdo;
     }
 
+    public function fetchAllComment()
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('SELECT * FROM comment ORDER BY add_date DESC');
+            $req->execute();
+            $commentArray = $req->fetchAll(\PDO::FETCH_ASSOC);
+            return $commentArray;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
+
     public function fetchAllCommentByArticle($article)
     {
         $pdo = $this->pdo;

@@ -1,11 +1,12 @@
 <?php
 
+
 namespace Controller\Admin;
 
 use Controller\ControllerInterface;
 use Controller\ControllerTrait;
 
-class ListBlogPostController implements ControllerInterface
+class ListCommentController implements ControllerInterface
 {
     use ControllerTrait;
 
@@ -15,16 +16,10 @@ class ListBlogPostController implements ControllerInterface
         $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
 
         if ($adminLogIn != false) {
-            $articleLoader = $this->container->getArticleLoader($this->container);
-            $articleCollection = $articleLoader->getArticleCollection();
-
             $commentLoader = $this->container->getCommentLoader($this->container);
-            $commentLoader->setNbCommentForArticleCollection($articleCollection);
+            $commentCollection = $commentLoader->getCommentCollection();
 
-            $adminLoader = $this->container->getAdminLoader($this->container);
-            $adminLoader->setAdminNameForArticleCollection($articleCollection);
-
-            $view = $this->getTwig()->render('admin/blogPostList.html.twig', ['articleCollection' => $articleCollection]);
+            $view = $this->getTwig()->render('admin/commentList.html.twig', ['commentCollection' => $commentCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
         } else {
