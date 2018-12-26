@@ -7,6 +7,7 @@ use Entity\Article;
 use Entity\Comment;
 use framework\Session\PHPSession;
 use services\AdminManagement\AdminCollection;
+use services\AdminManagement\AdminDeleter;
 use services\AdminManagement\AdminHydrator;
 use services\AdminManagement\AdminLoader;
 use services\AdminManagement\PDOAdminStorage;
@@ -196,6 +197,11 @@ class DependencyInjectionContainer
     public function newArticleDeleter()
     {
         return new ArticleDeleter($this->getArticleStorage());
+    }
+
+    public function newAdminDeleter()
+    {
+        return new AdminDeleter($this->getAdminStorage());
     }
 
     /**

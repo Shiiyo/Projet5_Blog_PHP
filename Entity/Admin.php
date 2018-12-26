@@ -10,6 +10,8 @@ class Admin implements Interfaces\AdminInterface
     private $email;
     private $password;
 
+    private $nbArticles;
+
     //GETTERS
 
     /**
@@ -52,6 +54,14 @@ class Admin implements Interfaces\AdminInterface
         return $this->firstName;
     }
 
+    /**
+     * @return int
+     */
+    public function getNbArticles()
+    {
+        return $this->nbArticles;
+    }
+
 
     // SETTERS
 
@@ -92,5 +102,13 @@ class Admin implements Interfaces\AdminInterface
     public function setFirstName(string $firstName): void
     {
         $this->firstName = $firstName;
+    }
+
+    /**
+     * @param int $nbArticles
+     */
+    public function setNbArticles($nbArticles): void
+    {
+        $this->nbArticles = $nbArticles;
     }
 }

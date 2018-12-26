@@ -112,4 +112,19 @@ class PDOArticleStorage implements ArticleStorageInterface
             return trigger_error($e->getMessage());
         }
     }
+
+    public function getNbArticlesByAdmin($admin)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('SELECT COUNT(id) AS nb_article FROM blog_post WHERE id_admin = :id');
+            $req->execute([
+                'id' => $admin->getId()
+            ]);
+            $articleArray = $req->fetchAll(\PDO::FETCH_ASSOC);
+            return $articleArray[0]['nb_article'];
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
 }
