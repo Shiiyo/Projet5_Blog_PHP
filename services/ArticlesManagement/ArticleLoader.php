@@ -66,4 +66,11 @@ class ArticleLoader implements ArticleLoaderInterface
             $comment->setArticleSlug($slugify->slugify($articleTitle));
         }
     }
+
+    public function setNbArticlesByAdmin($adminCollection)
+    {
+        foreach ($adminCollection as $admin) {
+            $admin->setNbArticles($this->articleStorage->getNbArticlesByAdmin($admin));
+        }
+    }
 }

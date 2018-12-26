@@ -5,7 +5,9 @@ namespace services\ArticlesManagement\Interfaces;
 
 use Entity\Article;
 use framework\DependencyInjectionContainer;
+use services\AdminManagement\AdminCollection;
 use services\ArticlesManagement\ArticleCollection;
+use services\CommentManagement\CommentCollection;
 
 interface ArticleLoaderInterface
 {
@@ -26,4 +28,16 @@ interface ArticleLoaderInterface
      * @return Article
      */
     public function findOneBySlug($slug);
+
+    /**
+     * @param CommentCollection $commentCollection
+     * @return mixed
+     */
+    public function setArticleNameForCommentCollection($commentCollection);
+
+    /**
+     * @param AdminCollection $adminCollection
+     * @return mixed
+     */
+    public function setNbArticlesByAdmin($adminCollection);
 }

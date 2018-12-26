@@ -19,6 +19,9 @@ class ListAdminAccountController implements ControllerInterface
             $adminLoader = $this->container->getAdminLoader($this->container);
             $adminCollection = $adminLoader->getAdminCollection();
 
+            $articleLoader = $this->container->getArticleLoader($this->container);
+            $articleLoader->setNbArticlesByAdmin($adminCollection);
+
             $view = $this->getTwig()->render('admin/adminList.html.twig', ['adminCollection' => $adminCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
