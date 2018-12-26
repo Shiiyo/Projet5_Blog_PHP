@@ -16,7 +16,7 @@ class UpdateBlogPostController implements ControllerInterface
         $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
 
         if ($adminLogIn != false) {
-            $slugArticle = $this->container->newArticleFromURI()->getArticleFromURI();
+            $slugArticle = $this->container->newEndParamURI()->getEndParamURI();
             $articleLoader = $this->container->getArticleLoader($this->container);
             $article = $articleLoader->findOneBySlug($slugArticle);
 

@@ -2,15 +2,15 @@
 
 namespace services;
 
-use services\Interfaces\ArticleFromURIInterface;
+use services\Interfaces\EndParamURIInterface;
 
-class ArticleFromURI implements ArticleFromURIInterface
+class EndParamURI implements EndParamURIInterface
 {
     /**
      * @param $uri
      * @return string
      */
-    public function getArticleFromURI()
+    public function getEndParamURI()
     {
         $uri = $_SERVER['REQUEST_URI'];
         $arrayUri = explode('/', $uri);

@@ -23,4 +23,16 @@ interface CommentStorageInterface
      * @return mixed
      */
     public function save($article);
+
+    /**
+     * @param $idComment
+     * @return mixed
+     */
+    public function accepted($idComment);
+
+    /**
+     * @param $idComment
+     * @return mixed
+     */
+    public function refused($idComment);
 }

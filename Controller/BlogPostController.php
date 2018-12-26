@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use services\ArticleFromURI;
+use services\EndParamURI;
 
 class BlogPostController implements ControllerInterface
 {
@@ -10,7 +10,7 @@ class BlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $slugArticle = $this->container->newArticleFromURI()->getArticleFromURI();
+        $slugArticle = $this->container->newEndParamURI()->getEndParamURI();
         $articleLoader = $this->container->getArticleLoader($this->container);
         $article = $articleLoader->findOneBySlug($slugArticle);
 

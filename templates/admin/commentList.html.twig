@@ -54,8 +54,8 @@
                                      <th scope="col">{{ comment.addDate|date('d/m/Y') }}</th>
                                      <th scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></th>
                                      <th scope="col">
-                                         <a href=""><img src="../img/pictos/ok-32.png" alt="ok"></a>
-                                         <a href=""><img src="../img/pictos/x-mark-3-32.png" alt="croix rouge"></a>
+                                         <a href="{{ "/admin/online-comment/" ~ comment.id }}"><img src="../img/pictos/ok-32.png" alt="ok"></a>
+                                         <a href="{{ "/admin/close-comment/" ~ comment.id }}"><img src="../img/pictos/x-mark-3-32.png" alt="croix rouge"></a>
                                      </th>
                                  </tr>
                              {% endif %}
@@ -84,7 +84,7 @@
                                      <th scope="col">{{ comment.addDate|date('d/m/Y') }}</th>
                                      <th scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></th>
                                      <th scope="col">
-                                         <a href=""><img src="../img/pictos/x-mark-3-32.png" alt="croix rouge"></a>
+                                         <a href="{{ "/admin/close-comment/" ~ comment.id }}"><img src="../img/pictos/x-mark-3-32.png" alt="croix rouge"></a>
                                      </th>
                                  </tr>
                              {% endif %}
@@ -113,7 +113,7 @@
                                      <th scope="col">{{ comment.addDate|date('d/m/Y') }}</th>
                                      <th scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></th>
                                      <th scope="col">
-                                         <a href=""><img src="../img/pictos/ok-32.png" alt="ok"></a>
+                                         <a href="{{ "/admin/online-comment/" ~ comment.id }}"><img src="../img/pictos/ok-32.png" alt="ok"></a>
                                      </th>
                                  </tr>
                              {% endif %}
@@ -123,6 +123,19 @@
                  </div>
              </div>
         </div>
+        {% if session.success %}
+            <div id="validation-form">
+                <img src="../img/pictos/ok-128.png" alt="ok symbole">
+                <p>{{ session.success|raw }}</p>
+            </div>
+        {% endif %}
+
+        {% if session.error %}
+            <div id="error-form">
+                <img src="../img/pictos/error-5-128.png" alt="erreur symbole">
+                <p>{{ session.error|raw }}</p>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
