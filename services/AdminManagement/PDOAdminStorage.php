@@ -100,4 +100,18 @@ class PDOAdminStorage
         }
         return $adminArray[0]['name'] . ' ' . $adminArray[0]['first_name'];
     }
+
+    public function delete($adminId)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('DELETE FROM admin WHERE id = :id');
+            $req->execute([
+                'id' => $adminId
+            ]);
+            return true;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
 }

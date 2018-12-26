@@ -26,4 +26,10 @@ interface AdminStorageInterface
      * @return array|null
      */
     public function selectAdminByUuid($uuid);
+
+    /**
+     * @param $adminId
+     * @return mixed
+     */
+    public function delete($adminId);
 }
