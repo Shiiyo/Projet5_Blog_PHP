@@ -6,7 +6,7 @@ namespace Controller\Admin;
 use Controller\ControllerInterface;
 use Controller\ControllerTrait;
 
-class UpdateBlogPostController implements ControllerInterface
+class ListCommentController implements ControllerInterface
 {
     use ControllerTrait;
 
@@ -16,14 +16,13 @@ class UpdateBlogPostController implements ControllerInterface
         $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
 
         if ($adminLogIn != false) {
-            $slugArticle = $this->container->newEndParamURI()->getEndParamURI();
+            $commentLoader = $this->container->getCommentLoader($this->container);
+            $commentCollection = $commentLoader->getCommentCollection();
+
             $articleLoader = $this->container->getArticleLoader($this->container);
-            $article = $articleLoader->findOneBySlug($slugArticle);
+            $articleLoader->setArticleNameForCommentCollection($commentCollection);
 
-            $adminLoader = $this->container->getAdminLoader($this->container);
-            $adminCollection = $adminLoader->getAdminCollection();
-
-            $view = $this->getTwig()->render('admin/updateBlogPost.html.twig', ['article' => $article, 'adminCollection' => $adminCollection]);
+            $view = $this->getTwig()->render('admin/commentList.html.twig', ['commentCollection' => $commentCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
         } else {

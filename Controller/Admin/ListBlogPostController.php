@@ -13,6 +13,7 @@ class ListBlogPostController implements ControllerInterface
     {
         $testAdminLogIn = $this->container->newTestAdminLogIn();
         $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+
         if ($adminLogIn != false) {
             $articleLoader = $this->container->getArticleLoader($this->container);
             $articleCollection = $articleLoader->getArticleCollection();

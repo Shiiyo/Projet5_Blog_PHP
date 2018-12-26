@@ -35,6 +35,15 @@ interface CommentInterface
      */
     public function getAddDate();
 
+    /**
+     * @return mixed
+     */
+    public function getArticleName();
+
+    /**
+     * @return mixed
+     */
+    public function getArticleSlug();
     //SETTERS
 
     /**
@@ -66,4 +75,14 @@ interface CommentInterface
      * @return mixed
      */
     public function setAddDate(string $addDate);
+
+    /**
+     * @param mixed $articleName
+     */
+    public function setArticleName($articleName): void;
+
+    /**
+     * @param mixed $articleSlug
+     */
+    public function setArticleSlug($articleSlug): void;
 }

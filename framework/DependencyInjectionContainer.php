@@ -24,7 +24,7 @@ use services\CommentManagement\CommentHydrator;
 use services\CommentManagement\CommentLoader;
 use services\CommentManagement\CommentWriter;
 use services\CommentManagement\PDOCommentStorage;
-use services\ArticleFromURI;
+use services\EndParamURI;
 use services\SendEmail;
 use services\TestAdminLogIn;
 use services\TestRecaptcha;
@@ -153,9 +153,9 @@ class DependencyInjectionContainer
         return new ArticleCollection($articlesArray);
     }
 
-    public function newArticleFromURI()
+    public function newEndParamURI()
     {
-        return new ArticleFromURI();
+        return new EndParamURI();
     }
 
     public function newCommentCollection($commentsArray)

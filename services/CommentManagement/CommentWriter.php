@@ -22,6 +22,11 @@ class CommentWriter implements CommentWriterInterface
         $this->container = $container;
     }
 
+    /**
+     * @param $request
+     * @return mixed|void
+     * @throws \Exception
+     */
     public function write($request)
     {
         $commentArray = [
@@ -40,5 +45,23 @@ class CommentWriter implements CommentWriterInterface
 
         $comment = $this->commentBuilder->build($commentArray);
         $this->commentStorage->save($comment);
+    }
+
+    /**
+     * @param $commentId
+     * @return mixed
+     */
+    public function accepted($commentId)
+    {
+        return $this->commentStorage->accepted($commentId);
+    }
+
+    /**
+     * @param $commentId
+     * @return mixed
+     */
+    public function refused($commentId)
+    {
+        return $this->commentStorage->refused($commentId);
     }
 }

@@ -14,6 +14,26 @@ class PDOCommentStorage implements CommentStorageInterface
         $this->pdo = $pdo;
     }
 
+    /**
+     * @return array|bool
+     */
+    public function fetchAllComment()
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('SELECT * FROM comment ORDER BY add_date DESC');
+            $req->execute();
+            $commentArray = $req->fetchAll(\PDO::FETCH_ASSOC);
+            return $commentArray;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
+
+    /**
+     * @param \Entity\Article $article
+     * @return array|bool|mixed
+     */
     public function fetchAllCommentByArticle($article)
     {
         $pdo = $this->pdo;
@@ -27,6 +47,10 @@ class PDOCommentStorage implements CommentStorageInterface
         }
     }
 
+    /**
+     * @param \Entity\Article $article
+     * @return array|bool|mixed
+     */
     public function countCommentByArticle($article)
     {
         $pdo = $this->pdo;
@@ -40,6 +64,10 @@ class PDOCommentStorage implements CommentStorageInterface
         }
     }
 
+    /**
+     * @param \Entity\Article $comment
+     * @return bool|mixed
+     */
     public function save($comment)
     {
         $pdo = $this->pdo;
@@ -54,6 +82,43 @@ class PDOCommentStorage implements CommentStorageInterface
                 'validation' => $comment->getValidation(),
                 'add_date' => $comment->getAddDate()
             ]);
+            return true;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
+
+    /**
+     * @param $idComment
+     * @return bool
+     */
+    public function accepted($idComment)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('UPDATE comment SET validation = 1 WHERE id = :id');
+            $req->execute([
+                'id' => $idComment
+            ]);
+            return true;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
+
+    /**
+     * @param $idComment
+     * @return bool
+     */
+    public function refused($idComment)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('UPDATE comment SET validation = 2 WHERE id = :id');
+            $req->execute([
+                'id' => $idComment
+            ]);
+            return true;
         } catch (\PDOException $e) {
             return trigger_error($e->getMessage());
         }

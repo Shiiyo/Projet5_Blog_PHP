@@ -97,4 +97,19 @@ class PDOArticleStorage implements ArticleStorageInterface
             return trigger_error($e->getMessage());
         }
     }
+
+    public function findArticleName($comment)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('SELECT title FROM blog_post WHERE id = :id');
+            $req->execute([
+               'id' => $comment->getIdArticle()
+            ]);
+            $articleArray = $req->fetchAll(\PDO::FETCH_ASSOC);
+            return $articleArray[0]['title'];
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
 }

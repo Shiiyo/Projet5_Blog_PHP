@@ -14,6 +14,9 @@ class Comment implements Interfaces\CommentInterface
     private $validation;
     private $addDate;
 
+    private $articleName;
+    private $articleSlug;
+
     //GETTERS
 
     /**
@@ -70,6 +73,22 @@ class Comment implements Interfaces\CommentInterface
     public function getAddDate(): string
     {
         return $this->addDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticleName()
+    {
+        return $this->articleName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticleSlug()
+    {
+        return $this->articleSlug;
     }
 
 
@@ -129,5 +148,21 @@ class Comment implements Interfaces\CommentInterface
     public function setAddDate(string $addDate): void
     {
         $this->addDate = $addDate;
+    }
+
+    /**
+     * @param mixed $articleName
+     */
+    public function setArticleName($articleName): void
+    {
+        $this->articleName = $articleName;
+    }
+
+    /**
+     * @param mixed $articleSlug
+     */
+    public function setArticleSlug($articleSlug): void
+    {
+        $this->articleSlug = $articleSlug;
     }
 }

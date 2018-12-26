@@ -2,10 +2,10 @@
 
 namespace services\Interfaces;
 
-interface ArticleFromURIInterface
+interface EndParamURIInterface
 {
     /**
      * @return string
      */
-    public function getArticleFromURI();
+    public function getEndParamURI();
 }
