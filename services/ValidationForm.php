@@ -70,6 +70,30 @@ class ValidationForm implements ValidationFormInterface
         return $violations;
     }
 
+    public function validatePassword($password)
+    {
+        $violations = $this->getValidator()->validate($password, array(
+            new Assert\NotBlank(array('message' => 'Le champ de mot de passe ne doit pas être vide')),
+            new Assert\Length(array(
+                'min' => 6,
+                'max' => 36,
+                'minMessage' => 'Le mot de passe doit avoir minimum {{ limit }} caractères',
+                'maxMessage' => 'Le mot de passe doit avoir maximum {{ limit }} caractères')),
+        ));
+        return $violations;
+    }
+
+    public function validateEqualPassword($password1, $password2)
+    {
+        $violations = $this->getValidator()->validate($password1, array(
+           new Assert\EqualTo(array(
+               'value' => $password2,
+               'message' => 'Les deux mot de passes ne sont pas identiques.'
+           )),
+        ));
+        return $violations;
+    }
+
     /**
      * @return Validation
      */

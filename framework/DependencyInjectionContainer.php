@@ -10,6 +10,7 @@ use services\AdminManagement\AdminCollection;
 use services\AdminManagement\AdminDeleter;
 use services\AdminManagement\AdminHydrator;
 use services\AdminManagement\AdminLoader;
+use services\AdminManagement\AdminWriter;
 use services\AdminManagement\PDOAdminStorage;
 use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleDeleter;
@@ -50,6 +51,7 @@ class DependencyInjectionContainer
     protected $commentLoader;
     protected $commentWriter;
     protected $articleWriter;
+    protected $adminWriter;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -287,6 +289,14 @@ class DependencyInjectionContainer
             $this->articleWriter = new ArticleWriter($this->getArticleStorage(), $container);
         }
         return $this->articleWriter;
+    }
+
+    public function getAdminWriter($container)
+    {
+        if ($this->adminWriter === null) {
+            $this->adminWriter = new AdminWriter($this->getAdminStorage(), $container);
+        }
+        return $this->adminWriter;
     }
 
     //GETTERS
