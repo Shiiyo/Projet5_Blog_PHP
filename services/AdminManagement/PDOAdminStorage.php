@@ -114,4 +114,22 @@ class PDOAdminStorage
             return trigger_error($e->getMessage());
         }
     }
+
+    public function save($admin)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('INSERT INTO admin VALUES (:id, :name, :first_name, :email, :password)');
+            $req->execute([
+                'id' => $admin->getId(),
+                'name' => $admin->getName(),
+                'first_name' =>$admin->getFirstName(),
+                'email' => $admin->getEmail(),
+                'password' => $admin->getPassword()
+            ]);
+            return true;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
 }

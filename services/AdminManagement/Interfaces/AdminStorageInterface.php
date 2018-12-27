@@ -2,6 +2,8 @@
 
 namespace services\AdminManagement\Interfaces;
 
+use Entity\Admin;
+
 interface AdminStorageInterface
 {
     /**
@@ -32,4 +34,10 @@ interface AdminStorageInterface
      * @return mixed
      */
     public function delete($adminId);
+
+    /**
+     * @param Admin $admin
+     * @return mixed
+     */
+    public function save($admin);
 }

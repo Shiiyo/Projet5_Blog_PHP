@@ -50,4 +50,17 @@ interface ValidationFormInterface
      * @param $validator
      */
     public function setValidator($validator): void;
+
+    /**
+     * @param $password
+     * @return mixed
+     */
+    public function validatePassword($password);
+
+    /**
+     * @param $password1
+     * @param $password2
+     * @return mixed
+     */
+    public function validateEqualPassword($password1, $password2);
 }
