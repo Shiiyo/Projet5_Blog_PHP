@@ -13,12 +13,14 @@ class AdminAccountController implements ControllerInterface
     {
         if ($this->session->get('uuid')!= null) {
             $adminLoader = $this->container->getAdminLoader($this->container);
-            $admin = $adminLoader->findOneByUuid($this->session->get('uuid'));
+            $adminLogIn = $adminLoader->findOneByUuid($this->session->get('uuid'));
 
-            if ($admin == false) {
+            if ($adminLogIn == false) {
                 $this->session->delete('uuid');
                 $this->redirect('/admin/login');
             } else {
+                $adminId = $this->container->newEndParamURI()->getEndParamURI();
+                $admin = $adminLoader->findOneByUuid($adminId);
                 $view = $this->getTwig()->render('admin/administratorAccount.html.twig', ['admin' => $admin]);
                 $response = $this->getContainer()->newHttpResponseHtml($view);
                 $response->send();
