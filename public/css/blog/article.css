@@ -92,7 +92,6 @@ h1
     font-weight: 400;
     font-family: 'Montserrat', sans-serif;
     text-align: justify;
-    text-indent: 5rem;
 }
 
 #content h2::first-letter
@@ -103,10 +102,11 @@ h1
 }
 
 #content h2
-{
-    font-weight: 500;
-    font-size: 1.3rem;
-}
+ {
+     font-weight: 500;
+     font-size: 1.3rem;
+     text-indent: 5rem;
+ }
 
 #form-block
 {

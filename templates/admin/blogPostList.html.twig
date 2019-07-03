@@ -39,12 +39,12 @@
                     <tbody>
                         {% for article in articleCollection %}
                             <tr>
-                                <th scope="col"><a href={{"/admin/blog-post/" ~ article.slug }}>{{ article.title }}</a></th>
-                                <th scope="col">{{ article.adminName }}</th>
-                                <th scope="col">{{ article.addDate|date('d/m/Y') }}</th>
-                                <th scope="col">{{ article.updateDate|date('d/m/Y') }}</th>
-                                <th scope="col">{{ article.nbComment }}</th>
-                                <th scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}" onclick="return confirm('Etes-vous sûr?')"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></th>
+                                <td scope="col"><a href={{"/admin/blog-post/" ~ article.slug }}>{{ article.title }}</a></td>
+                                <td scope="col">{{ article.adminName }}</td>
+                                <td scope="col">{{ article.addDate|date('d/m/Y') }}</td>
+                                <td scope="col">{{ article.updateDate|date('d/m/Y') }}</td>
+                                <td scope="col">{{ article.nbComment }}</td>
+                                <td scope="col"><a href="{{"/admin/blog-post/delete/" ~ article.slug }}" onclick="return confirm('Etes-vous sûr?')"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>
