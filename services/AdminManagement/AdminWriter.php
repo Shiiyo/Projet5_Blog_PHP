@@ -23,6 +23,7 @@ class AdminWriter implements AdminWriterInterface
           'id' => Uuid::uuid4(),
           'name' => $request->request->get('nom'),
           'first_name' => $request->request->get('prenom'),
+          'pseudo' => $request->request->get('pseudo')  ,
           'email' => $request->request->get('email'),
           'password' => password_hash($request->request->get('mdp1'), PASSWORD_DEFAULT)
         ];

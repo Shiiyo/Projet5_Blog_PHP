@@ -49,14 +49,14 @@
                          {% for comment in commentCollection %}
                              {% if comment.validation == 0 %}
                                  <tr>
-                                     <th scope="col">{{ comment.pseudo }}</th>
-                                     <th scope="col">{{ comment.message }}</th>
-                                     <th scope="col">{{ comment.addDate|date('d/m/Y') }}</th>
-                                     <th scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></th>
-                                     <th scope="col">
+                                     <td scope="col">{{ comment.pseudo }}</td>
+                                     <td scope="col">{{ comment.message }}</td>
+                                     <td scope="col">{{ comment.addDate|date('d/m/Y') }}</td>
+                                     <td scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></td>
+                                     <td scope="col">
                                          <a href="{{ "/admin/online-comment/" ~ comment.id }}"><img src="../img/pictos/ok-32.png" alt="ok"></a>
                                          <a href="{{ "/admin/close-comment/" ~ comment.id }}"><img src="../img/pictos/x-mark-3-32.png" alt="croix rouge"></a>
-                                     </th>
+                                     </td>
                                  </tr>
                              {% endif %}
                          {% endfor %}
@@ -79,13 +79,13 @@
                          {% for comment in commentCollection %}
                              {% if comment.validation == 1 %}
                                  <tr>
-                                     <th scope="col">{{ comment.pseudo }}</th>
-                                     <th scope="col">{{ comment.message }}</th>
-                                     <th scope="col">{{ comment.addDate|date('d/m/Y') }}</th>
-                                     <th scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></th>
-                                     <th scope="col">
+                                     <td scope="col">{{ comment.pseudo }}</td>
+                                     <td scope="col">{{ comment.message }}</td>
+                                     <td scope="col">{{ comment.addDate|date('d/m/Y') }}</td>
+                                     <td scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></td>
+                                     <td scope="col">
                                          <a href="{{ "/admin/close-comment/" ~ comment.id }}"><img src="../img/pictos/x-mark-3-32.png" alt="croix rouge"></a>
-                                     </th>
+                                     </td>
                                  </tr>
                              {% endif %}
                          {% endfor %}
@@ -108,13 +108,13 @@
                          {% for comment in commentCollection %}
                              {% if comment.validation == 2 %}
                                  <tr>
-                                     <th scope="col">{{ comment.pseudo }}</th>
-                                     <th scope="col">{{ comment.message }}</th>
-                                     <th scope="col">{{ comment.addDate|date('d/m/Y') }}</th>
-                                     <th scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></th>
-                                     <th scope="col">
+                                     <td scope="col">{{ comment.pseudo }}</td>
+                                     <td scope="col">{{ comment.message }}</td>
+                                     <td scope="col">{{ comment.addDate|date('d/m/Y') }}</td>
+                                     <td scope="col"><a href="{{ "/blog-post/" ~ comment.articleSlug }}">{{ comment.articleName }}</a></td>
+                                     <td scope="col">
                                          <a href="{{ "/admin/online-comment/" ~ comment.id }}"><img src="../img/pictos/ok-32.png" alt="ok"></a>
-                                     </th>
+                                     </td>
                                  </tr>
                              {% endif %}
                          {% endfor %}

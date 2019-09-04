@@ -31,14 +31,14 @@ class ConnectionFormController implements ControllerInterface
 
         if ($error_msg == "") {
             $adminLoader = $this->container->getAdminLoader($this->container);
-            $admin = $adminLoader->findOneByEmail($request->request->get('email'));
+            $admin = $adminLoader->findOneByPseudo($request->request->get('pseudo'));
             if ($admin == false) {
-                $this->session->set('error', "Email invalide");
+                $this->session->set('error', "L'identifiant ou le mot de passe est incorrect");
                 $this->redirect('/admin/login');
             } else {
                 $testPassword = password_verify($request->request->get('mdp'), $admin->getPassword());
                 if ($testPassword == false) {
-                    $this->session->set('error', "Mot de passe incorrect");
+                    $this->session->set('error', "L'identifiant ou le mot de passe est incorrect");
                     $this->redirect('/admin/login');
                 } else {
                     $this->session->set('uuid', $admin->getId());

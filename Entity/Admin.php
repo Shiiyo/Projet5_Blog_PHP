@@ -7,6 +7,7 @@ class Admin implements Interfaces\AdminInterface
     private $id;
     private $name;
     private $firstName;
+    private $pseudo;
     private $email;
     private $password;
 
@@ -55,13 +56,20 @@ class Admin implements Interfaces\AdminInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    /**
      * @return int
      */
     public function getNbArticles()
     {
         return $this->nbArticles;
     }
-
 
     // SETTERS
 
@@ -105,10 +113,19 @@ class Admin implements Interfaces\AdminInterface
     }
 
     /**
+     * @param mixed $pseudo
+     */
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    /**
      * @param int $nbArticles
      */
     public function setNbArticles($nbArticles): void
     {
         $this->nbArticles = $nbArticles;
     }
+
 }

@@ -68,6 +68,19 @@ class AdminLoader
         return $admin;
     }
 
+    public function findOneByPseudo($pseudo)
+    {
+        $adminArray = $this->adminStorage->selectAdminByPseudo($pseudo);
+        if ($adminArray == null) {
+            return false;
+        }
+        if ($this->adminBuilder === null) {
+            $this->adminBuilder = $this->container->newAdminBuilder();
+        }
+        $admin = $this->adminBuilder->build($adminArray[0]);
+        return $admin;
+    }
+
     /**
      * @param $uuid
      * @return bool|\Entity\Admin|mixed

@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="../../css/admin/addBlogPost.css">
+    <link rel="stylesheet" href="../../css/admin/administratorAccount.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <a href="/admin/blog-post">
+                    <img id="img-home" src="../../img/pictos/arrow-105-64.png" alt="Flèche gauche">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1>Modifier son profil</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-1 col-10">
+                <form method="post" action="/admin/post-new-admin-account">
+                    <div class="col-md-5 col-12 inline-block">
+                        <label for="nom">Nom</label>
+                        <input type="text" name="nom" id="nom" value="{{ admin.name }}" required/>
+                    </div>
+                    <div class="offset-md-1 col-md-5 col-12 inline-block">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" name="prenom" id="prenom" value="{{ admin.firstName }}" required/>
+                    </div>
+                    <div class="col-12">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" value="{{ admin.email }}" required/>
+                    </div>
+                    <p>Changer votre mot de passe:</p>
+                    <ul>
+                        <li>
+                            <div class="col-md-8 col-12">
+                                <label for="old_mdp">Ancien mot de passe</label>
+                                <input type="password" name="old_mdp" id="old_mdp" required/>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-md-8 col-12">
+                                <label for="mdp1">Nouveau mot de Passe</label>
+                                <input type="password" name="mdp1" id="mdp1" required/>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-md-8 col-12">
+                                <label for="mdp2">Réécrire nouveau mot de passe</label>
+                                <input type="password" name="mdp2" id="mdp2" required/>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="col-12 text-center">
+                        <div class="g-recaptcha" data-sitekey="6LeJCnQUAAAAAOlqRpKqFm-4oo8i71Luuo0j_S_F"></div>
+                    </div>
+                    <div class="col-12">
+                        <p id="subP"><input type="submit" value="Valider" id="submit"/></p>
+                    </div>
+                </form>
+
+                <a href={{ "/admin/account/delete/" ~ admin.id }}>Supprimer mon compte</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
