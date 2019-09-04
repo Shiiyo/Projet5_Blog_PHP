@@ -65,6 +65,23 @@ class PDOAdminStorage
         return $adminArray;
     }
 
+    public function selectAdminByPseudo($pseudo)
+    {
+        $pdo = $this->pdo;
+        try {
+            $req = $pdo->prepare('SELECT * FROM admin WHERE pseudo = :pseudo');
+            $req->execute(array('pseudo' => $pseudo));
+            $adminArray = $req->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            trigger_error($e->getMessage());
+        }
+
+        if (!$adminArray) {
+            return null;
+        }
+        return $adminArray;
+    }
+
     /**
      * @param $uuid
      * @return array|null

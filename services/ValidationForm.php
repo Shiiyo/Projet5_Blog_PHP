@@ -30,6 +30,20 @@ class ValidationForm implements ValidationFormInterface
         return $violations;
     }
 
+    public function validatePseudo($pseudo)
+    {
+        $violations = $this->getValidator()->validate($pseudo, array(
+           new Assert\NotBlank(array('message' => 'Le champ de pseudo ne doit pas être vide')),
+           new  Assert\Length(array(
+               'min' => 4,
+               'max' => 36,
+               'minMessage' => 'Le pseudo doit avoir au minimum {{ limit }} caractères',
+               'maxMessage' => 'Le pseudo doit avoir au maximum {{ limit }} caractères')),
+            new Assert\Regex(array('pattern' => "/^\p{L}{2,}$/", 'message' => 'Le pseudo doit être uniquement composé de caractères alphabétiques'))
+        ));
+        return $violations;
+    }
+
     public function validateEmail($email)
     {
         $violations = $this->getValidator()->validate($email, array(

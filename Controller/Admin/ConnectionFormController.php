@@ -31,7 +31,7 @@ class ConnectionFormController implements ControllerInterface
 
         if ($error_msg == "") {
             $adminLoader = $this->container->getAdminLoader($this->container);
-            $admin = $adminLoader->findOneByEmail($request->request->get('email'));
+            $admin = $adminLoader->findOneByPseudo($request->request->get('pseudo'));
             if ($admin == false) {
                 $this->session->set('error', "L'identifiant ou le mot de passe est incorrect");
                 $this->redirect('/admin/login');
