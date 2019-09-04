@@ -21,9 +21,9 @@ class ConnectionFormController implements ControllerInterface
         //Testing form fields
         $validator = $this->getContainer()->newValidator();
         $validationForm = $this->getContainer()->newValidationForm($validator);
-        $violationEmail = $validationForm->validateEmail($request->request->get('email'));
+        $violationPseudo = $validationForm->validatePseudo($request->request->get('pseudo'));
 
-        $violations = [$violationEmail];
+        $violations = [$violationPseudo];
 
         //Get the error messages
         $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
