@@ -1,0 +1,27 @@
+.inline-block
+{
+    display: inline-block;
+}
+
+p
+{
+    font-size: 1.3rem;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+    color: #fafaf8;
+    padding-top: 3rem;
+}
+
+a
+{
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    color: #bb0b0b;
+    text-decoration: underline;
+}
+
+a:hover
+{
+    color: #bb0b0b;
+}
