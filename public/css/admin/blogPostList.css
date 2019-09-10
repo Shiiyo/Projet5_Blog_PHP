@@ -42,25 +42,25 @@ a:hover
 {
     background-color: #ffffff;
     font-size: 0.8rem;
-    font-weight: 100;
+    font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     color: #373736;
     text-align: center;
 }
 
-th img
+td img
 {
     height: 15px;
     width: 15px;
 }
 
-th a
+td a
 {
     color: inherit;
     text-decoration: underline;
 }
 
-th a:hover
+td a:hover
 {
     color: inherit;
 }
