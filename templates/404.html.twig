@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="css/404.css">
+{% endblock %}
+
+{% block header %}
+    <div class="row return-row">
+        <div class="col-3 col-lg-1">
+            <a href="/accueil"><img id="img-home" src="../img/pictos/house-64-white.png" alt="Maison picto"></a>
+        </div>
+        <div class="col-9 col-lg-3 return">
+            <h4><a href="/accueil">Retour à l'accueil</a></h4>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Oups... 404</h1>
+                <p>Cette page n'existe pas</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

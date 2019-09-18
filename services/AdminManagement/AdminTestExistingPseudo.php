@@ -3,7 +3,9 @@
 
 namespace services\AdminManagement;
 
-class AdminTestExistingPseudo
+use services\AdminManagement\Interfaces\AdminTestExistingPseudoInterface;
+
+class AdminTestExistingPseudo implements AdminTestExistingPseudoInterface
 {
     private $container;
 
