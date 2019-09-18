@@ -33,6 +33,7 @@ class AdminWriter implements AdminWriterInterface
         }
 
         $article = $this->adminBuilder->build($adminArray);
-        $this->adminStorage->save($article);
+        $returnStorage = $this->adminStorage->save($article);
+        return $returnStorage;
     }
 }

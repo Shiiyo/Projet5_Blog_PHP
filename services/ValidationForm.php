@@ -38,8 +38,7 @@ class ValidationForm implements ValidationFormInterface
                'min' => 3,
                'max' => 36,
                'minMessage' => 'Le pseudo doit avoir au minimum {{ limit }} caractères',
-               'maxMessage' => 'Le pseudo doit avoir au maximum {{ limit }} caractères')),
-            new Assert\Regex(array('pattern' => "/^\p{L}{2,}$/", 'message' => 'Le pseudo doit être uniquement composé de caractères alphabétiques'))
+               'maxMessage' => 'Le pseudo doit avoir au maximum {{ limit }} caractères'))
         ));
         return $violations;
     }

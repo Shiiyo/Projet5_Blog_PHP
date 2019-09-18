@@ -34,6 +34,7 @@
                     <tr class="table-dark">
                         <th scope="col">Nom</th>
                         <th scope="col">Prénom</th>
+                        <th scope="col">Pseudo</th>
                         <th scope="col">Email</th>
                         <th scope="col">Articles</th>
                         <th scope="col">Supprimer</th>
@@ -44,6 +45,7 @@
                         <tr>
                             <td scope="col"><a href={{"/admin/compte/" ~ admin.id }}>{{ admin.name }}</a></td>
                             <td scope="col">{{ admin.firstName }}</td>
+                            <td scope="col">{{ admin.pseudo }}</td>
                             <td scope="col">{{ admin.email }}</td>
                             <td scope="col">{{ admin.nbArticles }}</td>
                             <td scope="col"><a href="{{"/admin/account/delete/" ~ admin.id }}" onclick="return confirm('Etes-vous sûr?')"><img src="../img/pictos/x-mark-48.png" alt="croix rouge"></a></td>

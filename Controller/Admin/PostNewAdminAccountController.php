@@ -42,10 +42,18 @@ class PostNewAdminAccountController implements ControllerInterface
 
             if ($error_msg == "") {
                 $adminWriter = $this->container->getAdminWriter($this->container);
-                $adminWriter->write($request);
+                $returnWriter = $adminWriter->write($request);
 
-                $this->session->set('success', "Le compte administrateur est bien enregistré.");
-                $this->redirect('/admin/compte');
+                if ($returnWriter == true)
+                {
+                    $this->session->set('success', "Le compte administrateur est bien enregistré.");
+                    $this->redirect('/admin/compte');
+                }
+                else
+                {
+                    $this->session->set('error', $returnWriter);
+                    $this->redirect('/admin/compte');
+                }
             } else {
                 $this->session->set('error', $error_msg);
                 $this->redirect('/admin/compte');

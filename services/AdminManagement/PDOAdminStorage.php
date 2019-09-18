@@ -136,11 +136,12 @@ class PDOAdminStorage
     {
         $pdo = $this->pdo;
         try {
-            $req = $pdo->prepare('INSERT INTO admin VALUES (:id, :name, :first_name, :email, :password)');
+            $req = $pdo->prepare('INSERT INTO admin VALUES (:id, :name, :first_name, :pseudo, :email, :password)');
             $req->execute([
                 'id' => $admin->getId(),
                 'name' => $admin->getName(),
-                'first_name' =>$admin->getFirstName(),
+                'first_name' => $admin->getFirstName(),
+                'pseudo' => $admin->getPseudo(),
                 'email' => $admin->getEmail(),
                 'password' => $admin->getPassword()
             ]);

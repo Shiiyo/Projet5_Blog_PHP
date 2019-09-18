@@ -12,6 +12,7 @@ class AdminBuilder implements BuilderInterface
         $admin->setId($adminArray['id']);
         $admin->setName($adminArray['name']);
         $admin->setFirstName($adminArray['first_name']);
+        $admin->setPseudo($adminArray['pseudo']);
         $admin->setEmail($adminArray['email']);
         $admin->setPassword($adminArray['password']);
         return $admin;
