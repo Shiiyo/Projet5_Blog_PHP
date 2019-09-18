@@ -127,5 +127,4 @@ class Admin implements Interfaces\AdminInterface
     {
         $this->nbArticles = $nbArticles;
     }
-
 }

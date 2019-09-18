@@ -12,6 +12,7 @@ use services\AdminManagement\AdminHydrator;
 use services\AdminManagement\AdminLoader;
 use services\AdminManagement\AdminWriter;
 use services\AdminManagement\PDOAdminStorage;
+use services\AdminManagement\AdminTestExistingPseudo;
 use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleDeleter;
 use services\ArticlesManagement\ArticleHydrator;
@@ -52,6 +53,7 @@ class DependencyInjectionContainer
     protected $commentWriter;
     protected $articleWriter;
     protected $adminWriter;
+    protected $adminTestExistingPseudo;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -297,6 +299,14 @@ class DependencyInjectionContainer
             $this->adminWriter = new AdminWriter($this->getAdminStorage(), $container);
         }
         return $this->adminWriter;
+    }
+
+    public function getAdminTestExistingPseudo($container)
+    {
+        if ($this->adminTestExistingPseudo === null) {
+            $this->adminTestExistingPseudo = new AdminTestExistingPseudo($container);
+        }
+        return $this->adminTestExistingPseudo;
     }
 
     //GETTERS

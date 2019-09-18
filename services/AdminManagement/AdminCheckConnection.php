@@ -8,6 +8,5 @@ class AdminCheckConnection implements AdminCheckConnectionInterface
 {
     public function checkConnection($uuid)
     {
-
     }
 }
