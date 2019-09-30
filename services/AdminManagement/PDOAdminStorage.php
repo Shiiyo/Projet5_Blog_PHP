@@ -27,12 +27,12 @@ class PDOAdminStorage
         return $adminArray;
     }
 
-    public function fetchSingleAdmin($article)
+    public function fetchSingleAdmin($admin)
     {
         $pdo = $this->pdo;
         try {
             $req = $pdo->prepare('SELECT * FROM admin WHERE id = :id');
-            $req->execute(array('id' => $article->getIdAdmin()));
+            $req->execute(array('id' => $admin->getIdAdmin()));
             $adminArray = $req->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             trigger_error($e->getMessage());

@@ -41,9 +41,9 @@ class AdminLoader
     /**
      * @param int $id
      */
-    public function findOneById($article)
+    public function findOneById($admin)
     {
-        $adminArray = $this->adminStorage->fetchSingleAdmin($article);
+        $adminArray = $this->adminStorage->fetchSingleAdmin($admin);
         if ($this->adminBuilder === null) {
             $this->adminBuilder = $this->container->newAdminBuilder();
         }

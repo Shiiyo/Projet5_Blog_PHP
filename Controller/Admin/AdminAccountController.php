@@ -19,8 +19,8 @@ class AdminAccountController implements ControllerInterface
                 $this->session->delete('uuid');
                 $this->redirect('/admin/login');
             } else {
-                $adminId = $this->container->newEndParamURI()->getEndParamURI();
-                $admin = $adminLoader->findOneByUuid($adminId);
+                $adminPseudo = $this->container->newEndParamURI()->getEndParamURI();
+                $admin = $adminLoader->findOneByPseudo($adminPseudo);
                 $view = $this->getTwig()->render('admin/administratorAccount.html.twig', ['admin' => $admin]);
                 $response = $this->getContainer()->newHttpResponseHtml($view);
                 $response->send();
