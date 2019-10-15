@@ -32,7 +32,6 @@ class PostNewAdminAccountController implements ControllerInterface
             $violationPseudo = $validationForm->validatePseudo($request->get('pseudo'));
             $violationEmail = $validationForm->validateEmail($request->request->get('email'));
             $violationPassword1 = $validationForm->validatePassword($request->request->get('mdp1'));
-            $violationPassword2 = $validationForm->validatePassword($request->request->get('mdp2'));
             $violationEqualPassword = $validationForm->validateEqualPassword($request->request->get('mdp1'), $request->request->get('mdp2'));
             $violations = [$violationName, $violationFirstName, $violationPseudo, $violationEmail, $violationPassword1, $violationPassword2, $violationEqualPassword];
 
@@ -57,7 +56,7 @@ class PostNewAdminAccountController implements ControllerInterface
                 }
             } else {
                 $this->session->set('error', $error_msg);
-                $this->redirect('/admin/compte');
+                $this->redirect('/admin/ajouter-admin');
             }
         } else {
             $this->session->delete('uuid');

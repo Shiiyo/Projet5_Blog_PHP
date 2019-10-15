@@ -88,10 +88,12 @@ class ValidationForm implements ValidationFormInterface
         $violations = $this->getValidator()->validate($password, array(
             new Assert\NotBlank(array('message' => 'Le champ de mot de passe ne doit pas être vide')),
             new Assert\Length(array(
-                'min' => 6,
+                'min' => 8,
                 'max' => 36,
                 'minMessage' => 'Le mot de passe doit avoir minimum {{ limit }} caractères',
                 'maxMessage' => 'Le mot de passe doit avoir maximum {{ limit }} caractères')),
+            new Assert\Regex(array('pattern' => "/(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/",
+                                   'message' => 'Le mot de passe doit contenir au moins une majuscule, un chiffre et un caractère spécial'))
         ));
         return $violations;
     }
