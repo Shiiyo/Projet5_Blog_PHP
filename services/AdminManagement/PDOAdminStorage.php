@@ -155,10 +155,12 @@ class PDOAdminStorage
     {
         $pdo = $this->pdo;
         try {
-            $req = $pdo->prepare('SELECT EXISTS (SELECT pseudo FROM admin WHERE (pseudo = :pseudo))');
-            return $req->execute([
+            $req = $pdo->prepare('SELECT pseudo FROM admin WHERE (pseudo = :pseudo)');
+            $req->execute([
                'pseudo' => $pseudo
             ]);
+            $result = $req->fetchAll();
+            return $result;
         } catch (\PDOException $e) {
             return trigger_error($e->getMessage());
         }

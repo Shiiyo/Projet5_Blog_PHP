@@ -46,13 +46,13 @@ class PostNewAdminAccountController implements ControllerInterface
                 $existingPseudo = $testExistingPseudo->testExistingPseudo($request->get('pseudo'));
 
                 if ($existingPseudo) {
-                    $this->session->set('error', "Le pseudo est déjà prit merci d'en choisir un autre.");
+                    $this->session->set('error', "Le pseudo existe déjà.");
                     $this->redirect('/admin/ajouter-admin');
                 } else {
                     $adminWriter = $this->container->getAdminWriter($this->container);
                     $adminWriter->write($request);
 
-                    $this->session->set('success', "Le compte administrateur est bien enregistré.");
+                    $this->session->set('success', "L'administateur est enregistré");
                     $this->redirect('/admin/compte');
                 }
             } else {
