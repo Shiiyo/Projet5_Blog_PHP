@@ -12,10 +12,6 @@ class HomepageController implements ControllerInterface
         $response = $this->getContainer()->newHttpResponseHtml($view);
         $response->send();
 
-        if ($this->session->get('success')!= null) {
-            $this->session->delete('success');
-        } elseif ($this->session->get('error')!= null) {
-            $this->session->delete('error');
-        }
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

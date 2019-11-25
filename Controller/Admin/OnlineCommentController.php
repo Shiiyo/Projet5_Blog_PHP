@@ -12,20 +12,16 @@ class OnlineCommentController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
-            $idComment = $this->container->newEndParamURI()->getEndParamURI();
-            $commentBuilder = $this->container->getCommentWriter($this->container);
-            $resultUpdate = $commentBuilder->accepted($idComment);
+            $resultUpdate = $this->container->newPutOnlineComment()->putOnlineComment($this->container);
 
             if ($resultUpdate == true) {
                 $this->session->set('success', "Le commentaire a bien été accepté");
             } else {
                 $this->session->set('error', "Le commentaire n'a pas put être accepté. Message d'erreur: " . $resultUpdate);
             }
-
             $this->redirect('/admin/comment');
         } else {
             $this->session->delete('uuid');

@@ -12,16 +12,11 @@ class UpdateBlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
-            $slugArticle = $this->container->newEndParamURI()->getEndParamURI();
-            $articleLoader = $this->container->getArticleLoader($this->container);
-            $article = $articleLoader->findOneBySlug($slugArticle);
-
-            $adminLoader = $this->container->getAdminLoader($this->container);
-            $adminCollection = $adminLoader->getAdminCollection();
+            $article = $this->container->newSearchArticle()->searchArticle($this->container);
+            $adminCollection = $this->container->getAdminLoader($this->container)->getAdminCollection();
 
             $view = $this->getTwig()->render('admin/updateBlogPost.html.twig', ['article' => $article, 'adminCollection' => $adminCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
@@ -31,10 +26,6 @@ class UpdateBlogPostController implements ControllerInterface
             $this->redirect('/admin/login');
         }
 
-        if ($this->session->get('success')!= null) {
-            $this->session->delete('success');
-        } elseif ($this->session->get('error')!= null) {
-            $this->session->delete('error');
-        }
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

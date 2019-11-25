@@ -11,6 +11,7 @@ use services\AdminManagement\AdminDeleter;
 use services\AdminManagement\AdminHydrator;
 use services\AdminManagement\AdminLoader;
 use services\AdminManagement\AdminWriter;
+use services\AdminManagement\DeleteAdmin;
 use services\AdminManagement\PDOAdminStorage;
 use services\AdminManagement\AdminTestExistingPseudo;
 use services\ArticlesManagement\ArticleCollection;
@@ -22,14 +23,28 @@ use services\ArticlesManagement\PDOArticleStorage;
 use services\Builders\AdminBuilder;
 use services\Builders\ArticleBuilder;
 use services\Builders\CommentBuilder;
+use services\CommentManagement\CloseComment;
 use services\CommentManagement\CommentCollection;
 use services\CommentManagement\CommentHydrator;
 use services\CommentManagement\CommentLoader;
 use services\CommentManagement\CommentWriter;
 use services\CommentManagement\PDOCommentStorage;
+use services\CommentManagement\PutOnlineComment;
 use services\EndParamURI;
+use services\RefreshPopup;
+use services\Research\SearchAdmin;
+use services\Research\SearchArticle;
+use services\Research\SearchArticleCollection;
+use services\Research\SearchComment;
 use services\SendEmail;
-use services\TestAdminLogIn;
+use services\AdminLogIn;
+use services\Testing\CommentTestingFields;
+use services\Testing\ConnectionTestingFields;
+use services\Testing\ContactTestingFields;
+use services\Testing\PostNewAdminAccountTestingFields;
+use services\Testing\PostNewBlogPostTestingFields;
+use services\Testing\TestingRecaptcha;
+use services\Testing\UpdateBlogPostTestingFields;
 use services\TestRecaptcha;
 use services\ValidationForm;
 use services\ViolationMessages;
@@ -188,9 +203,9 @@ class DependencyInjectionContainer
         return new CommentBuilder();
     }
 
-    public function newTestAdminLogIn()
+    public function newAdminLogIn()
     {
-        return new TestAdminLogIn();
+        return new AdminLogIn();
     }
 
     public function newSlugify()
@@ -206,6 +221,86 @@ class DependencyInjectionContainer
     public function newAdminDeleter()
     {
         return new AdminDeleter($this->getAdminStorage());
+    }
+
+    public function newSearchArticle()
+    {
+        return new SearchArticle();
+    }
+
+    public function newSearchAdmin()
+    {
+        return new SearchAdmin();
+    }
+
+    public function newSearchComment()
+    {
+        return new SearchComment();
+    }
+
+    public function newRefreshPopup()
+    {
+        return new RefreshPopup();
+    }
+
+    public function newTestingRecaptcha()
+    {
+        return new TestingRecaptcha();
+    }
+
+    public function newCommentTestingFields()
+    {
+        return new CommentTestingFields();
+    }
+
+    public function newContactTestingFields()
+    {
+        return new ContactTestingFields();
+    }
+
+    public function newTestAdminLogin()
+    {
+        return new AdminLogIn();
+    }
+
+    public function newCloseComment()
+    {
+        return new CloseComment();
+    }
+
+    public function newPutOnlineComment()
+    {
+        return new PutOnlineComment();
+    }
+
+    public function newPostNewAdminAccountTestingFields()
+    {
+        return new PostNewAdminAccountTestingFields();
+    }
+
+    public function newPostNewBlogPostTestingFields()
+    {
+        return new PostNewBlogPostTestingFields();
+    }
+
+    public function newUpdateBlogPostTestingFields()
+    {
+        return new UpdateBlogPostTestingFields();
+    }
+
+    public function newConnectionTestingFields()
+    {
+        return new ConnectionTestingFields();
+    }
+
+    public function newDeleteAdmin()
+    {
+        return new DeleteAdmin();
+    }
+
+    public function newSearchArticleCollection()
+    {
+        return new SearchArticleCollection();
     }
 
     /**

@@ -10,17 +10,10 @@ class BlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $slugArticle = $this->container->newEndParamURI()->getEndParamURI();
-        $articleLoader = $this->container->getArticleLoader($this->container);
-        $article = $articleLoader->findOneBySlug($slugArticle);
-
-        $adminLoader = $this->container->getAdminLoader($this->container);
-        $admin = $adminLoader->findOneById($article);
-
-        $commentLoader = $this->container->getCommentLoader($this->container);
-        $commentCollection = $commentLoader->getCommentCollectionForOneArticle($article);
-
-        $nbComment = $commentLoader->getNbCommentForOneArticle($article);
+        $article = $this->container->newSearchArticle()->searchArticle($this->container);
+        $admin = $this->container->newSearchAdmin()->searchAdmin($this->container, $article);
+        $commentCollection = $this->container->newSearchComment()->searchCommentCollection($this->container, $article);
+        $nbComment = $this->container->getCommentLoader($this->container)->getNbCommentForOneArticle($article);
 
         $view = $this->getTwig()->render('blog/article.html.twig', ['article' => $article,
                                                                             'admin' => $admin,
@@ -29,10 +22,6 @@ class BlogPostController implements ControllerInterface
         $response = $this->getContainer()->newHttpResponseHtml($view);
         $response->send();
 
-        if ($this->session->get('success')!= null) {
-            $this->session->delete('success');
-        } elseif ($this->session->get('error')!= null) {
-            $this->session->delete('error');
-        }
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

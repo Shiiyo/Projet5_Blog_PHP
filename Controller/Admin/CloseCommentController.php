@@ -12,13 +12,10 @@ class CloseCommentController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
-            $idComment = $this->container->newEndParamURI()->getEndParamURI();
-            $commentBuilder = $this->container->getCommentWriter($this->container);
-            $resultUpdate = $commentBuilder->refused($idComment);
+            $resultUpdate = $this->container->newCloseComment()->closeComment($this->container);
 
             if ($resultUpdate == true) {
                 $this->session->set('success', "Le commentaire a bien été refusé");

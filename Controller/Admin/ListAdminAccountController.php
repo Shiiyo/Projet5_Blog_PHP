@@ -12,15 +12,11 @@ class ListAdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
-            $adminLoader = $this->container->getAdminLoader($this->container);
-            $adminCollection = $adminLoader->getAdminCollection();
-
-            $articleLoader = $this->container->getArticleLoader($this->container);
-            $articleLoader->setNbArticlesByAdmin($adminCollection);
+            $adminCollection = $this->container->getAdminLoader($this->container)->getAdminCollection();
+            $this->container->getArticleLoader($this->container)->setNbArticlesByAdmin($adminCollection);
 
             $view = $this->getTwig()->render('admin/adminList.html.twig', ['adminCollection' => $adminCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
@@ -30,10 +26,6 @@ class ListAdminAccountController implements ControllerInterface
             $this->redirect('/admin/login');
         }
 
-        if ($this->session->get('success')!= null) {
-            $this->session->delete('success');
-        } elseif ($this->session->get('error')!= null) {
-            $this->session->delete('error');
-        }
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

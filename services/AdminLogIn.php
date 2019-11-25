@@ -2,9 +2,9 @@
 
 namespace services;
 
-use services\Interfaces\TestAdminLogInInterface;
+use services\Interfaces\AdminLogInInterface;
 
-class TestAdminLogIn implements TestAdminLogInInterface
+class AdminLogIn implements AdminLogInInterface
 {
     public function testLogIn($uuid, $container)
     {

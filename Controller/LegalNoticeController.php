@@ -11,7 +11,8 @@ class LegalNoticeController implements ControllerInterface
      */
     public function __invoke()
     {
-        $twig = $this->getTwig();
-        echo $twig->render('blog/legalNotice.html.twig');
+        $view = $this->getTwig()->render('blog/legalNotice.html.twig');
+        $response = $this->getContainer()->newHttpResponseHtml($view);
+        $response->send();
     }
 }
