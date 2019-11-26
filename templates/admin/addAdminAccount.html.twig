@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-1">
-                <a href="/admin/blog-post">
+                <a href="/admin/compte">
                     <img id="img-home" src="../img/pictos/arrow-105-64.png" alt="Flèche gauche">
                 </a>
             </div>
@@ -31,6 +31,10 @@
                         <label for="prenom">Prénom</label>
                         <input type="text" name="prenom" id="prenom" required/>
                     </div>
+                    <div class="col-md-5 col-12">
+                        <label for="pseudo">Pseudo</label>
+                        <input type="text" name="pseudo" id="pseudo" required/>
+                    </div>
                     <div class="col-12">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" required/>
@@ -47,18 +51,12 @@
                         <div class="g-recaptcha" data-sitekey="6LeJCnQUAAAAAOlqRpKqFm-4oo8i71Luuo0j_S_F"></div>
                     </div>
                     <input type="hidden" name="id_admin" id="id_admin" value="{{ id_admin }}">
+                    <input type="hidden" name="token" id="token" value="{{ token }}">
                     <div class="col-12">
                         <p id="subP"><input type="submit" value="Valider" id="submit"/></p>
                     </div>
                 </form>
             </div>
-
-            {% if session.success %}
-                <div id="validation-form">
-                    <img src="../img/pictos/ok-128.png" alt="ok symbole">
-                    <p>{{ session.success|raw }}</p>
-                </div>
-            {% endif %}
 
             {% if session.error %}
                 <div id="error-form">

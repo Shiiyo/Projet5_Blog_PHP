@@ -8,8 +8,7 @@ class ListBlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $articleLoader = $this->container->getArticleLoader($this->container);
-        $articleCollection = $articleLoader->getArticleCollection();
+        $articleCollection = $this->container->getArticleLoader($this->container)->getArticleCollection();
 
         $view = $this->getTwig()->render('blog/blogHome.html.twig', ['articleCollection' => $articleCollection]);
         $response = $this->getContainer()->newHttpResponseHtml($view);

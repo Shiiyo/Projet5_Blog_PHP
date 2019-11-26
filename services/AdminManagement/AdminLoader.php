@@ -41,9 +41,9 @@ class AdminLoader
     /**
      * @param int $id
      */
-    public function findOneById($article)
+    public function findOneById($admin)
     {
-        $adminArray = $this->adminStorage->fetchSingleAdmin($article);
+        $adminArray = $this->adminStorage->fetchSingleAdmin($admin);
         if ($this->adminBuilder === null) {
             $this->adminBuilder = $this->container->newAdminBuilder();
         }
@@ -58,6 +58,19 @@ class AdminLoader
     public function findOneByEmail($email)
     {
         $adminArray = $this->adminStorage->selectAdminByEmail($email);
+        if ($adminArray == null) {
+            return false;
+        }
+        if ($this->adminBuilder === null) {
+            $this->adminBuilder = $this->container->newAdminBuilder();
+        }
+        $admin = $this->adminBuilder->build($adminArray[0]);
+        return $admin;
+    }
+
+    public function findOneByPseudo($pseudo)
+    {
+        $adminArray = $this->adminStorage->selectAdminByPseudo($pseudo);
         if ($adminArray == null) {
             return false;
         }

@@ -2,7 +2,7 @@
 
 namespace services\Interfaces;
 
-interface TestAdminLogInInterface
+interface AdminLogInInterface
 {
     public function testLogIn($uuid, $container);
 }

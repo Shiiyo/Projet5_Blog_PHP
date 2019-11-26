@@ -52,7 +52,7 @@ a:hover
     border-bottom: 1px solid transparent !important;
 }
 
-th img
+td img
 {
     height: 20px;
     width: 20px;
@@ -60,14 +60,14 @@ th img
     margin-left: 0.5rem;
 }
 
-th a
+td a
 {
     display: inline-block;
     color: inherit;
     text-decoration: underline;
 }
 
-th a:hover
+td a:hover
 {
     color: inherit;
 }

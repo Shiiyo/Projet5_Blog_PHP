@@ -40,8 +40,9 @@
                 <p id="author">{{ admin.name}} {{ admin.firstName}}</p>
             </div>
 
-            <div class="col-12 col-md-9 col-lg-10">
-                <p id="content">{{ article.content}}</p>
+            <div id="content" class="col-12 col-md-9 col-lg-10">
+                <h2>{{ article.resume }}</h2>
+                <p>{{ article.content}}</p>
             </div>
         </div>
 
@@ -67,6 +68,7 @@
                         </div>
                         <input type="hidden" name="id_blog_post" id="id_blog_post" value="{{ article.id }}">
                         <input type="hidden" name="slug" id="slug" value="{{ article.slug }}">
+                        <input type="hidden" name="token" id="token" value="{{ token }}">
                         <div class="col-12">
                             <p id="subP"><input type="submit" value="Valider" id="submit"/></p>
                         </div>

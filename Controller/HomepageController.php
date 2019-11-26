@@ -8,14 +8,11 @@ class HomepageController implements ControllerInterface
 
     public function __invoke()
     {
-        $view = $this->getTwig()->render('blog/home.html.twig');
+        $token = $this->container->newTokenManagement()->generateToken($this->session);
+        $view = $this->getTwig()->render('blog/home.html.twig', ['token'=>$token]);
         $response = $this->getContainer()->newHttpResponseHtml($view);
         $response->send();
 
-        if ($this->session->get('success')!= null) {
-            $this->session->delete('success');
-        } elseif ($this->session->get('error')!= null) {
-            $this->session->delete('error');
-        }
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

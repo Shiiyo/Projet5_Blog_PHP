@@ -12,15 +12,11 @@ class ListCommentController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
-            $commentLoader = $this->container->getCommentLoader($this->container);
-            $commentCollection = $commentLoader->getCommentCollection();
-
-            $articleLoader = $this->container->getArticleLoader($this->container);
-            $articleLoader->setArticleNameForCommentCollection($commentCollection);
+            $commentCollection = $this->container->getCommentLoader($this->container)->getCommentCollection();
+            $this->container->getArticleLoader($this->container)->setArticleNameForCommentCollection($commentCollection);
 
             $view = $this->getTwig()->render('admin/commentList.html.twig', ['commentCollection' => $commentCollection]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
@@ -30,10 +26,6 @@ class ListCommentController implements ControllerInterface
             $this->redirect('/admin/login');
         }
 
-        if ($this->session->get('success')!= null) {
-            $this->session->delete('success');
-        } elseif ($this->session->get('error')!= null) {
-            $this->session->delete('error');
-        }
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

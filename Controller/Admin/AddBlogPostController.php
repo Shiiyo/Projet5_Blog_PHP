@@ -11,11 +11,12 @@ class AddBlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $token = $this->container->newTokenManagement()->generateToken($this->session);
 
         if ($adminLogIn != false) {
-            $view = $this->getTwig()->render('admin/addBlogPost.html.twig', ['id_admin' => $this->session->get('uuid')]);
+            $view = $this->getTwig()->render('admin/addBlogPost.html.twig', ['id_admin' => $this->session->get('uuid'),
+                                                                                    'token'=>$token]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
         } else {
@@ -23,10 +24,6 @@ class AddBlogPostController implements ControllerInterface
             $this->redirect('/admin/login');
         }
 
-        if ($this->session->get('success')!= null) {
-            $this->session->delete('success');
-        } elseif ($this->session->get('error')!= null) {
-            $this->session->delete('error');
-        }
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

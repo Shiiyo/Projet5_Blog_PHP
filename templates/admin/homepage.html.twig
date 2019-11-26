@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="offset-2 col-5 offset-lg-8 col-lg-2 return-div">
-                <a href="/admin/deconnexion"><img id="img-logout" src="../img/pictos/power-64.png" alt="Maison"><p class="return">Deconnexion</p></a>
+                <a href="/admin/deconnexion"><img id="img-logout" src="../img/pictos/power-64.png" alt="Maison"><p class="return">Deconnexion de {{ admin.pseudo }}</p></a>
             </div>
         </div>
         <div class="row">
@@ -24,17 +24,18 @@
         </div>
         <div class="row">
             <div class="offset-1 col-10 offset-lg-1 col-lg-4">
-                <a href="/admin/blog-post" class="menu-block">
-                    <img src="../img/pictos/edit-2-128.png" alt="Stylo">
-                    <p>Gérer les articles</p>
+                <a href="/admin/ajouter-blog-post" class="menu-block">
+                    <img src="../img/pictos/edit-2-128.png" alt="Nouvel Article">
+                    <p>Ecrire un article</p>
                 </a>
             </div>
             <div class="offset-1 col-10 offset-lg-2 col-lg-4">
-                <a href="/admin/comment" class="menu-block">
-                    <img src="../img/pictos/chat-4-128.png" alt="Bulle">
-                    <p>Gérer les commentaires</p>
+                <a href="/admin/blog-post" class="menu-block">
+                    <img src="../img/pictos/article-128.png" alt="Stylo">
+                    <p>Gérer les articles</p>
                 </a>
             </div>
+
         </div>
         <div class="row">
             <div class="offset-1 col-10 offset-lg-1 col-lg-4">
@@ -44,14 +45,11 @@
                 </a>
             </div>
             <div class="offset-1 col-10 offset-lg-2 col-lg-4">
-                <a href={{ "/admin/compte/" ~ admin.name ~ "-" ~ admin.firstname}} class="menu-block">
-                    <img src="../img/pictos/edit-user-128.png" alt="Profit Edition">
-                    <p>Modifier son profil</p>
+                <a href="/admin/comment" class="menu-block">
+                    <img src="../img/pictos/chat-4-128.png" alt="Bulle">
+                    <p>Gérer les commentaires</p>
                 </a>
             </div>
-        </div>
-        <div class="row">
-            
         </div>
     </div>
 {% endblock %}

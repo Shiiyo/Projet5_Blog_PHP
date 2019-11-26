@@ -2,8 +2,6 @@
 
 namespace Controller;
 
-echo 'Erreur 404';
-
 class Page404Controller implements ControllerInterface
 {
     use ControllerTrait;
@@ -13,6 +11,8 @@ class Page404Controller implements ControllerInterface
      */
     public function __invoke()
     {
-        // TODO: Implement index() method.
+        $view = $this->getTwig()->render('404.html.twig');
+        $response = $this->getContainer()->newHttpResponseHtml($view);
+        $response->send();
     }
 }

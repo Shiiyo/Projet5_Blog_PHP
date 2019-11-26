@@ -11,13 +11,10 @@ class DeleteAdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
-            $idAdmin = $this->container->newEndParamURI()->getEndParamURI();
-            $adminDeleter = $this->container->newAdminDeleter();
-            $result_delete = $adminDeleter->delete($idAdmin);
+            $result_delete = $this->container->newDeleteAdmin()->deleteAdmin($this->container);
 
             if ($result_delete == true) {
                 $this->session->set('success', "Le compte administrateur a bien été supprimé.");

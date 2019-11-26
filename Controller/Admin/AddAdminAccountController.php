@@ -12,16 +12,18 @@ class AddAdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $token = $this->container->newTokenManagement()->generateToken($this->session);
 
         if ($adminLogIn != false) {
-            $view = $this->getTwig()->render('admin/addAdminAccount.html.twig');
+            $view = $this->getTwig()->render('admin/addAdminAccount.html.twig', ['token'=>$token]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
         } else {
             $this->session->delete('uuid');
             $this->redirect('/admin/login');
         }
+
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

@@ -12,42 +12,28 @@ class PostNewAdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
             $request = $this->getContainer()->newHttpRequest();
-
-            //Testing Recaptcha
-            $recaptchaResponse = $request->request->get('g-recaptcha-response');
-            $testRecaptcha = $this->getContainer()->newTestRecaptcha($this->getContainer(), $recaptchaResponse);
-            $verifyRecaptcha = $testRecaptcha();
-
-            //Testing form fields
-            $validator = $this->getContainer()->newValidator();
-            $validationForm = $this->getContainer()->newValidationForm($validator);
-
-            $violationName = $validationForm->validateName($request->request->get('nom'));
-            $violationFirstName = $validationForm->validateName($request->request->get('prenom'));
-            $violationEmail = $validationForm->validateEmail($request->request->get('email'));
-            $violationPassword1 = $validationForm->validatePassword($request->request->get('mdp1'));
-            $violationPassword2 = $validationForm->validatePassword($request->request->get('mdp2'));
-            $violationEqualPassword = $validationForm->validateEqualPassword($request->request->get('mdp1'), $request->request->get('mdp2'));
-            $violations = [$violationName, $violationFirstName, $violationEmail, $violationPassword1, $violationPassword2, $violationEqualPassword];
-
-            //Get the error messages
-            $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
-            $error_msg = $violationMessages->violationMessages();
+            $error_msg = $this->container->newPostNewAdminAccountTestingFields()->postNewAdminAccountTestingFields($this->container, $request, $this->session);
 
             if ($error_msg == "") {
-                $adminWriter = $this->container->getAdminWriter($this->container);
-                $adminWriter->write($request);
+                //Test if the pseudo is already save in DB or not
+                $existingPseudo = $this->container->getAdminTestExistingPseudo($this->container)->testExistingPseudo($request->get('pseudo'));
 
-                $this->session->set('success', "Le compte administrateur est bien enregistré.");
-                $this->redirect('/admin/compte');
+                if ($existingPseudo) {
+                    $this->session->set('error', "Le pseudo existe déjà.");
+                    $this->redirect('/admin/ajouter-admin');
+                } else {
+                    $this->container->getAdminWriter($this->container)->write($request);
+
+                    $this->session->set('success', "L'administateur est enregistré");
+                    $this->redirect('/admin/compte');
+                }
             } else {
                 $this->session->set('error', $error_msg);
-                $this->redirect('/admin/compte');
+                $this->redirect('/admin/ajouter-admin');
             }
         } else {
             $this->session->delete('uuid');

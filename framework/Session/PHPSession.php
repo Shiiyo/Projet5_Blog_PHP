@@ -2,6 +2,8 @@
 
 namespace framework\Session;
 
+use framework\Session\Interfaces\SessionInterface;
+
 class PHPSession implements SessionInterface
 {
     /**

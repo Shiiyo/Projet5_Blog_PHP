@@ -12,23 +12,9 @@ class PostUpdateBlogPostController implements ControllerInterface
     public function __invoke()
     {
         $request = $this->getContainer()->newHttpRequest();
-        //Testing Recaptcha
-        $recaptchaResponse = $request->request->get('g-recaptcha-response');
-        $testRecaptcha = $this->getContainer()->newTestRecaptcha($this->getContainer(), $recaptchaResponse);
-        $verifyRecaptcha = $testRecaptcha();
 
         //Testing form fields
-        $validator = $this->getContainer()->newValidator();
-        $validationForm = $this->getContainer()->newValidationForm($validator);
-
-        $violationTitle = $validationForm->validateTitle($request->request->get('titre'));
-        $violationResume = $validationForm->validateResume($request->request->get('chapo'));
-        $violationContenu = $validationForm->validateMessage($request->request->get('contenu'));
-        $violations = [$violationTitle, $violationResume, $violationContenu];
-
-        //Get the error messages
-        $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
-        $error_msg = $violationMessages->violationMessages();
+        $error_msg = $this->container->newUpdateBlogPostTestingFields()->updateBlogPostTestingFields($this->container, $request, $this->session);
 
         if ($error_msg == "") {
             $commentWriter = $this->container->getArticleWriter($this->container);

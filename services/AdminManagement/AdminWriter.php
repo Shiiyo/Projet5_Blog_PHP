@@ -23,6 +23,7 @@ class AdminWriter implements AdminWriterInterface
           'id' => Uuid::uuid4(),
           'name' => $request->request->get('nom'),
           'first_name' => $request->request->get('prenom'),
+          'pseudo' => $request->request->get('pseudo')  ,
           'email' => $request->request->get('email'),
           'password' => password_hash($request->request->get('mdp1'), PASSWORD_DEFAULT)
         ];
@@ -32,6 +33,7 @@ class AdminWriter implements AdminWriterInterface
         }
 
         $article = $this->adminBuilder->build($adminArray);
-        $this->adminStorage->save($article);
+        $returnStorage = $this->adminStorage->save($article);
+        return $returnStorage;
     }
 }

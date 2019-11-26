@@ -11,17 +11,11 @@ class DeleteBlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $testAdminLogIn = $this->container->newTestAdminLogIn();
-        $adminLogIn = $testAdminLogIn->testLogIn($this->session->get('uuid'), $this->container);
+        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
-            $slugArticle = $this->container->newEndParamURI()->getEndParamURI();
-            $articleLoader = $this->container->getArticleLoader($this->container);
-            $article = $articleLoader->findOneBySlug($slugArticle);
-
-
-            $articleDeleter = $this->container->newArticleDeleter();
-            $deleteStatus = $articleDeleter->delete($article);
+            $article = $this->container->newSearchArticle()->searchArticle($this->container);
+            $deleteStatus = $this->container->newArticleDeleter()->delete($article);
             if ($deleteStatus === true) {
                 $this->session->set('success', "L'article a bien été supprimé.");
                 $this->redirect('/admin/blog-post');

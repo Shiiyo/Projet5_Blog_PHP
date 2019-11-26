@@ -250,6 +250,7 @@
                         <input type="text" name="email" id="email" placeholder="Votre email" required/>
                         <textarea name="message" id="message" cols="30" rows="3" placeholder="Message" required></textarea>
                         <div class="text-center"><div class="g-recaptcha" data-sitekey="6LeJCnQUAAAAAOlqRpKqFm-4oo8i71Luuo0j_S_F"></div></div>
+                        <input type="hidden" name="token" id="token" value="{{ token }}">
                         <input type="submit" value="Envoyer" id="submit"/>
                     </form>
                 </div>

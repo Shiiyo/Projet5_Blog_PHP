@@ -4,12 +4,7 @@ namespace services\Interfaces;
 
 interface ViolationMessageInterface
 {
-    /**
-     * ViolationMessageInterface constructor.
-     * @param array $violations
-     * @param $verifyRecaptcha
-     */
-    public function __construct(array $violations, $verifyRecaptcha);
+    public function __construct(array $violations, $verifyRecaptcha, $verifyToken);
 
     /**
      * @return string
