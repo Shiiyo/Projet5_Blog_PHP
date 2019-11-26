@@ -9,16 +9,19 @@ class ViolationMessages implements ViolationMessageInterface
 {
     private $violations;
     private $verifyRecaptcha;
+    private $verifyToken;
 
     /**
      * ViolationMessages constructor.
      * @param array $violations
      * @param $verifyRecaptcha
+     * @param $verifyToken
      */
-    public function __construct(array $violations, $verifyRecaptcha)
+    public function __construct(array $violations, $verifyRecaptcha, $verifyToken)
     {
         $this->setViolations($violations);
         $this->setVerifyRecaptcha($verifyRecaptcha);
+        $this->setVerifyToken($verifyToken);
     }
 
     /**
@@ -28,17 +31,21 @@ class ViolationMessages implements ViolationMessageInterface
     {
         $error_msg = "";
         $tab_error_msg = [];
-        if ($this->getVerifyRecaptcha()->success) {
-            foreach ($this->getViolations() as $violation) {
-                if (0 !== count($violation)) {
-                    $error_msg = "Un ou plusieurs champ(s) du formulaire ne sont pas valides: <br>";
-                    foreach ($violation as $v) {
-                        $tab_error_msg[] = "- ".$v->getMessage()."<br>";
+        if ($this->getVerifyToken()== null) {
+            if ($this->getVerifyRecaptcha()->success) {
+                foreach ($this->getViolations() as $violation) {
+                    if (0 !== count($violation)) {
+                        $error_msg = "Un ou plusieurs champ(s) du formulaire ne sont pas valides: <br>";
+                        foreach ($violation as $v) {
+                            $tab_error_msg[] = "- ".$v->getMessage()."<br>";
+                        }
                     }
                 }
+            } else {
+                $error_msg = "Le recaptcha a échoué, merci d'essayer à nouveau.";
             }
         } else {
-            $error_msg = "Le recaptcha a échoué, merci d'essayer à nouveau.";
+            $error_msg = $this->verifyToken;
         }
 
         if (0 !== count($tab_error_msg)) {
@@ -80,5 +87,21 @@ class ViolationMessages implements ViolationMessageInterface
     public function setVerifyRecaptcha($verifyRecaptcha): void
     {
         $this->verifyRecaptcha = $verifyRecaptcha;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVerifyToken()
+    {
+        return $this->verifyToken;
+    }
+
+    /**
+     * @param mixed $verifyToken
+     */
+    public function setVerifyToken($verifyToken): void
+    {
+        $this->verifyToken = $verifyToken;
     }
 }

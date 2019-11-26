@@ -7,8 +7,8 @@ interface PostNewAdminAccountTestingFieldsInterface
     /**
      * @param $container
      * @param $request
-     * @param $verifyRecaptcha
+     * @param $session
      * @return mixed
      */
-    public function postNewAdminAccountTestingFields($container, $request);
+    public function postNewAdminAccountTestingFields($container, $request, $session);
 }

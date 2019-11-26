@@ -13,7 +13,7 @@ class ContactFormController implements ControllerInterface
     public function __invoke()
     {
         $request = $this->getContainer()->newHttpRequest();
-        $error_msg = $this->container->newContactTestingFields()->contactTestingFields($this->container, $request);
+        $error_msg = $this->container->newContactTestingFields()->contactTestingFields($this->container, $request, $this->session);
 
         //Sending Email
         if ($error_msg == "") {

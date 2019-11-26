@@ -12,9 +12,11 @@ class AddBlogPostController implements ControllerInterface
     public function __invoke()
     {
         $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $token = $this->container->newTokenManagement()->generateToken($this->session);
 
         if ($adminLogIn != false) {
-            $view = $this->getTwig()->render('admin/addBlogPost.html.twig', ['id_admin' => $this->session->get('uuid')]);
+            $view = $this->getTwig()->render('admin/addBlogPost.html.twig', ['id_admin' => $this->session->get('uuid'),
+                                                                                    'token'=>$token]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
         } else {

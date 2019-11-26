@@ -7,8 +7,8 @@ interface CommentTestingFieldsInterface
     /**
      * @param $container
      * @param $request
-     * @param $verifyRecaptcha
+     * @param $session
      * @return mixed
      */
-    public function commentTestingFields($container, $request);
+    public function commentTestingFields($container, $request, $session);
 }

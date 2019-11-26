@@ -6,16 +6,17 @@ use services\Testing\Interfaces\CommentTestingFieldsInterface;
 
 class CommentTestingFields implements CommentTestingFieldsInterface
 {
+
     /**
      * @param $container
      * @param $request
-     * @param $verifyRecaptcha
+     * @param $session
      * @return mixed
      */
-    public function commentTestingFields($container, $request)
+    public function commentTestingFields($container, $request, $session)
     {
         $validator = $container->newValidator();
-        $validationForm = $container()->newValidationForm($validator);
+        $validationForm = $container->newValidationForm($validator);
 
         $violationName = $validationForm->validateName($request->request->get('nom'));
         $violationEmail = $validationForm->validateEmail($request->request->get('email'));
@@ -23,7 +24,8 @@ class CommentTestingFields implements CommentTestingFieldsInterface
         $violations = [$violationName, $violationEmail, $violationMessage];
 
         $verifyRecaptcha = $container->newTestingRecaptcha()->testingRecaptcha($container, $request);
-        $violationMessages = $container->newViolationMessages($violations, $verifyRecaptcha);
+        $verifyToken = $container->newTokenTesting()->tokenTesting($session, $request->request->get('token'));
+        $violationMessages = $container->newViolationMessages($violations, $verifyRecaptcha, $verifyToken);
         return $violationMessages->violationMessages();
     }
 }

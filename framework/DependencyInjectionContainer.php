@@ -6,6 +6,7 @@ use Entity\Admin;
 use Entity\Article;
 use Entity\Comment;
 use framework\Session\PHPSession;
+use framework\Session\TokenManagement;
 use services\AdminManagement\AdminCollection;
 use services\AdminManagement\AdminDeleter;
 use services\AdminManagement\AdminHydrator;
@@ -43,7 +44,9 @@ use services\Testing\ConnectionTestingFields;
 use services\Testing\ContactTestingFields;
 use services\Testing\PostNewAdminAccountTestingFields;
 use services\Testing\PostNewBlogPostTestingFields;
+use services\Testing\TestAdminLogin;
 use services\Testing\TestingRecaptcha;
+use services\Testing\TokenTesting;
 use services\Testing\UpdateBlogPostTestingFields;
 use services\TestRecaptcha;
 use services\ValidationForm;
@@ -158,9 +161,9 @@ class DependencyInjectionContainer
         return new ValidationForm($validator);
     }
 
-    public function newViolationMessages(array $violations, $verifyRecaptcha)
+    public function newViolationMessages(array $violations, $verifyRecaptcha, $verifyToken)
     {
-        return new ViolationMessages($violations, $verifyRecaptcha);
+        return new ViolationMessages($violations, $verifyRecaptcha, $verifyToken);
     }
 
     public function newPHPSession()
@@ -260,7 +263,7 @@ class DependencyInjectionContainer
 
     public function newTestAdminLogin()
     {
-        return new AdminLogIn();
+        return new TestAdminLogin();
     }
 
     public function newCloseComment()
@@ -301,6 +304,16 @@ class DependencyInjectionContainer
     public function newSearchArticleCollection()
     {
         return new SearchArticleCollection();
+    }
+
+    public function newTokenManagement()
+    {
+        return new TokenManagement();
+    }
+
+    public function newTokenTesting()
+    {
+        return new TokenTesting();
     }
 
     /**

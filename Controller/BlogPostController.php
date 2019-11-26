@@ -10,6 +10,7 @@ class BlogPostController implements ControllerInterface
 
     public function __invoke()
     {
+        $token = $this->container->newTokenManagement()->generateToken($this->session);
         $article = $this->container->newSearchArticle()->searchArticle($this->container);
         $admin = $this->container->newSearchAdmin()->searchAdmin($this->container, $article);
         $commentCollection = $this->container->newSearchComment()->searchCommentCollection($this->container, $article);
@@ -18,7 +19,8 @@ class BlogPostController implements ControllerInterface
         $view = $this->getTwig()->render('blog/article.html.twig', ['article' => $article,
                                                                             'admin' => $admin,
                                                                             'commentCollection' => $commentCollection,
-                                                                            'nbComment' => $nbComment]);
+                                                                            'nbComment' => $nbComment,
+                                                                            'token'=>$token]);
         $response = $this->getContainer()->newHttpResponseHtml($view);
         $response->send();
 

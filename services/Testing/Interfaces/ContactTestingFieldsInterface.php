@@ -7,8 +7,8 @@ interface ContactTestingFieldsInterface
     /**
      * @param $container
      * @param $request
-     * @param $verifyRecaptcha
+     * @param $session
      * @return mixed
      */
-    public function contactTestingFields($container, $request);
+    public function contactTestingFields($container, $request, $session);
 }

@@ -15,7 +15,7 @@ class PostNewBlogPostController implements ControllerInterface
         $request = $this->getContainer()->newHttpRequest();
 
         //Testing form fields
-        $error_msg = $this->container->newPostNewBlogPostTestingFields()->postNewBlogPostTestingFields($this->container, $request);
+        $error_msg = $this->container->newPostNewBlogPostTestingFields()->postNewBlogPostTestingFields($this->container, $request, $this->session);
 
         if ($error_msg == "") {
             $this->container->getArticleWriter($this->container)->write($request);

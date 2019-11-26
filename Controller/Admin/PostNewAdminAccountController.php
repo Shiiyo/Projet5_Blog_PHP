@@ -16,7 +16,7 @@ class PostNewAdminAccountController implements ControllerInterface
 
         if ($adminLogIn != false) {
             $request = $this->getContainer()->newHttpRequest();
-            $error_msg = $this->container->newPostNewAdminAccountTestingFields()->postNewAdminAccountTestingFields($this->container, $request);
+            $error_msg = $this->container->newPostNewAdminAccountTestingFields()->postNewAdminAccountTestingFields($this->container, $request, $this->session);
 
             if ($error_msg == "") {
                 //Test if the pseudo is already save in DB or not

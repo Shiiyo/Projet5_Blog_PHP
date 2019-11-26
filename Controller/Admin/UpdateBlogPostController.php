@@ -13,12 +13,14 @@ class UpdateBlogPostController implements ControllerInterface
     public function __invoke()
     {
         $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $token = $this->container->newTokenManagement()->generateToken($this->session);
 
         if ($adminLogIn != false) {
             $article = $this->container->newSearchArticle()->searchArticle($this->container);
             $adminCollection = $this->container->getAdminLoader($this->container)->getAdminCollection();
 
-            $view = $this->getTwig()->render('admin/updateBlogPost.html.twig', ['article' => $article, 'adminCollection' => $adminCollection]);
+            $view = $this->getTwig()->render('admin/updateBlogPost.html.twig', ['article' => $article, 'adminCollection' => $adminCollection,
+                                                                                        'token'=>$token]);
             $response = $this->getContainer()->newHttpResponseHtml($view);
             $response->send();
         } else {

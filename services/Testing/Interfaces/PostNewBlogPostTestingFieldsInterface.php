@@ -7,8 +7,8 @@ interface PostNewBlogPostTestingFieldsInterface
     /**
      * @param $container
      * @param $request
-     * @param $recaptcha
+     * @param $session
      * @return mixed
      */
-    public function postNewBlogPostTestingFields($container, $request);
+    public function postNewBlogPostTestingFields($container, $request, $session);
 }

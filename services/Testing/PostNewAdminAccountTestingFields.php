@@ -6,16 +6,17 @@ use services\Testing\Interfaces\PostNewAdminAccountTestingFieldsInterface;
 
 class PostNewAdminAccountTestingFields implements PostNewAdminAccountTestingFieldsInterface
 {
+
     /**
      * @param $container
      * @param $request
-     * @param $verifyRecaptcha
+     * @param $session
      * @return mixed
      */
-    public function postNewAdminAccountTestingFields($container, $request)
+    public function postNewAdminAccountTestingFields($container, $request, $session)
     {
-        $validator = $container()->newValidator();
-        $validationForm = $container()->newValidationForm($validator);
+        $validator = $container->newValidator();
+        $validationForm = $container->newValidationForm($validator);
 
         $violationName = $validationForm->validateName($request->request->get('nom'));
         $violationFirstName = $validationForm->validateName($request->request->get('prenom'));
@@ -27,8 +28,9 @@ class PostNewAdminAccountTestingFields implements PostNewAdminAccountTestingFiel
         $violations = [$violationName, $violationFirstName, $violationPseudo, $violationEmail, $violationPassword1, $violationPassword2, $violationEqualPassword];
 
         //Get the error messages
+        $verifyToken = $container->newTokenTesting()->tokenTesting($session, $request->request->get('token'));
         $verifyRecaptcha = $container->newTestingRecaptcha()->testingRecaptcha($container, $request);
-        $violationMessages = $this->getContainer()->newViolationMessages($violations, $verifyRecaptcha);
+        $violationMessages = $container->newViolationMessages($violations, $verifyRecaptcha, $verifyToken);
         return $violationMessages->violationMessages();
     }
 }

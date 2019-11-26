@@ -14,7 +14,7 @@ class ConnectionFormController implements ControllerInterface
         $request = $this->getContainer()->newHttpRequest();
 
         //Testing form fields
-        $error_msg = $this->container->newConnectionTestingFields()->connectionTestingFields($this->container, $request);
+        $error_msg = $this->container->newConnectionTestingFields()->connectionTestingFields($this->container, $request, $this->session);
 
         if ($error_msg == "") {
             $admin = $this->container->getAdminLoader($this->container)->findOneByPseudo($request->request->get('pseudo'));

@@ -7,8 +7,8 @@ interface ConnectionTestingFieldsInterface
     /**
      * @param $container
      * @param $request
-     * @param $recaptcha
+     * @param $session
      * @return mixed
      */
-    public function connectionTestingFields($container, $request);
+    public function connectionTestingFields($container, $request, $session);
 }

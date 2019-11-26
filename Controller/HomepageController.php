@@ -8,7 +8,8 @@ class HomepageController implements ControllerInterface
 
     public function __invoke()
     {
-        $view = $this->getTwig()->render('blog/home.html.twig');
+        $token = $this->container->newTokenManagement()->generateToken($this->session);
+        $view = $this->getTwig()->render('blog/home.html.twig', ['token'=>$token]);
         $response = $this->getContainer()->newHttpResponseHtml($view);
         $response->send();
 
