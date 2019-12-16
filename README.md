@@ -1,7 +1,7 @@
 # Projet5_Blog_PHP
 OpenClassrooms project as part of the PHP / Symfony application developer courses.
 
-#Link to Codacy
+# Link to Codacy
 https://app.codacy.com/manual/Shiiyo/Projet5_Blog_PHP/dashboard?bid=8799674
 
 # CONFIG
