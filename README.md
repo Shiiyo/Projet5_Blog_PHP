@@ -10,3 +10,4 @@ After that, complete the informations needed for configuring the website correct
 
 In way to install the project, start the command "composer install" for installing the depedancies correctly.
 
+In PhpMyAdmin, export the DB file named 'projet5.sql' on the folder framework/config.
