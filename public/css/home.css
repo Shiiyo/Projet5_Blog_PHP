@@ -44,6 +44,16 @@ a
     background-color: #89ac10;
 }
 
+.nav
+{
+    display: block;
+}
+
+#navBarTogglerButton
+{
+    margin-right: 1rem;
+}
+
 nav li
 {
     padding-right: 1rem;
@@ -91,12 +101,22 @@ header h4
 {
     margin: auto;
     width: 10.188rem;
-    margin-top: 5.625rem;
     background-color: #89ac10;
     border-radius: 0.625rem;
     border: 1px solid #ffffff;
     text-align: center;
     transition: all 300ms;
+}
+
+#navButton
+{
+    height: 2.5rem;
+    padding-top: 0.3rem;
+}
+
+#headerButton
+{
+    margin-top: 5.625rem;
 }
 
 .blogButton:hover

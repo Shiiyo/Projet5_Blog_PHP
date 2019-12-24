@@ -1,17 +1,17 @@
 <?php
 
-namespace services\Testing;
+namespace services\Check;
 
-use services\Testing\Interfaces\TestingRecaptchaInterface;
+use services\Check\Interfaces\CheckRecaptchaInterface;
 
-class TestingRecaptcha implements TestingRecaptchaInterface
+class CheckRecaptcha implements CheckRecaptchaInterface
 {
     /**
      * @param $container
      * @param $request
      * @return mixed
      */
-    public function testingRecaptcha($container, $request)
+    public function checkRecaptcha($container, $request)
     {
         $recaptchaResponse = $request->request->get('g-recaptcha-response');
         $testRecaptcha = $container->newTestRecaptcha($container, $recaptchaResponse);

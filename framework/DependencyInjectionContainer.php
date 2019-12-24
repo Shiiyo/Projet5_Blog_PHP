@@ -2,6 +2,7 @@
 
 namespace framework;
 
+use Controller\Admin\AdminAccountController;
 use Entity\Admin;
 use Entity\Article;
 use Entity\Comment;
@@ -24,6 +25,7 @@ use services\ArticlesManagement\PDOArticleStorage;
 use services\Builders\AdminBuilder;
 use services\Builders\ArticleBuilder;
 use services\Builders\CommentBuilder;
+use services\Check\PostUpdateAdminCheckFields;
 use services\CommentManagement\CloseComment;
 use services\CommentManagement\CommentCollection;
 use services\CommentManagement\CommentHydrator;
@@ -39,15 +41,15 @@ use services\Research\SearchArticleCollection;
 use services\Research\SearchComment;
 use services\SendEmail;
 use services\AdminLogIn;
-use services\Testing\CommentTestingFields;
-use services\Testing\ConnectionTestingFields;
-use services\Testing\ContactTestingFields;
-use services\Testing\PostNewAdminAccountTestingFields;
-use services\Testing\PostNewBlogPostTestingFields;
-use services\Testing\TestAdminLogin;
-use services\Testing\TestingRecaptcha;
-use services\Testing\TokenTesting;
-use services\Testing\UpdateBlogPostTestingFields;
+use services\Check\CommentCheckFields;
+use services\Check\ConnectionCheckFields;
+use services\Check\ContactCheckFields;
+use services\Check\PostNewAdminAccountCheckFields;
+use services\Check\PostNewBlogPostCheckFields;
+use services\Check\CheckAdminLogin;
+use services\Check\CheckRecaptcha;
+use services\Check\TokenCheck;
+use services\Check\UpdateBlogPostCheckFields;
 use services\TestRecaptcha;
 use services\ValidationForm;
 use services\ViolationMessages;
@@ -246,24 +248,24 @@ class DependencyInjectionContainer
         return new RefreshPopup();
     }
 
-    public function newTestingRecaptcha()
+    public function newCheckRecaptcha()
     {
-        return new TestingRecaptcha();
+        return new CheckRecaptcha();
     }
 
-    public function newCommentTestingFields()
+    public function newCommentCheckFields()
     {
-        return new CommentTestingFields();
+        return new CommentCheckFields();
     }
 
-    public function newContactTestingFields()
+    public function newContactCheckFields()
     {
-        return new ContactTestingFields();
+        return new ContactCheckFields();
     }
 
-    public function newTestAdminLogin()
+    public function newCheckAdminLogin()
     {
-        return new TestAdminLogin();
+        return new CheckAdminLogin();
     }
 
     public function newCloseComment()
@@ -276,24 +278,29 @@ class DependencyInjectionContainer
         return new PutOnlineComment();
     }
 
-    public function newPostNewAdminAccountTestingFields()
+    public function newPostNewAdminAccountCheckFields()
     {
-        return new PostNewAdminAccountTestingFields();
+        return new PostNewAdminAccountCheckFields();
     }
 
-    public function newPostNewBlogPostTestingFields()
+    public function newPostUpdateAdminCheckFields()
     {
-        return new PostNewBlogPostTestingFields();
+        return new PostUpdateAdminCheckFields();
     }
 
-    public function newUpdateBlogPostTestingFields()
+    public function newPostNewBlogPostCheckFields()
     {
-        return new UpdateBlogPostTestingFields();
+        return new PostNewBlogPostCheckFields();
     }
 
-    public function newConnectionTestingFields()
+    public function newUpdateBlogPostCheckFields()
     {
-        return new ConnectionTestingFields();
+        return new UpdateBlogPostCheckFields();
+    }
+
+    public function newConnectionCheckFields()
+    {
+        return new ConnectionCheckFields();
     }
 
     public function newDeleteAdmin()
@@ -311,9 +318,9 @@ class DependencyInjectionContainer
         return new TokenManagement();
     }
 
-    public function newTokenTesting()
+    public function newTokenCheck()
     {
-        return new TokenTesting();
+        return new TokenCheck();
     }
 
     /**

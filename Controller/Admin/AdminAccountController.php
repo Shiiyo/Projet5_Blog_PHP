@@ -11,6 +11,7 @@ class AdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
+
         if ($this->session->get('uuid')!= null) {
             $adminLoader = $this->container->getAdminLoader($this->container);
             $adminLogIn = $adminLoader->findOneByUuid($this->session->get('uuid'));
@@ -19,9 +20,11 @@ class AdminAccountController implements ControllerInterface
                 $this->session->delete('uuid');
                 $this->redirect('/admin/login');
             } else {
-                $adminPseudo = $this->container->newEndParamURI()->getEndParamURI();
-                $admin = $adminLoader->findOneByPseudo($adminPseudo);
-                $view = $this->getTwig()->render('admin/administratorAccount.html.twig', ['admin' => $admin]);
+                $adminUuid = $this->container->newEndParamURI()->getEndParamURI();
+                $token = $this->container->newTokenManagement()->generateToken($this->session);
+                $admin = $adminLoader->findOneByUuid($adminUuid);
+
+                $view = $this->getTwig()->render('admin/administratorAccount.html.twig', ['admin' => $admin, 'token' => $token]);
                 $response = $this->getContainer()->newHttpResponseHtml($view);
                 $response->send();
             }

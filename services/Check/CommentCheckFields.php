@@ -1,10 +1,10 @@
 <?php
 
-namespace services\Testing;
+namespace services\Check;
 
-use services\Testing\Interfaces\CommentTestingFieldsInterface;
+use services\Check\Interfaces\CommentCheckFieldsInterface;
 
-class CommentTestingFields implements CommentTestingFieldsInterface
+class CommentCheckFields implements CommentCheckFieldsInterface
 {
 
     /**
@@ -13,7 +13,7 @@ class CommentTestingFields implements CommentTestingFieldsInterface
      * @param $session
      * @return mixed
      */
-    public function commentTestingFields($container, $request, $session)
+    public function commentCheckFields($container, $request, $session)
     {
         $validator = $container->newValidator();
         $validationForm = $container->newValidationForm($validator);
@@ -23,8 +23,8 @@ class CommentTestingFields implements CommentTestingFieldsInterface
         $violationMessage = $validationForm->validateMessage($request->request->get('message'));
         $violations = [$violationName, $violationEmail, $violationMessage];
 
-        $verifyRecaptcha = $container->newTestingRecaptcha()->testingRecaptcha($container, $request);
-        $verifyToken = $container->newTokenTesting()->tokenTesting($session, $request->request->get('token'));
+        $verifyRecaptcha = $container->newCheckRecaptcha()->checkRecaptcha($container, $request);
+        $verifyToken = $container->newTokenCheck()->tokenCheck($session, $request->request->get('token'));
         $violationMessages = $container->newViolationMessages($violations, $verifyRecaptcha, $verifyToken);
         return $violationMessages->violationMessages();
     }

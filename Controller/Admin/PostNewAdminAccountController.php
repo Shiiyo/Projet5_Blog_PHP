@@ -12,11 +12,11 @@ class PostNewAdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $adminLogIn = $this->container->newCheckAdminLogin()->checkAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
             $request = $this->getContainer()->newHttpRequest();
-            $error_msg = $this->container->newPostNewAdminAccountTestingFields()->postNewAdminAccountTestingFields($this->container, $request, $this->session);
+            $error_msg = $this->container->newPostNewAdminAccountCheckFields()->postNewAdminAccountCheckFields($this->container, $request, $this->session);
 
             if ($error_msg == "") {
                 //Test if the pseudo is already save in DB or not

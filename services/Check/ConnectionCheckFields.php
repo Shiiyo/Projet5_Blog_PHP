@@ -1,10 +1,10 @@
 <?php
 
-namespace services\Testing;
+namespace services\Check;
 
-use services\Testing\Interfaces\ConnectionTestingFieldsInterface;
+use services\Check\Interfaces\ConnectionCheckFieldsInterface;
 
-class ConnectionTestingFields implements ConnectionTestingFieldsInterface
+class ConnectionCheckFields implements ConnectionCheckFieldsInterface
 {
     /**
      * @param $container
@@ -12,9 +12,9 @@ class ConnectionTestingFields implements ConnectionTestingFieldsInterface
      * @param $session
      * @return mixed
      */
-    public function connectionTestingFields($container, $request, $session)
+    public function connectionCheckFields($container, $request, $session)
     {
-        //Testing form fields
+        //Check form fields
         $validator = $container->newValidator();
         $validationForm = $container->newValidationForm($validator);
         $violationPseudo = $validationForm->validatePseudo($request->request->get('pseudo'));
@@ -22,8 +22,8 @@ class ConnectionTestingFields implements ConnectionTestingFieldsInterface
         $violations = [$violationPseudo];
 
         //Get the error messages
-        $verifyToken = $container->newTokenTesting()->tokenTesting($session, $request->request->get('token'));
-        $verifyRecaptcha = $container->newTestingRecaptcha()->testingRecaptcha($container, $request);
+        $verifyToken = $container->newTokenCheck()->tokenCheck($session, $request->request->get('token'));
+        $verifyRecaptcha = $container->newCheckRecaptcha()->checkRecaptcha($container, $request);
         $violationMessages = $container->newViolationMessages($violations, $verifyRecaptcha, $verifyToken);
         return $violationMessages->violationMessages();
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace services\Testing;
+namespace services\Check;
 
-use services\Testing\Interfaces\UpdateBlogPostTestingFieldsInterface;
+use services\Check\Interfaces\UpdateBlogPostCheckFieldsInterface;
 
-class UpdateBlogPostTestingFields implements UpdateBlogPostTestingFieldsInterface
+class UpdateBlogPostCheckFields implements UpdateBlogPostCheckFieldsInterface
 {
     /**
      * @param $container
@@ -12,9 +12,9 @@ class UpdateBlogPostTestingFields implements UpdateBlogPostTestingFieldsInterfac
      * @param $session
      * @return mixed
      */
-    public function updateBlogPostTestingFields($container, $request, $session)
+    public function updateBlogPostCheckFields($container, $request, $session)
     {
-        //Testing form fields
+        //Check form fields
         $validator = $container->newValidator();
         $validationForm = $container->newValidationForm($validator);
 
@@ -24,8 +24,8 @@ class UpdateBlogPostTestingFields implements UpdateBlogPostTestingFieldsInterfac
         $violations = [$violationTitle, $violationResume, $violationContenu];
 
         //Get the error messages
-        $verifyToken = $container->newTokenTesting()->tokenTesting($session, $request->request->get('token'));
-        $verifyRecaptcha = $container->newTestingRecaptcha()->testingRecaptcha($container, $request);
+        $verifyToken = $container->newTokenCheck()->tokenCheck($session, $request->request->get('token'));
+        $verifyRecaptcha = $container->newCheckRecaptcha()->checkRecaptcha($container, $request);
         $violationMessages = $container->newViolationMessages($violations, $verifyRecaptcha, $verifyToken);
         return $violationMessages->violationMessages();
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace services\Testing;
+namespace services\Check;
 
-use services\Testing\Interfaces\ContactTestingFieldsInterface;
+use services\Check\Interfaces\ContactCheckFieldsInterface;
 
-class ContactTestingFields implements ContactTestingFieldsInterface
+class ContactCheckFields implements ContactCheckFieldsInterface
 {
 
     /**
@@ -13,7 +13,7 @@ class ContactTestingFields implements ContactTestingFieldsInterface
      * @param $session
      * @return mixed
      */
-    public function contactTestingFields($container, $request, $session)
+    public function contactCheckFields($container, $request, $session)
     {
         $validator = $container->newValidator();
 
@@ -26,8 +26,8 @@ class ContactTestingFields implements ContactTestingFieldsInterface
         $violations = [$violationName, $violationFirstName, $violationEmail, $violationMessage];
 
         //Get the error messages
-        $verifyToken = $container->newTokenTesting()->tokenTesting($session, $request->request->get('token'));
-        $verifyRecaptcha = $container->newTestingRecaptcha()->testingRecaptcha($container, $request);
+        $verifyToken = $container->newTokenCheck()->tokenCheck($session, $request->request->get('token'));
+        $verifyRecaptcha = $container->newCheckRecaptcha()->checkRecaptcha($container, $request);
         $violationMessages = $container->newViolationMessages($violations, $verifyRecaptcha, $verifyToken);
         return $violationMessages->violationMessages();
     }
