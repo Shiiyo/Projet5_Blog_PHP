@@ -11,7 +11,6 @@ class AdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-
         if ($this->session->get('uuid')!= null) {
             $adminLoader = $this->container->getAdminLoader($this->container);
             $adminLogIn = $adminLoader->findOneByUuid($this->session->get('uuid'));

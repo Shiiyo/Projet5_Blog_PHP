@@ -19,18 +19,15 @@ class PostUpdateAdminAccountController implements ControllerInterface
             $error_msg = $this->container->newPostUpdateAdminCheckFields()->postUpdateAdminCheckFields($this->container, $request, $this->session);
 
             if ($error_msg == "") {
-                    $returnUpdate = $this->container->getAdminWriter($this->container)->update($request);
+                $returnUpdate = $this->container->getAdminWriter($this->container)->update($request);
                 if ($returnUpdate == true) {
                     $this->session->set('success', "L'administateur a bien été mis à jour.");
                     $this->redirect('/admin/compte');
-                }
-                else {
+                } else {
                     $this->session->set('error', $returnUpdate);
                     $this->redirect('/admin/compte');
                 }
-
-            }
-            else {
+            } else {
                 $this->session->set('error', $error_msg);
                 $this->redirect('/admin/compte');
             }

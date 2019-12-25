@@ -145,8 +145,7 @@ class PDOAdminStorage
 
     public function update($admin)
     {
-        try
-        {
+        try {
             $req = $this->pdo->prepare('UPDATE admin SET name = :name, first_name = :first_name, pseudo = :pseudo, email = :email WHERE id = :id');
             $req->execute([
                 'id' => $admin->getId(),

@@ -16,6 +16,7 @@ use services\AdminManagement\AdminWriter;
 use services\AdminManagement\DeleteAdmin;
 use services\AdminManagement\PDOAdminStorage;
 use services\AdminManagement\AdminTestExistingPseudo;
+use services\AppInit;
 use services\ArticlesManagement\ArticleCollection;
 use services\ArticlesManagement\ArticleDeleter;
 use services\ArticlesManagement\ArticleHydrator;
@@ -78,6 +79,11 @@ class DependencyInjectionContainer
     public function __construct(\SimpleXMLElement $parameters)
     {
         $this->setParameters($parameters);
+    }
+
+    public function newAppInit($container)
+    {
+        return new AppInit($container);
     }
 
     public function newRouter($container)
