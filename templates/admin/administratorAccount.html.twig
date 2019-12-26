@@ -73,7 +73,7 @@
                 </form>
 
                 <div class="col-4">
-                    <a href={{ "/admin/account/delete/" ~ admin.id }}>Supprimer mon compte</a>
+                    <a href="{{ "/admin/account/delete/" ~ admin.id }}" onclick="return confirm('Etes-vous sûr ?');">Supprimer mon compte</a>
                 </div>
             </div>
         </div>

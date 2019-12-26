@@ -3,6 +3,7 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
 
@@ -23,7 +24,6 @@
             <div class="col-1 nav">
                 <a href="/liste-blog-post"><div class="blogButton" id="navButton">Voir le blog</div></a>
             </div>
-
         </nav>
 {% endblock %}
 
@@ -39,6 +39,12 @@
 {% endblock %}
 
 {% block body %}
+    <!-- Nav top Arrow -->
+    <div class="top-arrow">
+        <a class="scroll" id="logo" href="#top">
+            <i class="material-icons">keyboard_arrow_up</i>
+        </a>
+    </div>
 
     <!-- Mes services -->
     <section class="services" id="services">
