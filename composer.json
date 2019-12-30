@@ -11,5 +11,14 @@
       "ext-pdo": "*",
         "ramsey/uuid": "^3.8",
         "cocur/slugify": "^3.1"
+    },
+    "autoload": {
+      "psr-4" : {
+        "framework\\" : "framework",
+        "Controller\\" : "Controller",
+        "Entity\\" : "Entity",
+        "repository\\" : "repository",
+        "services\\" : "services"
+      }
     }
 }
