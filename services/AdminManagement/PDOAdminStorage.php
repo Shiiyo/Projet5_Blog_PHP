@@ -14,8 +14,7 @@ class PDOAdminStorage
     public function fetchAllAdmin()
     {
         try {
-            $req = $this->pdo->prepare('SELECT * FROM admin');
-            $req->execute();
+            $req = $this->pdo->query('SELECT * FROM admin');
             $adminArray = $req->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             trigger_error($e->getMessage());
