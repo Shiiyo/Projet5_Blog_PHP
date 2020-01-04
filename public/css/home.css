@@ -49,6 +49,12 @@ a
     display: block;
 }
 
+#blog-button
+{
+    background-color: #ff3d84;
+    color: #fff;
+}
+
 #navBarTogglerButton
 {
     margin-right: 1rem;
