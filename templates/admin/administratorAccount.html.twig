@@ -39,29 +39,6 @@
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" value="{{ admin.email }}" required/>
                     </div>
-                    <!-- <p>Changer votre mot de passe:</p>
-                    <ul>
-                        <li>
-                            <div class="col-md-8 col-12">
-                                <label for="old_mdp">Ancien mot de passe</label>
-                                <input type="password" name="old_mdp" id="old_mdp"/>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col-md-8 col-12">
-                                <label for="mdp1">Nouveau mot de Passe</label>
-                                <input type="password" name="mdp1" id="mdp1"/>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col-md-8 col-12">
-                                <label for="mdp2">Réécrire nouveau mot de passe</label>
-                                <input type="password" name="mdp2" id="mdp2"/>
-                            </div>
-                        </li>
-                    </ul>
-                    -->
-
                     <div class="col-12 text-center">
                         <div class="g-recaptcha" data-sitekey="6LeJCnQUAAAAAOlqRpKqFm-4oo8i71Luuo0j_S_F"></div>
                     </div>
@@ -71,11 +48,9 @@
                         <p id="subP"><input type="submit" value="Valider" id="submit"/></p>
                     </div>
                 </form>
-
-                <div class="col-4">
-                    <a href="{{ "/admin/account/delete/" ~ admin.id }}" onclick="return confirm('Etes-vous sûr ?');">Supprimer mon compte</a>
-                </div>
             </div>
+            <p class="col-6 inline-block"><a id="delete-account" href="{{ "/admin/account/delete/" ~ admin.id }}" onclick="return confirm('Etes-vous sûr ?');">Supprimer le compte</a></p>
+            <p class="col-6 inline-block"><a id="update-password" href="{{ "/admin/compte/change-password/" ~ admin.id }}">Modifier le mot de passe</a></p>
         </div>
     </div>
 {% endblock %}

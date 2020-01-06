@@ -27,6 +27,7 @@ use services\Builders\AdminBuilder;
 use services\Builders\ArticleBuilder;
 use services\Builders\CommentBuilder;
 use services\Check\PostUpdateAdminCheckFields;
+use services\Check\PostUpdatePasswordCheckFields;
 use services\CommentManagement\CloseComment;
 use services\CommentManagement\CommentCollection;
 use services\CommentManagement\CommentHydrator;
@@ -327,6 +328,11 @@ class DependencyInjectionContainer
     public function newTokenCheck()
     {
         return new TokenCheck();
+    }
+
+    public function newPostUpdatePasswordCheckFields()
+    {
+        return new PostUpdatePasswordCheckFields();
     }
 
     /**

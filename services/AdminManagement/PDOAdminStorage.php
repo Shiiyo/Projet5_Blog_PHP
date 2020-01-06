@@ -111,6 +111,18 @@ class PDOAdminStorage
         return $adminArray[0]['name'] . ' ' . $adminArray[0]['first_name'];
     }
 
+    public function getPassword($adminId)
+    {
+        try {
+            $req = $this->pdo->prepare('SELECT password FROM admin WHERE id = :id');
+            $req->execute(array('id' => $adminId));
+            $password = $req->fetch(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            trigger_error($e->getMessage());
+        }
+        return $password;
+    }
+
     public function delete($adminId)
     {
         try {
@@ -152,6 +164,20 @@ class PDOAdminStorage
                 'first_name' => $admin->getFirstName(),
                 'pseudo' => $admin->getPseudo(),
                 'email' => $admin->getEmail()
+            ]);
+            return true;
+        } catch (\PDOException $e) {
+            return trigger_error($e->getMessage());
+        }
+    }
+
+    public function passwordUpdate($adminId, $password)
+    {
+        try {
+            $req = $this->pdo->prepare('UPDATE admin SET password = :password WHERE id = :id');
+            $req->execute([
+                'id' => $adminId,
+                'password' => $password
             ]);
             return true;
         } catch (\PDOException $e) {

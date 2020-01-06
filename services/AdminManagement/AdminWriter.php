@@ -53,7 +53,17 @@ class AdminWriter implements AdminWriterInterface
         }
 
         $article = $this->adminBuilder->build($adminArray);
-        $returnStorage = $this->adminStorage->update($article);
-        return $returnStorage;
+        return $this->adminStorage->update($article);
+    }
+
+    public function passwordUpdate($request)
+    {
+        $adminId = $request->request->get('id_admin');
+        $password = password_hash($request->request->get('newPass1'), PASSWORD_DEFAULT);
+
+        if ($this->adminBuilder === null) {
+            $this->adminBuilder = $this->container->newAdminBuilder();
+        }
+        return $this->adminStorage->passwordUpdate($adminId, $password);
     }
 }
