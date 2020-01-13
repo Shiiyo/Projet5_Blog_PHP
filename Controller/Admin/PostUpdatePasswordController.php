@@ -37,9 +37,8 @@ class PostUpdatePasswordController implements ControllerInterface
                 $this->session->set('error', "L'ancien mot de passe n'est pas correct.");
                 $this->redirect('/admin/compte/change-password/'.$request->request->get('id_admin'));
             }
-        } else {
-            $this->session->delete('uuid');
-            $this->redirect('/admin/login');
         }
+        $this->session->delete('uuid');
+        $this->redirect('/admin/login');
     }
 }

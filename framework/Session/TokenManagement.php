@@ -17,8 +17,7 @@ class TokenManagement implements TokenManagementInterface
             $token = bin2hex(random_bytes(32));
             $session->set('token', $token);
             return $token;
-        } else {
-            return $session->get('token');
         }
+        return $session->get('token');
     }
 }
