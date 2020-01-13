@@ -11,7 +11,7 @@ class DeleteAdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $adminLogIn = $this->container->newCheckAdminLogin()->checkAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
             $result_delete = $this->container->newDeleteAdmin()->deleteAdmin($this->container);

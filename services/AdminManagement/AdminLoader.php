@@ -38,6 +38,11 @@ class AdminLoader
         return $adminCollection;
     }
 
+    public function getPassword($adminId)
+    {
+        return $this->adminStorage->getPassword($adminId);
+    }
+
     /**
      * @param int $id
      */

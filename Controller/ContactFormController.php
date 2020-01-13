@@ -13,7 +13,7 @@ class ContactFormController implements ControllerInterface
     public function __invoke()
     {
         $request = $this->getContainer()->newHttpRequest();
-        $error_msg = $this->container->newContactTestingFields()->contactTestingFields($this->container, $request, $this->session);
+        $error_msg = $this->container->newContactCheckFields()->contactCheckFields($this->container, $request, $this->session);
 
         //Sending Email
         if ($error_msg == "") {
@@ -24,7 +24,7 @@ class ContactFormController implements ControllerInterface
                 $this->session->set('success', "Merci pour votre message.<br>Je vous répondrais dans les meilleurs délais.");
                 $this->redirect('/accueil#contact');
             }
-            $this->session->set('error', $error_msg);
+            $this->session->set('error', $resultSendEmail);
             $this->redirect('/accueil#contact');
         } else {
             $this->session->set('error', $error_msg);

@@ -103,7 +103,7 @@ class ValidationForm implements ValidationFormInterface
         $violations = $this->getValidator()->validate($password1, array(
            new Assert\EqualTo(array(
                'value' => $password2,
-               'message' => 'Les deux mot de passes ne sont pas identiques.'
+               'message' => 'Les mots de passe ne correspondent pas.'
            )),
         ));
         return $violations;

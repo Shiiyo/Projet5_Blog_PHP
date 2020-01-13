@@ -11,7 +11,7 @@ class DeleteBlogPostController implements ControllerInterface
 
     public function __invoke()
     {
-        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $adminLogIn = $this->container->newCheckAdminLogin()->checkAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
             $article = $this->container->newSearchArticle()->searchArticle($this->container);

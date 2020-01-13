@@ -1,17 +1,17 @@
 <?php
 
-namespace services\Testing;
+namespace services\Check;
 
-use services\Testing\Interfaces\TokenTestingInterface;
+use services\Check\Interfaces\TokenCheckInterface;
 
-class TokenTesting implements TokenTestingInterface
+class TokenCheck implements TokenCheckInterface
 {
     /**
      * @param $session
      * @param $postToken
      * @return string
      */
-    public function tokenTesting($session, $postToken)
+    public function tokenCheck($session, $postToken)
     {
         if ($session->get('token') != $postToken) {
             return 'Erreur de vérification';

@@ -12,7 +12,7 @@ class ListAdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $adminLogIn = $this->container->newCheckAdminLogin()->checkAdminLogin($this->container, $this->session);
 
         if ($adminLogIn != false) {
             $adminCollection = $this->container->getAdminLoader($this->container)->getAdminCollection();

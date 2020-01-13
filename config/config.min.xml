@@ -1,0 +1,19 @@
+<config>
+    <Twig>
+        <path>../templates</path>
+    </Twig>
+    <PHPMailer>
+        <host>smtp.gmail.com</host>
+        <username>mail@gmail.com</username>
+        <password>password</password>
+        <SMTPSecure>tls</SMTPSecure>
+        <port>587</port>
+        <name>Camille LEGALLAND</name>
+        <Subject>Quelqu'un vous as envoyé un message via votre blog professionelle</Subject>
+    </PHPMailer>
+    <PDO>
+        <db_dsn>mysql:host=localhost;dbname=projet5</db_dsn>
+        <db_user>root</db_user>
+        <db_pass></db_pass>
+    </PDO>
+</config>

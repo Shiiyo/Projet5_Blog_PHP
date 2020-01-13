@@ -9,7 +9,7 @@ class CommentFormController implements ControllerInterface
     public function __invoke()
     {
         $request = $this->getContainer()->newHttpRequest();
-        $error_msg = $this->container->newCommentTestingFields()->commentTestingFields($this->container, $request, $this->session);
+        $error_msg = $this->container->newCommentCheckFields()->commentCheckFields($this->container, $request, $this->session);
 
         if ($error_msg == "") {
             $this->container->getCommentWriter($this->container)->write($request);

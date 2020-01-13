@@ -2,13 +2,12 @@
 
 namespace Controller\Admin;
 
-use Controller\ControllerTrait;
 use Controller\ControllerInterface;
+use Controller\ControllerTrait;
 
-class AdminAccountController implements ControllerInterface
+class ChangePasswordController implements ControllerInterface
 {
     use ControllerTrait;
-
     public function __invoke()
     {
         if ($this->session->get('uuid')!= null) {
@@ -23,12 +22,13 @@ class AdminAccountController implements ControllerInterface
                 $token = $this->container->newTokenManagement()->generateToken($this->session);
                 $admin = $adminLoader->findOneByUuid($adminUuid);
 
-                $view = $this->getTwig()->render('admin/administratorAccount.html.twig', ['admin' => $admin, 'token' => $token]);
+                $view = $this->getTwig()->render('admin/changePassword.html.twig', ['admin' => $admin, 'token' => $token]);
                 $response = $this->getContainer()->newHttpResponseHtml($view);
                 $response->send();
             }
         } else {
             $this->redirect('/admin/login');
         }
+        $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

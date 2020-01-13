@@ -13,7 +13,7 @@ class PostUpdateBlogPostController implements ControllerInterface
     {
         $request = $this->getContainer()->newHttpRequest();
 
-        //Testing form fields
+        //Check form fields
         $error_msg = $this->container->newUpdateBlogPostTestingFields()->updateBlogPostTestingFields($this->container, $request, $this->session);
 
         if ($error_msg == "") {

@@ -1,18 +1,18 @@
 <?php
 
 
-namespace services\Testing;
+namespace services\Check;
 
-use services\Testing\Interfaces\TestAdminLoginInterface;
+use services\Check\Interfaces\CheckAdminLoginInterface;
 
-class TestAdminLogin implements TestAdminLoginInterface
+class CheckAdminLogin implements CheckAdminLoginInterface
 {
     /**
      * @param $container
      * @param $session
      * @return mixed
      */
-    public function testAdminLogin($container, $session)
+    public function checkAdminLogin($container, $session)
     {
         $AdminLogIn = $container->newAdminLogIn();
         return $AdminLogIn->testLogIn($session->get('uuid'), $container);

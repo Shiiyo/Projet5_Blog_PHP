@@ -12,7 +12,7 @@ class AddAdminAccountController implements ControllerInterface
 
     public function __invoke()
     {
-        $adminLogIn = $this->container->newTestAdminLogin()->testAdminLogin($this->container, $this->session);
+        $adminLogIn = $this->container->newCheckAdminLogin()->checkAdminLogin($this->container, $this->session);
         $token = $this->container->newTokenManagement()->generateToken($this->session);
 
         if ($adminLogIn != false) {

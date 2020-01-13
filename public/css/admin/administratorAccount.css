@@ -15,13 +15,29 @@ p
 a
 {
     font-size: 1.3rem;
-    font-weight: 400;
+    font-weight: 300;
     font-family: 'Montserrat', sans-serif;
-    color: #bb0b0b;
     text-decoration: underline;
 }
 
-a:hover
+#update-password
+{
+    color: #fcb61e;
+    text-align: center;
+}
+
+#delete-account:hover
+{
+    color: #fcb61e;
+}
+
+#delete-account
+{
+    color: #bb0b0b;
+    text-align: center;
+}
+
+#delete-account:hover
 {
     color: #bb0b0b;
 }
