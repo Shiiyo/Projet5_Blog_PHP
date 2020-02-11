@@ -26,8 +26,9 @@ class ChangePasswordController implements ControllerInterface
                 $response = $this->getContainer()->newHttpResponseHtml($view);
                 $response->send();
             }
+        } else {
+            $this->redirect('/admin/login');
         }
-        $this->redirect('/admin/login');
         $this->container->newRefreshPopup()->refreshPopup($this->session);
     }
 }

@@ -14,7 +14,7 @@ class PostUpdateBlogPostController implements ControllerInterface
         $request = $this->getContainer()->newHttpRequest();
 
         //Check form fields
-        $error_msg = $this->container->newUpdateBlogPostTestingFields()->updateBlogPostTestingFields($this->container, $request, $this->session);
+        $error_msg = $this->container->newUpdateBlogPostCheckFields()->updateBlogPostCheckFields($this->container, $request, $this->session);
 
         if ($error_msg == "") {
             $commentWriter = $this->container->getArticleWriter($this->container);
