@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="../../public/css/home.css">
+    <link rel="stylesheet" href="../../public/css/footer.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
@@ -19,7 +19,6 @@
                     <li class="nav-item"><a class="nav-link" href="#a-propos">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#realisations">Réalisations</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" id="blog-button" href="/liste-blog-post">Voir le blog</a></li>
                 </ul>
             </div>
         </nav>
@@ -31,7 +30,6 @@
             <h1>Camille Legalland</h1>
             <h3>Développeur Web Freelance</h3>
             <h4>Créatrice d'application web</h4>
-            <a href="/liste-blog-post"><div class="blogButton" id="headerButton">Voir le blog</div></a>
         </div>
     </div>
 {% endblock %}
@@ -59,36 +57,36 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <div class="cercle"><img src="/img/pictos/chat-4-128.png" alt="Bulle de chat"/></div>
+                    <div class="cercle"><img src="../../public/img/pictos/chat-4-128.png" alt="Bulle de chat"/></div>
                     <h3>Analyse</h3>
                     <p>Analyse de votre site Web existant et propositions d'amélioration et d'évolution</p>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="cercle"><img src="img/pictos/edit-9-128.png" alt="Stylo"/></div>
+                    <div class="cercle"><img src="../../public/img/pictos/edit-9-128.png" alt="Stylo"/></div>
                     <h3>Conception</h3>
                     <p>Je vous conseille, réalise l'architecture et l'ergonomie de votre site pour qu'il procure une
                         expérience utilisateur optimal</p>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="cercle"><img src="img/pictos/keyboard-128.png" alt="Clavier"></div>
+                    <div class="cercle"><img src="../../public/img/pictos/keyboard-128.png" alt="Clavier"></div>
                     <h3>Développement</h3>
                     <p>Spécifique (from scratch) ou CMS du marché (type Wordpress ou Prestashop par exemple) pour obtenir
                         l'outil adapté à vos besoins</p>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="cercle"><img src="img/pictos/compass-128.png" alt="Boussole"/></div>
+                    <div class="cercle"><img src="../../public/img/pictos/compass-128.png" alt="Boussole"/></div>
                     <h3>Référencement</h3>
                     <p>Optimisation du code pour le référencement naturel. Création et suivi de campagnes payates (type Google
                         Adwords, Facebook ads, etc.)</p>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="cercle"><img src="img/pictos/database-6-128.png" alt="Base de données"/></div>
+                    <div class="cercle"><img src="../../public/img/pictos/database-6-128.png" alt="Base de données"/></div>
                     <h3>Base de Données</h3>
                     <p>Importation, gestion et mise en ligne de vos données</p>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="cercle"><img src="img/pictos/website-design-128.png" alt="Design de site web"></div>
+                    <div class="cercle"><img src="../../public/img/pictos/website-design-128.png" alt="Design de site web"></div>
                     <h3>Intégration</h3>
                     <p>HTML et CSS à partir de vos maquettes</p>
                 </div>
@@ -100,18 +98,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4" id="headband1">
-                    <div class="img-headband"><img src="img/pictos/chat-128.png" alt="Télécommunication"></div>
+                    <div class="img-headband"><img src="../../public/img/pictos/chat-128.png" alt="Télécommunication"></div>
                     <h3>Préparation du projet</h3>
                     <p>Nous nous rencontrons puis je réceptionne vos besoins afin de les traduire en proposition de
                         solutions techniques</p>
                 </div>
                 <div class="col-lg-4" id="headband2">
-                    <div class="img-headband"><img src="img/pictos/cog-128.png" alt="Rouage"></div>
+                    <div class="img-headband"><img src="../../public/img/pictos/cog-128.png" alt="Rouage"></div>
                     <h3>Développement du projet</h3>
                     <p>Je procède au développement technique du projet en fonction des technologies choisies</p>
                 </div>
                 <div class="col-lg-4" id="headband3">
-                    <div class="img-headband"><img src="img/pictos/support-128.png" alt="Clé mécanique"></div>
+                    <div class="img-headband"><img src="../../public/img/pictos/support-128.png" alt="Clé mécanique"></div>
                     <h3>Support et maintenance du projet</h3>
                     <p>J'assure le maintien en ligne et les mises à jour nécessaires pour le fonctionnement continu
                         de votre nouveau site internet.</p>
@@ -131,30 +129,31 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-md-6"><img id="portrait" src="img/pictures/Camille.jpg" alt="Portrait Camille"></div>
+                <div class="col-12 col-md-6"><img id="portrait" src="../../public/img/pictures/Camille.JPG" alt="Portrait Camille"></div>
                 <div class="col-12 col-md-6">
-                    <p>Je suis Camille LEGALLAND, alias Shiyo. Passionée depuis l'enfance par l'informatique, je découvre
+                    <p>Je suis Camille LEGALLAND. Passionée depuis l'enfance par l'informatique, je découvre
                         l'univers du développement en 2013. Trois ans plus tards, je réussis en candidat libre le BTS Systèmes
-                        Numériques avec mention Bien. Actuellement en formation ches OpenClassrooms je suit le parcours
-                        Développeur d'application PHP/Symony. Je mets tout mon savoir-faire au service de votre projet.
+                        Numériques avec 15 de moyenne, puis mon diplôme de Développeuse d'application PHP/Symfony auprès de l'école à distance Open Classrooms,
+                        un titre de niveau 6 des Certifications Professionnelles reconnu par l'Etat.
+                        Je mets tout mon savoir-faire au service de votre projet.
                         Autodidacte, passionnée et à la pointe de la technologie, je fournis un travail de qualité, créé
                         spécifiquement pour vos besoins</p>
                     <div class="row line-technos">
-                        <div class="col-3 logo-technos"><img class="img-technos img-fluid" src="img/logos/HTML5.png" alt="HTML 5"></div>
-                        <div class="col-3 logo-technos"><img class="img-technos img-fluid" src="img/logos/CSS3.png" alt="CSS 3"></div>
-                        <div class="col-3 logo-technos"><img class="img-technos img-fluid" src="/img/logos/JS5.png" alt="JS 5"></div>
-                        <div class="col-3 logo-technos"><img class="img-technos img-fluid" src="img/logos/PHP7.png" alt="PHP 7"></div>
+                        <div class="col-3 logo-technos"><img class="img-technos img-fluid" src="../../public/img/logos/HTML5.png" alt="HTML 5"></div>
+                        <div class="col-3 logo-technos"><img class="img-technos img-fluid" src="../../public/img/logos/CSS3.png" alt="CSS 3"></div>
+                        <div class="col-3 logo-technos"><img class="img-technos img-fluid" src="../../public/img/logos/JS5.png" alt="JS 5"></div>
+                        <div class="col-3 logo-technos"><img class="img-technos img-fluid" src="../../public/img/logos/PHP7.png" alt="PHP 7"></div>
                     </div>
                     <div class="row line-technos">
-                        <div class="col-3 logo-technos2"><img id="WP" class="img-technos img-fluid" src="img/logos/wordpress.png" alt="Wordpress"></div>
-                        <div class="col-3 logo-technos2"><img class="img-technos img-fluid" src="img/logos/Bootstrap.png" alt="Bootstrap"></div>
-                        <div class="col-3 logo-technos2"><img class="img-technos img-fluid" src="img/logos/jquery.png" alt="jQuery"></div>
-                        <div class="col-3 logo-technos2"><img class="img-technos img-fluid" src="img/logos/symfony.png" alt="Symfony"></div>
+                        <div class="col-3 logo-technos2"><img id="WP" class="img-technos img-fluid" src="../../public/img/logos/wordpress.png" alt="Wordpress"></div>
+                        <div class="col-3 logo-technos2"><img class="img-technos img-fluid" src="../../public/img/logos/Bootstrap.png" alt="Bootstrap"></div>
+                        <div class="col-3 logo-technos2"><img class="img-technos img-fluid" src="../../public/img/logos/jquery.png" alt="jQuery"></div>
+                        <div class="col-3 logo-technos2"><img class="img-technos img-fluid" src="../../public/img/logos/symfony.png" alt="Symfony"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <a class="col-lg-2 offset-lg-2" href="pdf/CVCamilleLEGALLAND.pdf"><div id="CV-button">Mon CV</div></a>
+                <a class="col-lg-2 offset-lg-2" href="../../public/pdf/CVCamilleLEGALLAND.pdf"><div id="CV-button">Mon CV</div></a>
                 <div class="col-lg-6"></div>
             </div>
         </div>
@@ -173,11 +172,11 @@
                 <div class="col-md-6 col-xs-12">
                     <div class="card text-center">
                         <a href="http://centreportehaute.org/" class="card-link">
-                            <img src="img/realisations/Centreportehaute.png" alt="Centre Porte Haute" class="card-img">
+                            <img src="../../public/img/realisations/Centreportehaute.PNG" alt="Centre Porte Haute" class="card-img">
                             <div class="card-img-overlay">
                                 <div class="card-body">
                                     <p class="card-title">En savoir plus</p>
-                                    <img src="img/pictos/zoom-in-2-64.png" alt="loupe">
+                                    <img src="../../public/img/pictos/zoom-in-2-64.png" alt="loupe">
                                 </div>
 
                             </div>
@@ -189,10 +188,10 @@
                 <div class="col-md-6 col-xs-12">
                     <div class="card text-center">
                         <a href="http://festival-des-films-de-plein-air.info" class="card-link">
-                            <img src="img/realisations/Festivaldefilmenpleinair.png" alt="Festival de Films en Plein Air" class="card-img">
+                            <img src="../../public/img/realisations/Festivaldefilmenpleinair.PNG" alt="Festival de Films en Plein Air" class="card-img">
                             <div class="card-img-overlay">
                                 <p class="card-title">En savoir plus</p>
-                                <img src="img/pictos/zoom-in-2-64.png" alt="loupe">
+                                <img src="../../public/img/pictos/zoom-in-2-64.png" alt="loupe">
                             </div>
                         </a>
                     </div>
@@ -203,10 +202,10 @@
                 <div class="col-md-6 col-xs-12">
                     <div class="card text-center">
                         <a href="http://www.tmc30.fr/" class="card-link">
-                            <img src="img/realisations/TMC.png" alt="TMC" class="card-img">
+                            <img src="../../public/img/realisations/TMC.PNG" alt="TMC" class="card-img">
                             <div class="card-img-overlay">
                                 <p class="card-title">En savoir plus</p>
-                                <img src="img/pictos/zoom-in-2-64.png" alt="loupe">
+                                <img src="../../public/img/pictos/zoom-in-2-64.png" alt="loupe">
                             </div>
                         </a>
                     </div>
@@ -215,10 +214,10 @@
                 <div class="col-md-6 col-xs-12">
                     <div class="card text-center">
                         <a href="http://chalets-et-caviar.info" class="card-link">
-                            <img src="img/realisations/ChaletEtCaviar.png" alt="Chalets et Caviar" class="card-img">
+                            <img src="../../public/img/realisations/ChaletEtCaviar.PNG" alt="Chalets et Caviar" class="card-img">
                             <div class="card-img-overlay">
                                 <p class="card-title">En savoir plus</p>
-                                <img src="img/pictos/zoom-in-2-64.png" alt="loupe">
+                                <img src="../../public/img/pictos/zoom-in-2-64.png" alt="loupe">
                             </div>
                         </a>
                     </div>
@@ -243,10 +242,11 @@
                     </ul>
                     <p id="contact-p2">Je suis à votre disposition</p>
                     <div class="row">
-                        <div class="col-3 col-md-2"><a href="mailto:camillelegalland@gmail.com"><img src="img/pictos/mail-64.png" alt="Enveloppe"/></a></div>
-                        <div class="col-3 col-md-2"><a href="tel:+33628047881"><img src="img/pictos/phone-64.png" alt="Téléphone"/></a></div>
-                        <div class="col-3 col-md-2"><a href="http://www.facebook.com/cLegallandDevWeb"><img src="img/pictos/facebook-64.png" alt="Facebook"/></a></div>
-                        <div class="col-3 col-md-2"><a href="https://www.linkedin.com/in/camille-legalland/"><img src="img/pictos/linkedin-64.png" alt="Linkedin"/></a></div>
+                        <div class="col-3 col-md-2"><a href="mailto:camillelegalland@gmail.com"><img src="../../public/img/pictos/mail-64.png" alt="Enveloppe"/></a></div>
+                        <div class="col-3 col-md-2"><a href="https://www.linkedin.com/in/camille-legalland/"><img src="../../public/img/pictos/linkedin-64.png" alt="Linkedin"/></a></div>
+                        <div class="col-3 col-md-2"><a href="https://www.malt.fr/profile/camillelegalland"><img src="../../public/img/pictos/malt.png" alt="Malt"/></a></div>
+                        <div class="col-3 col-md-2"><a href="https://github.com/Shiiyo"><img src="../../public/img/pictos/icons8-github-60.png" alt="GitHub"/></a></div>
+
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1" id="form">
@@ -266,14 +266,14 @@
 
         {% if session.success %}
             <div id="validation-form">
-                <img src="img/pictos/ok-128.png" alt="ok symbole">
+                <img src="../../public/img/pictos/ok-128.png" alt="ok symbole">
                 <p>{{ session.success|raw }}</p>
             </div>
         {% endif %}
 
         {% if session.error %}
             <div id="error-form">
-                <img src="img/pictos/error-5-128.png" alt="erreur symbole">
+                <img src="../../public/img/pictos/error-5-128.png" alt="erreur symbole">
                 <p>{{ session.error|raw }}</p>
             </div>
         {% endif %}
