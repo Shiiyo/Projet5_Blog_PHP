@@ -18,7 +18,7 @@ class TestRecaptcha implements TestRecaptchaInterface
     public function __invoke()
     {
         $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $secret = '6LeJCnQUAAAAABCqgPutdMDbdQAzDp4iF-DKre8X';
+        $secret = '6Lehs3ccAAAAAJHqVDU7xG_CBGVMVaxaRhCh1oU4';
         $response = $this->getRecaptchaResponse();
         $verify = file_get_contents($url.'?secret='.$secret.'&response='.$response);
         return json_decode($verify);
