@@ -1,0 +1,23 @@
+{
+    "require": {
+        "twig/twig": "^2.5",
+        "twbs/bootstrap": "^4.1",
+        "friendsofphp/php-cs-fixer": "^2.13",
+        "phpmailer/phpmailer": "^6.0",
+        "symfony/http-foundation": "^4.1",
+        "symfony/validator": "^4.1",
+      "ext-json": "*",
+      "ext-pdo": "*",
+        "ramsey/uuid": "^3.8",
+        "cocur/slugify": "^3.1"
+    },
+    "autoload": {
+      "psr-4" : {
+        "framework\\" : "framework",
+        "Controller\\" : "Controller",
+        "Entity\\" : "Entity",
+        "repository\\" : "repository",
+        "services\\" : "services"
+      }
+    }
+}
