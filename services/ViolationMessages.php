@@ -42,7 +42,7 @@ class ViolationMessages implements ViolationMessageInterface
                     }
                 }
             } else {
-                $error_msg = "Le recaptcha a échoué, merci d'essayer à nouveau.";
+                $error_msg = $this->getVerifyRecaptcha();
             }
         } else {
             $error_msg = $this->verifyToken;
