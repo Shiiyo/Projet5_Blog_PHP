@@ -1,15 +1,15 @@
 {
     "require": {
-        "twig/twig": "^2.5",
         "twbs/bootstrap": "^4.1",
         "friendsofphp/php-cs-fixer": "^2.13",
         "phpmailer/phpmailer": "6.5.0",
-        "symfony/http-foundation": "4.4.7",
         "symfony/validator": "^4.1",
       "ext-json": "*",
       "ext-pdo": "*",
         "ramsey/uuid": "^3.8",
-        "cocur/slugify": "^3.1"
+        "cocur/slugify": "^3.1",
+        "symfony/http-foundation": "^6.0",
+        "twig/twig": "^2.5"
     },
     "autoload": {
       "psr-4" : {
